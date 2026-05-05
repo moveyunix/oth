@@ -1,440 +1,728 @@
-+   1 <!DOCTYPE html>
-+   2 <html lang="zh-CN">
-+   3 <head>
-+   4     <meta charset="UTF-8">
-+   5     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-+   6     <title>Open Technology Hub | 开放技术枢纽</title>
-+   7     <link rel="stylesheet" href="style.css">
-+   8 </head>
-+   9 <body>
-+  10     <!-- Navigation -->
-+  11     <nav class="navbar">
-+  12         <div class="container">
-+  13             <div class="nav-wrapper">
-+  14                 <div class="logo">
-+  15                     <span class="logo-text">OTH</span>
-+  16                     <span class="logo-subtext" data-en="Open Technology Hub" data-zh="开放技术枢纽">开放技术枢纽</span>
-+  17                 </div>
-+  18                 <ul class="nav-menu">
-+  19                     <li><a href="#about" data-en="About" data-zh="关于我们">关于我们</a></li>
-+  20                     <li><a href="#project" data-en="Project" data-zh="核心项目">核心项目</a></li>
-+  21                     <li><a href="#team" data-en="Team" data-zh="团队">团队</a></li>
-+  22                     <li><a href="#structure" data-en="Organization" data-zh="组织架构">组织架构</a></li>
-+  23                     <li><a href="#contact" data-en="Contact" data-zh="联系我们">联系我们</a></li>
-+  24                 </ul>
-+  25                 <div class="nav-actions">
-+  26                     <button class="lang-switch" id="langSwitch">
-+  27                         <span class="lang-text">EN</span>
-+  28                     </button>
-+  29                     <button class="menu-toggle" id="menuToggle">
-+  30                         <span></span>
-+  31                         <span></span>
-+  32                         <span></span>
-+  33                     </button>
-+  34                 </div>
-+  35             </div>
-+  36         </div>
-+  37     </nav>
-+  38 
-+  39     <!-- Hero Section -->
-+  40     <section class="hero">
-+  41         <div class="hero-bg"></div>
-+  42         <div class="hero-particles"></div>
-+  43         <div class="container">
-+  44             <div class="hero-content">
-+  45                 <h1 class="hero-title">
-+  46                     <span class="title-main" data-en="Open Technology Hub" data-zh="开放技术枢纽">开放技术枢纽</span>
-+  47                     <span class="title-sub" data-en="Driving Innovation Through Open Source" data-zh="以开源驱动创新发展">以开源驱动创新发展</span>
-+  48                 </h1>
-+  49                 <p class="hero-description" data-en="Building the future of technology through open source collaboration and innovation ecosystem in Hong Kong" data-zh="在香港打造开源协作与创新生态系统，构建技术未来">
-+  50                     在香港打造开源协作与创新生态系统，构建技术未来
-+  51                 </p>
-+  52                 <div class="hero-cta">
-+  53                     <a href="#project" class="btn btn-primary" data-en="Explore Projects" data-zh="探索项目">探索项目</a>
-+  54                     <a href="#contact" class="btn btn-secondary" data-en="Join Us" data-zh="加入我们">加入我们</a>
-+  55                 </div>
-+  56             </div>
-+  57         </div>
-+  58         <div class="scroll-indicator">
-+  59             <div class="mouse"></div>
-+  60         </div>
-+  61     </section>
-+  62 
-+  63     <!-- About Section -->
-+  64     <section id="about" class="section about-section">
-+  65         <div class="container">
-+  66             <div class="section-header">
-+  67                 <h2 class="section-title" data-en="About OTH" data-zh="关于我们">关于我们</h2>
-+  68                 <div class="title-line"></div>
-+  69             </div>
-+  70             <div class="about-grid">
-+  71                 <div class="about-card">
-+  72                     <div class="card-icon">
-+  73                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-+  74                             <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-+  75                             <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
-+  76                         </svg>
-+  77                     </div>
-+  78                     <h3 data-en="Open Source First" data-zh="开源优先">开源优先</h3>
-+  79                     <p data-en="Open source has become a global model for technology innovation and collaborative development, serving as the foundation and driving force for next-generation information technology." data-zh="开源已成为全球技术创新和协同发展的模式，是新一代信息技术发展的基础和动力。">
-+  80                         开源已成为全球技术创新和协同发展的模式，是新一代信息技术发展的基础和动力。
-+  81                     </p>
-+  82                 </div>
-+  83                 <div class="about-card">
-+  84                     <div class="card-icon">
-+  85                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-+  86                             <circle cx="12" cy="12" r="10"/>
-+  87                             <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-+  88                             <path d="M2 12h20"/>
-+  89                         </svg>
-+  90                     </div>
-+  91                     <h3 data-en="Global Impact" data-zh="全球影响力">全球影响力</h3>
-+  92                     <p data-en="97% of software developers and 99% of enterprises worldwide use open source software. Over 70% of new software projects globally adopt the open source model." data-zh="全球97%的软件开发者和99%的企业使用开源软件，全球70%以上的新立项软件项目采用开源模式。">
-+  93                         全球97%的软件开发者和99%的企业使用开源软件，全球70%以上的新立项软件项目采用开源模式。
-+  94                     </p>
-+  95                 </div>
-+  96                 <div class="about-card">
-+  97                     <div class="card-icon">
-+  98                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-+  99                             <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-+ 100                             <circle cx="9" cy="7" r="4"/>
-+ 101                             <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-+ 102                             <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-+ 103                         </svg>
-+ 104                     </div>
-+ 105                     <h3 data-en="Strategic Priority" data-zh="国家战略">国家战略</h3>
-+ 106                     <p data-en="Open source has become a national strategy, with comprehensive support for open source communities and ecosystem development outlined in national planning guidelines." data-zh="开源已成为国家战略，国家规划纲要明确支持数字技术开源社区等创新联合体发展。">
-+ 107                         开源已成为国家战略，国家规划纲要明确支持数字技术开源社区等创新联合体发展。
-+ 108                     </p>
-+ 109                 </div>
-+ 110             </div>
-+ 111         </div>
-+ 112     </section>
-+ 113 
-+ 114     <!-- Project Section -->
-+ 115     <section id="project" class="section project-section">
-+ 116         <div class="project-bg"></div>
-+ 117         <div class="container">
-+ 118             <div class="section-header">
-+ 119                 <h2 class="section-title" data-en="Core Project" data-zh="核心项目">核心项目</h2>
-+ 120                 <div class="title-line"></div>
-+ 121             </div>
-+ 122             <div class="project-showcase">
-+ 123                 <div class="project-content">
-+ 124                     <div class="project-badge" data-en="FLAGSHIP PROJECT" data-zh="旗舰项目">旗舰项目</div>
-+ 125                     <h3 class="project-name">OTH-OSSEC</h3>
-+ 126                     <h4 class="project-subtitle" data-en="Open Source Security & Governance AI Model" data-zh="开源治理大模型">开源治理大模型</h4>
-+ 127                     <p class="project-description" data-en="The first AI-powered large language model specifically designed for open source security and governance, addressing critical challenges in enterprise open source compliance." data-zh="全球首个专注于开源安全与治理的AI大模型，解决企业开源合规的关键挑战。">
-+ 128                         全球首个专注于开源安全与治理的AI大模型，解决企业开源合规的关键挑战。
-+ 129                     </p>
-+ 130                     <div class="project-features">
-+ 131                         <div class="feature-item">
-+ 132                             <div class="feature-icon">✓</div>
-+ 133                             <div>
-+ 134                                 <strong data-en="AI-Powered Analysis" data-zh="AI智能分析">AI智能分析</strong>
-+ 135                                 <p data-en="Advanced AI model for open source compliance" data-zh="先进的开源合规AI模型">先进的开源合规AI模型</p>
-+ 136                             </div>
-+ 137                         </div>
-+ 138                         <div class="feature-item">
-+ 139                             <div class="feature-icon">✓</div>
-+ 140                             <div>
-+ 141                                 <strong data-en="Cost Effective" data-zh="降低成本">降低成本</strong>
-+ 142                                 <p data-en="Reduce expensive consulting fees" data-zh="降低高昂的咨询费用">降低高昂的咨询费用</p>
-+ 143                             </div>
-+ 144                         </div>
-+ 145                         <div class="feature-item">
-+ 146                             <div class="feature-icon">✓</div>
-+ 147                             <div>
-+ 148                                 <strong data-en="Dual Mode" data-zh="双模式运营">双模式运营</strong>
-+ 149                                 <p data-en="Open source basic + commercial enhanced version" data-zh="开源基础版 + 商业增强版">开源基础版 + 商业增强版</p>
-+ 150                             </div>
-+ 151                         </div>
-+ 152                     </div>
-+ 153                     <div class="project-timeline">
-+ 154                         <h5 data-en="Development Timeline" data-zh="研发时间线">研发时间线</h5>
-+ 155                         <div class="timeline-grid">
-+ 156                             <div class="timeline-item">
-+ 157                                 <div class="timeline-dot"></div>
-+ 158                                 <div class="timeline-content">
-+ 159                                     <strong>2024.05</strong>
-+ 160                                     <span data-en="OTH Launch" data-zh="OTH启动">OTH启动</span>
-+ 161                                 </div>
-+ 162                             </div>
-+ 163                             <div class="timeline-item">
-+ 164                                 <div class="timeline-dot"></div>
-+ 165                                 <div class="timeline-content">
-+ 166                                     <strong>2024.06</strong>
-+ 167                                     <span data-en="Project Initiation" data-zh="项目立项">项目立项</span>
-+ 168                                 </div>
-+ 169                             </div>
-+ 170                             <div class="timeline-item">
-+ 171                                 <div class="timeline-dot"></div>
-+ 172                                 <div class="timeline-content">
-+ 173                                     <strong>2024.07-08</strong>
-+ 174                                     <span data-en="Base Model Selection" data-zh="基座模型选择">基座模型选择</span>
-+ 175                                 </div>
-+ 176                             </div>
-+ 177                             <div class="timeline-item">
-+ 178                                 <div class="timeline-dot"></div>
-+ 179                                 <div class="timeline-content">
-+ 180                                     <strong>2025.02</strong>
-+ 181                                     <span data-en="Commercial Launch" data-zh="商业运营">商业运营</span>
-+ 182                                 </div>
-+ 183                             </div>
-+ 184                         </div>
-+ 185                     </div>
-+ 186                 </div>
-+ 187                 <div class="project-visual">
-+ 188                     <div class="visual-box">
-+ 189                         <div class="visual-circle"></div>
-+ 190                         <div class="visual-data">
-+ 191                             <div class="data-item">
-+ 192                                 <span class="data-number">97%</span>
-+ 193                                 <span class="data-label" data-en="Developers" data-zh="开发者">开发者</span>
-+ 194                             </div>
-+ 195                             <div class="data-item">
-+ 196                                 <span class="data-number">99%</span>
-+ 197                                 <span class="data-label" data-en="Enterprises" data-zh="企业">企业</span>
-+ 198                             </div>
-+ 199                             <div class="data-item">
-+ 200                                 <span class="data-number">70%</span>
-+ 201                                 <span class="data-label" data-en="New Projects" data-zh="新项目">新项目</span>
-+ 202                             </div>
-+ 203                         </div>
-+ 204                     </div>
-+ 205                 </div>
-+ 206             </div>
-+ 207         </div>
-+ 208     </section>
-+ 209 
-+ 210     <!-- Team Section -->
-+ 211     <section id="team" class="section team-section">
-+ 212         <div class="container">
-+ 213             <div class="section-header">
-+ 214                 <h2 class="section-title" data-en="Founding Team" data-zh="创始团队">创始团队</h2>
-+ 215                 <div class="title-line"></div>
-+ 216             </div>
-+ 217             <div class="team-grid">
-+ 218                 <div class="team-card featured">
-+ 219                     <div class="team-image">
-+ 220                         <div class="image-placeholder">孟伟</div>
-+ 221                     </div>
-+ 222                     <div class="team-info">
-+ 223                         <h3 class="team-name" data-en="Meng Wei" data-zh="孟伟">孟伟</h3>
-+ 224                         <p class="team-title" data-en="Founder & CEO" data-zh="创始人兼CEO">创始人兼CEO</p>
-+ 225                         <ul class="team-highlights">
-+ 226                             <li data-en="Director of Standards & Open Source Strategy, ZTE Corporation" data-zh="中兴通讯标准与开源战略总监">中兴通讯标准与开源战略总监</li>
-+ 227                             <li data-en="Chairman of LF AI & Data Foundation Global Board" data-zh="Linux基金会AI & Data全球董事会主席">Linux基金会AI & Data全球董事会主席</li>
-+ 228                             <li data-en="Chair of ITU ML5G Architecture Group" data-zh="ITU ML5G架构组主席">ITU ML5G架构组主席</li>
-+ 229                             <li data-en="20 years in IT R&D, 12 years in standards & open source" data-zh="20年IT研发经验，12年标准与开源工作经验">20年IT研发经验，12年标准与开源工作经验</li>
-+ 230                         </ul>
-+ 231                     </div>
-+ 232                 </div>
-+ 233                 <div class="team-card">
-+ 234                     <div class="team-image">
-+ 235                         <div class="image-placeholder">唐松龙</div>
-+ 236                     </div>
-+ 237                     <div class="team-info">
-+ 238                         <h3 class="team-name" data-en="Tang Songlong" data-zh="唐松龙">唐松龙</h3>
-+ 239                         <p class="team-title" data-en="Co-Founder" data-zh="创始人">创始人</p>
-+ 240                         <ul class="team-highlights">
-+ 241                             <li data-en="Founder of OpenHarmony Industry Association" data-zh="开源鸿蒙产业协会发起人">开源鸿蒙产业协会发起人</li>
-+ 242                             <li data-en="IEEE SOLI Outreach Chair" data-zh="IEEE SOLI Outreach主席">IEEE SOLI Outreach主席</li>
-+ 243                             <li data-en="LF APAC Strategic Partner" data-zh="Linux基金会APAC战略合作伙伴">Linux基金会APAC战略合作伙伴</li>
-+ 244                         </ul>
-+ 245                     </div>
-+ 246                 </div>
-+ 247                 <div class="team-card">
-+ 248                     <div class="team-image">
-+ 249                         <div class="image-placeholder">王君</div>
-+ 250                     </div>
-+ 251                     <div class="team-info">
-+ 252                         <h3 class="team-name" data-en="Wang Jun" data-zh="王君">王君</h3>
-+ 253                         <p class="team-title" data-en="Co-Founder" data-zh="创始人">创始人</p>
-+ 254                         <ul class="team-highlights">
-+ 255                             <li data-en="20 years in IT R&D" data-zh="20年IT技术研发经验">20年IT技术研发经验</li>
-+ 256                             <li data-en="Expert in network security and 5G" data-zh="网络安全与5G专家">网络安全与5G专家</li>
-+ 257                             <li data-en="10+ patents in international and domestic standards" data-zh="10余项国际国内专利">10余项国际国内专利</li>
-+ 258                         </ul>
-+ 259                     </div>
-+ 260                 </div>
-+ 261                 <div class="team-card">
-+ 262                     <div class="team-image">
-+ 263                         <div class="image-placeholder">杨轩</div>
-+ 264                     </div>
-+ 265                     <div class="team-info">
-+ 266                         <h3 class="team-name" data-en="Yang Xuan" data-zh="杨轩">杨轩</h3>
-+ 267                         <p class="team-title" data-en="Team Member" data-zh="创始团队">创始团队</p>
-+ 268                         <ul class="team-highlights">
-+ 269                             <li data-en="VP of Linux Foundation APAC" data-zh="Linux基金会亚太区副总裁">Linux基金会亚太区副总裁</li>
-+ 270                             <li data-en="Head of LF Open Source Academy" data-zh="Linux Foundation开源软件学园负责人">Linux Foundation开源软件学园负责人</li>
-+ 271                             <li data-en="20+ years in software industry" data-zh="20年软件产业经验">20年软件产业经验</li>
-+ 272                         </ul>
-+ 273                     </div>
-+ 274                 </div>
-+ 275                 <div class="team-card">
-+ 276                     <div class="team-image">
-+ 277                         <div class="image-placeholder">沈平</div>
-+ 278                     </div>
-+ 279                     <div class="team-info">
-+ 280                         <h3 class="team-name" data-en="Shen Ping" data-zh="沈平">沈平</h3>
-+ 281                         <p class="team-title" data-en="Team Member" data-zh="创始团队">创始团队</p>
-+ 282                         <ul class="team-highlights">
-+ 283                             <li data-en="Chair Professor, Southern University of Science and Technology" data-zh="南方科技大学讲席教授">南方科技大学讲席教授</li>
-+ 284                             <li data-en="IEEE Photonics Society President" data-zh="IEEE光子学协会主席">IEEE光子学协会主席</li>
-+ 285                             <li data-en="IEEE Fellow, SPIE Fellow, OPTICA Fellow" data-zh="IEEE会士、SPIE会士、OPTICA会士">IEEE会士、SPIE会士、OPTICA会士</li>
-+ 286                         </ul>
-+ 287                     </div>
-+ 288                 </div>
-+ 289             </div>
-+ 290         </div>
-+ 291     </section>
-+ 292 
-+ 293     <!-- Organization Structure -->
-+ 294     <section id="structure" class="section structure-section">
-+ 295         <div class="container">
-+ 296             <div class="section-header">
-+ 297                 <h2 class="section-title" data-en="Organization Structure" data-zh="组织架构">组织架构</h2>
-+ 298                 <div class="title-line"></div>
-+ 299             </div>
-+ 300             <div class="structure-diagram">
-+ 301                 <div class="structure-center">
-+ 302                     <div class="center-circle">
-+ 303                         <span data-en="Open Tech Hub" data-zh="开放技术枢纽">开放技术枢纽</span>
-+ 304                         <span class="center-sub">Hong Kong</span>
-+ 305                     </div>
-+ 306                 </div>
-+ 307                 <div class="structure-nodes">
-+ 308                     <div class="structure-node node-1">
-+ 309                         <h4 data-en="Advisory Committee" data-zh="顾问委员会">顾问委员会</h4>
-+ 310                         <p data-en="Strategic guidance and industry expertise" data-zh="战略指导与行业专家">战略指导与行业专家</p>
-+ 311                     </div>
-+ 312                     <div class="structure-node node-2">
-+ 313                         <h4 data-en="Support Organizations" data-zh="支持机构">支持机构</h4>
-+ 314                         <ul>
-+ 315                             <li>LF AI & Data</li>
-+ 316                             <li data-en="China OSS Promotion Union" data-zh="中国开源软件推进联盟">中国开源软件推进联盟</li>
-+ 317                             <li data-en="HKSTP" data-zh="香港科技协进会">香港科技协进会</li>
-+ 318                             <li data-en="Southern University of Science and Technology" data-zh="南方科技大学">南方科技大学</li>
-+ 319                         </ul>
-+ 320                     </div>
-+ 321                     <div class="structure-node node-3">
-+ 322                         <h4 data-en="Convener Group" data-zh="召集人小组">召集人小组</h4>
-+ 323                         <p data-en="Core leadership and coordination" data-zh="核心领导与协调">核心领导与协调</p>
-+ 324                     </div>
-+ 325                     <div class="structure-node node-4">
-+ 326                         <h4 data-en="Special Interest Groups" data-zh="特别兴趣小组">特别兴趣小组</h4>
-+ 327                         <ul>
-+ 328                             <li data-en="AI (Artificial Intelligence)" data-zh="AI（人工智能）">AI（人工智能）</li>
-+ 329                             <li data-en="OS (Operating Systems)" data-zh="OS（操作系统）">OS（操作系统）</li>
-+ 330                             <li data-en="Blockchain" data-zh="区块链">区块链</li>
-+ 331                             <li data-en="And more..." data-zh="等更多...">等更多...</li>
-+ 332                         </ul>
-+ 333                     </div>
-+ 334                 </div>
-+ 335             </div>
-+ 336         </div>
-+ 337     </section>
-+ 338 
-+ 339     <!-- Contact Section -->
-+ 340     <section id="contact" class="section contact-section">
-+ 341         <div class="container">
-+ 342             <div class="contact-grid">
-+ 343                 <div class="contact-info">
-+ 344                     <h2 data-en="Join the Open Source Revolution" data-zh="加入开源革命">加入开源革命</h2>
-+ 345                     <p data-en="Be part of the global open source ecosystem and drive innovation together." data-zh="成为全球开源生态系统的一部分，共同推动创新发展。">
-+ 346                         成为全球开源生态系统的一部分，共同推动创新发展。
-+ 347                     </p>
-+ 348                     <div class="contact-details">
-+ 349                         <div class="detail-item">
-+ 350                             <div class="detail-icon">📍</div>
-+ 351                             <div>
-+ 352                                 <strong data-en="Location" data-zh="地址">地址</strong>
-+ 353                                 <p data-en="Hong Kong Science and Technology Parks" data-zh="香港科学园">香港科学园</p>
-+ 354                             </div>
-+ 355                         </div>
-+ 356                         <div class="detail-item">
-+ 357                             <div class="detail-icon">✉️</div>
-+ 358                             <div>
-+ 359                                 <strong data-en="Email" data-zh="邮箱">邮箱</strong>
-+ 360                                 <p>info@opentechhub.hk</p>
-+ 361                             </div>
-+ 362                         </div>
-+ 363                         <div class="detail-item">
-+ 364                             <div class="detail-icon">🌐</div>
-+ 365                             <div>
-+ 366                                 <strong data-en="Connect" data-zh="关注我们">关注我们</strong>
-+ 367                                 <div class="social-links">
-+ 368                                     <a href="#" aria-label="LinkedIn">LinkedIn</a>
-+ 369                                     <a href="#" aria-label="GitHub">GitHub</a>
-+ 370                                     <a href="#" aria-label="Twitter">Twitter</a>
-+ 371                                 </div>
-+ 372                             </div>
-+ 373                         </div>
-+ 374                     </div>
-+ 375                 </div>
-+ 376                 <div class="contact-form">
-+ 377                     <form id="contactForm">
-+ 378                         <div class="form-group">
-+ 379                             <input type="text" placeholder="" required data-placeholder-en="Name" data-placeholder-zh="姓名">
-+ 380                             <label data-en="Name" data-zh="姓名">姓名</label>
-+ 381                         </div>
-+ 382                         <div class="form-group">
-+ 383                             <input type="email" placeholder="" required data-placeholder-en="Email" data-placeholder-zh="邮箱">
-+ 384                             <label data-en="Email" data-zh="邮箱">邮箱</label>
-+ 385                         </div>
-+ 386                         <div class="form-group">
-+ 387                             <textarea rows="5" placeholder="" required data-placeholder-en="Message" data-placeholder-zh="留言"></textarea>
-+ 388                             <label data-en="Message" data-zh="留言">留言</label>
-+ 389                         </div>
-+ 390                         <button type="submit" class="btn btn-primary" data-en="Send Message" data-zh="发送消息">发送消息</button>
-+ 391                     </form>
-+ 392                 </div>
-+ 393             </div>
-+ 394         </div>
-+ 395     </section>
-+ 396 
-+ 397     <!-- Footer -->
-+ 398     <footer class="footer">
-+ 399         <div class="container">
-+ 400             <div class="footer-content">
-+ 401                 <div class="footer-brand">
-+ 402                     <h3>OTH</h3>
-+ 403                     <p data-en="Open Technology Hub" data-zh="开放技术枢纽">开放技术枢纽</p>
-+ 404                 </div>
-+ 405                 <div class="footer-links">
-+ 406                     <div class="footer-col">
-+ 407                         <h4 data-en="About" data-zh="关于">关于</h4>
-+ 408                         <ul>
-+ 409                             <li><a href="#about" data-en="About Us" data-zh="关于我们">关于我们</a></li>
-+ 410                             <li><a href="#team" data-en="Team" data-zh="团队">团队</a></li>
-+ 411                             <li><a href="#structure" data-en="Organization" data-zh="组织架构">组织架构</a></li>
-+ 412                         </ul>
-+ 413                     </div>
-+ 414                     <div class="footer-col">
-+ 415                         <h4 data-en="Projects" data-zh="项目">项目</h4>
-+ 416                         <ul>
-+ 417                             <li><a href="#project">OTH-OSSEC</a></li>
-+ 418                             <li><a href="#" data-en="Research" data-zh="研究">研究</a></li>
-+ 419                             <li><a href="#" data-en="Community" data-zh="社区">社区</a></li>
-+ 420                         </ul>
-+ 421                     </div>
-+ 422                     <div class="footer-col">
-+ 423                         <h4 data-en="Resources" data-zh="资源">资源</h4>
-+ 424                         <ul>
-+ 425                             <li><a href="#" data-en="Documentation" data-zh="文档">文档</a></li>
-+ 426                             <li><a href="#" data-en="Events" data-zh="活动">活动</a></li>
-+ 427                             <li><a href="#contact" data-en="Contact" data-zh="联系">联系</a></li>
-+ 428                         </ul>
-+ 429                     </div>
-+ 430                 </div>
-+ 431             </div>
-+ 432             <div class="footer-bottom">
-+ 433                 <p>&copy; 2024 Open Technology Hub. <span data-en="All rights reserved." data-zh="版权所有">版权所有</span></p>
-+ 434             </div>
-+ 435         </div>
-+ 436     </footer>
-+ 437 
-+ 438     <script src="script.js"></script>
-+ 439 </body>
-+ 440 </html>
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="x-poe-datastore-behavior" content="local_only"><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>开放技术枢纽 | Open Technology Hub</title>
+  <style>
+    :root{
+      --bg:#f4f7fb;
+      --bg-soft:#ffffff;
+      --card:#ffffff;
+      --text:#0f172a;
+      --muted:#475569;
+      --line:#dbe5f1;
+      --accent:#76b900;
+      --accent-2:#0ea5e9;
+      --shadow: 0 10px 24px rgba(15, 23, 42, .08);
+      --radius:18px;
+      --max:1200px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{
+      margin:0;padding:0;
+      background:
+        radial-gradient(circle at 10% -10%, rgba(118,185,0,.18), transparent 30%),
+        radial-gradient(circle at 90% 0%, rgba(14,165,233,.12), transparent 30%),
+        linear-gradient(180deg, #f8fbff 0%, #f4f7fb 40%, #f4f7fb 100%);
+      color:var(--text);
+      font-family: "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+      scroll-behavior:smooth;
+    }
+
+    a{color:inherit;text-decoration:none}
+    .container{width:min(var(--max), 92vw); margin:0 auto}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      border:1px solid rgba(118,185,0,.35);
+      color:#2f5f00; padding:6px 12px; border-radius:999px;
+      background:rgba(118,185,0,.12); font-size:.88rem;
+    }
+
+    /* Header */
+    .header{
+      position:sticky; top:0; z-index:20;
+      backdrop-filter: blur(8px);
+      background:rgba(255,255,255,.88);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      min-height:72px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px; font-weight:700;
+    }
+    .brand-mark{
+      width:34px;height:34px;border-radius:10px;
+      background:linear-gradient(145deg, rgba(118,185,0,.95), rgba(14,165,233,.9));
+      box-shadow:0 0 16px rgba(118,185,0,.25);
+    }
+    .brand small{display:block;color:var(--muted);font-weight:500;font-size:.72rem;margin-top:2px}
+
+    .nav-links{
+      display:flex; gap:16px; flex-wrap:wrap; justify-content:center;
+    }
+    .nav-links a{
+      color:#334155; font-size:.95rem; padding:6px 10px; border-radius:10px;
+      transition:.2s ease;
+    }
+    .nav-links a:hover{background:#edf3fb;color:#0f172a}
+
+    .lang-switch{
+      display:flex; gap:8px;
+    }
+    .lang-btn{
+      border:1px solid #c8d7ea; background:#fff; color:#1e293b;
+      padding:8px 12px; border-radius:10px; cursor:pointer; transition:.2s;
+      font-weight:600;
+    }
+    .lang-btn.active{
+      border-color:rgba(118,185,0,.65); color:#2f5f00;
+      box-shadow: inset 0 0 0 1px rgba(118,185,0,.25);
+      background:linear-gradient(180deg, rgba(118,185,0,.16), rgba(118,185,0,.08));
+    }
+
+    /* Hero */
+    .hero{
+      padding:86px 0 64px;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero-grid{
+      display:grid; grid-template-columns:1.2fr .8fr; gap:26px; align-items:stretch;
+    }
+    .hero h1{
+      font-size:clamp(2rem, 5vw, 4rem);
+      line-height:1.08; margin:.4rem 0 .7rem; letter-spacing:.3px;
+    }
+    .hero h1 .accent{
+      color:#4f7f00;
+      text-shadow:0 0 20px rgba(118,185,0,.25);
+    }
+    .hero p{color:#334155; font-size:1.05rem; line-height:1.75; max-width:60ch}
+    .hero-card{
+      border:1px solid #d7e3f3;
+      border-radius:var(--radius);
+      background:linear-gradient(180deg, #ffffff, #f8fbff);
+      box-shadow:var(--shadow);
+      padding:22px;
+      display:flex; flex-direction:column; justify-content:space-between;
+    }
+    .hero-stats{
+      display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-top:14px;
+    }
+    .stat{
+      border:1px solid #dbe5f1; border-radius:14px; padding:14px;
+      background:#ffffff;
+    }
+    .stat b{display:block; font-size:1.6rem; color:#4f7f00; margin-bottom:4px}
+    .stat span{color:#475569; font-size:.9rem}
+
+    /* Common section */
+    section{padding:58px 0; border-top:1px solid #e6edf7}
+    .section-title{
+      display:flex; align-items:end; justify-content:space-between; gap:16px; margin-bottom:20px;
+    }
+    .section-title h2{
+      margin:0; font-size:clamp(1.4rem, 3vw, 2rem);
+      letter-spacing:.2px;
+    }
+    .section-title p{margin:0; color:var(--muted)}
+
+    .grid-2{display:grid; grid-template-columns:repeat(2,1fr); gap:16px}
+    .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+    .grid-4{display:grid; grid-template-columns:repeat(4,1fr); gap:16px}
+
+    .card{
+      border:1px solid var(--line); border-radius:var(--radius);
+      background:var(--card);
+      padding:18px; box-shadow:var(--shadow);
+    }
+    .card h3{margin:0 0 10px; font-size:1.1rem}
+    .card p{margin:0; color:#334155; line-height:1.7}
+    .card ul{margin:8px 0 0 18px; padding:0; color:#334155; line-height:1.7}
+    .tag{
+      display:inline-block; padding:4px 10px; border-radius:999px; font-size:.8rem;
+      border:1px solid #bfe7fb; color:#0369a1; background:rgba(14,165,233,.10);
+      margin-bottom:10px;
+    }
+
+    /* Team */
+    .profile{
+      display:flex; gap:14px; align-items:flex-start;
+    }
+    .avatar{
+      width:56px; height:56px; border-radius:14px;
+      background:linear-gradient(145deg, rgba(118,185,0,.25), rgba(14,165,233,.25));
+      border:1px solid #b9d4ef;
+      display:flex; align-items:center; justify-content:center; font-weight:700; color:#0f172a;
+      flex-shrink:0;
+    }
+    .profile h4{margin:0 0 6px}
+    .profile small{color:#64748b}
+
+    /* Org chips */
+    .chips{display:flex; flex-wrap:wrap; gap:8px}
+    .chip{
+      border:1px solid #cdddf0; padding:7px 10px; border-radius:999px;
+      color:#334155; font-size:.88rem; background:#f8fbff;
+    }
+
+    /* Roadmap */
+    .timeline{
+      display:grid; grid-template-columns:repeat(7, minmax(180px,1fr)); gap:12px;
+      overflow-x:auto; padding-bottom:6px;
+    }
+    .step{
+      min-width:180px;
+      border:1px solid #d4e1f1; border-radius:14px; padding:14px;
+      background:linear-gradient(180deg, #ffffff, #f8fbff);
+      position:relative;
+    }
+    .step::before{
+      content:""; position:absolute; top:50%; right:-13px; width:12px; height:2px; background:#b9cbe2;
+    }
+    .step:last-child::before{display:none}
+    .step .date{
+      color:#0369a1; font-size:.86rem; margin-bottom:8px; display:block;
+    }
+    .step h4{margin:0 0 8px; font-size:1rem}
+    .step p{margin:0; color:#334155; font-size:.92rem; line-height:1.6}
+
+    /* Footer */
+    footer{
+      border-top:1px solid #e6edf7;
+      padding:28px 0 36px; color:#64748b;
+    }
+
+    @media (max-width: 960px){
+      .hero-grid,.grid-4,.grid-3,.grid-2{grid-template-columns:1fr}
+      .nav{gap:10px; padding:8px 0; flex-wrap:wrap}
+      .nav-links{order:3; width:100%; justify-content:flex-start}
+      .hero{padding-top:56px}
+      .timeline{grid-template-columns:repeat(7, 230px)}
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <div>
+          <div id="brandName">开放技术枢纽 · Open Technology Hub</div>
+          <small id="brandSub">香港 · Hong Kong</small>
+        </div>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#about" id="navAbout">项目背景</a>
+        <a href="#team" id="navTeam">创始团队</a>
+        <a href="#org" id="navOrg">组织架构</a>
+        <a href="#ossec" id="navOSSEC">OTH-OSSEC</a>
+        <a href="#roadmap" id="navRoadmap">研发规划</a>
+      </nav>
+
+      <div class="lang-switch">
+        <button class="lang-btn active" id="btnZh" type="button">中文</button>
+        <button class="lang-btn" id="btnEn" type="button">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="pill" id="heroPill">开源创新 · 生态协同 · 产业孵化</span>
+          <h1 id="heroTitle">
+            开放技术枢纽 <span class="accent">Open Technology Hub</span>
+          </h1>
+          <p id="heroDesc">
+            面向香港与全球的开源科技创新平台，连接企业、高校、基金会与开发者社区，
+            推动 AI、操作系统、区块链等关键技术协作，孵化开源治理大模型 OTH-OSSEC。
+          </p>
+        </div>
+
+        <div class="hero-card">
+          <div>
+            <div class="tag" id="heroCardTag">核心行业观察</div>
+            <p id="heroCardText">
+              开源已成为国家战略与产业升级的重要基础设施。我们聚焦“开源合规 + 安全治理 + AI赋能”三位一体，
+              打造可持续的技术与商业协同模式。
+            </p>
+          </div>
+          <div class="hero-stats">
+            <div class="stat"><b>97%</b><span id="stat1">开发者使用开源软件</span></div>
+            <div class="stat"><b>99%</b><span id="stat2">企业使用开源软件</span></div>
+            <div class="stat"><b>70%+</b><span id="stat3">新软件项目采用开源模式</span></div>
+            <div class="stat"><b>87%+</b><span id="stat4">中国企业使用开源项目</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-title">
+          <h2 id="aboutTitle">项目背景</h2>
+          <p id="aboutSub">开源：新质生产力的发展引擎与国家战略</p>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <h3 id="aboutH1">为什么是现在</h3>
+            <ul id="aboutList1"></ul>
+          </div>
+          <div class="card">
+            <h3 id="aboutH2">全球趋势与政策信号</h3>
+            <ul id="aboutList2"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="team">
+      <div class="container">
+        <div class="section-title">
+          <h2 id="teamTitle">创始团队</h2>
+          <p id="teamSub">跨开源生态、产业落地与学术科研的复合型团队</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <span class="tag" id="founderTag">创始人兼 CEO</span>
+            <div class="profile">
+              <div class="avatar">MW</div>
+              <div>
+                <h4 id="founderName">孟伟</h4>
+                <small id="founderRole">标准与开源战略专家</small>
+              </div>
+            </div>
+            <ul id="founderBullets"></ul>
+          </div>
+
+          <div class="card">
+            <span class="tag" id="cofounderTag">核心创始成员</span>
+            <div class="grid-2">
+              <div>
+                <h3 id="member1Name">唐松龙</h3>
+                <ul id="member1List"></ul>
+              </div>
+              <div>
+                <h3 id="member2Name">王君</h3>
+                <ul id="member2List"></ul>
+              </div>
+              <div>
+                <h3 id="member3Name">杨轩</h3>
+                <ul id="member3List"></ul>
+              </div>
+              <div>
+                <h3 id="member4Name">沈平</h3>
+                <ul id="member4List"></ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="org">
+      <div class="container">
+        <div class="section-title">
+          <h2 id="orgTitle">组织架构</h2>
+          <p id="orgSub">多层协同机制：治理、召集、支持与技术专题组</p>
+        </div>
+
+        <div class="grid-4">
+          <div class="card">
+            <h3 id="orgH1">顾问委员会</h3>
+            <p id="orgP1">提供战略方向、产业资源与关键决策支持。</p>
+          </div>
+          <div class="card">
+            <h3 id="orgH2">召集人小组</h3>
+            <p id="orgP2">统筹活动、合作伙伴与跨机构协同推进。</p>
+          </div>
+          <div class="card">
+            <h3 id="orgH3">支持机构</h3>
+            <div class="chips" id="supportChips"></div>
+          </div>
+          <div class="card">
+            <h3 id="orgH4">特别兴趣小组</h3>
+            <div class="chips" id="sigChips"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ossec">
+      <div class="container">
+        <div class="section-title">
+          <h2 id="ossecTitle">项目孵化 —— OTH-OSSEC（开源治理大模型）</h2>
+          <p id="ossecSub">以 AI 驱动开源合规、安全与治理能力升级</p>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <h3 id="painTitle">痛点问题</h3>
+            <ul id="painList"></ul>
+          </div>
+          <div class="card">
+            <h3 id="marketTitle">市场需求及规模</h3>
+            <ul id="marketList"></ul>
+          </div>
+          <div class="card">
+            <h3 id="businessTitle">盈利模式</h3>
+            <ul id="businessList"></ul>
+          </div>
+          <div class="card">
+            <h3 id="compTitle">竞对分析</h3>
+            <p id="compText"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="roadmap">
+      <div class="container">
+        <div class="section-title">
+          <h2 id="roadmapTitle">研发流程及规划</h2>
+          <p id="roadmapSub">从平台启动到开源与商业运营的里程碑路径</p>
+        </div>
+        <div class="timeline" id="timeline"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" id="footerText">
+      © Open Technology Hub (OTH) · 开放技术枢纽 · Hong Kong
+    </div>
+  </footer>
+
+  <script>
+    const i18n = {
+      zh: {
+        brandName: "开放技术枢纽 · Open Technology Hub",
+        brandSub: "香港 · Hong Kong",
+        navAbout: "项目背景",
+        navTeam: "创始团队",
+        navOrg: "组织架构",
+        navOSSEC: "OTH-OSSEC",
+        navRoadmap: "研发规划",
+
+        heroPill: "开源创新 · 生态协同 · 产业孵化",
+        heroTitle: '开放技术枢纽 <span class="accent">Open Technology Hub</span>',
+        heroDesc: "面向香港与全球的开源科技创新平台，连接企业、高校、基金会与开发者社区，推动 AI、操作系统、区块链等关键技术协作，孵化开源治理大模型 OTH-OSSEC。",
+        heroCardTag: "核心行业观察",
+        heroCardText: "开源已成为国家战略与产业升级的重要基础设施。我们聚焦“开源合规 + 安全治理 + AI赋能”三位一体，打造可持续的技术与商业协同模式。",
+        stat1: "开发者使用开源软件",
+        stat2: "企业使用开源软件",
+        stat3: "新软件项目采用开源模式",
+        stat4: "中国企业使用开源项目",
+
+        aboutTitle: "项目背景",
+        aboutSub: "开源：新质生产力的发展引擎与国家战略",
+        aboutH1: "为什么是现在",
+        aboutList1: [
+          "开源（Open Source）已成为全球技术创新与协同发展的主流模式。",
+          "Android、MySQL、LLaMA 等案例证明开源是下一代信息技术基础动力。",
+          "开源安全与治理需求快速上升，企业亟需可规模化的治理能力。"
+        ],
+        aboutH2: "全球趋势与政策信号",
+        aboutList2: [
+          "中国“十四五”及数字中国建设规划明确支持开源生态建设。",
+          "欧盟发布开源软件战略，强调创新合作、知识复用与公共价值。",
+          "美国发布 OSINT 战略，显示开源情报与开源技术的战略地位。"
+        ],
+
+        teamTitle: "创始团队",
+        teamSub: "跨开源生态、产业落地与学术科研的复合型团队",
+        founderTag: "创始人兼 CEO",
+        founderName: "孟伟",
+        founderRole: "标准与开源战略专家",
+        founderBullets: [
+          "中兴通讯标准与开源战略总监。",
+          "Linux Foundation LF AI & Data 全球董事会主席。",
+          "ITU ML5G 架构组主席，长期参与国际标准制定。",
+          "IT 技术研发 20 年，标准与开源工作 12 年。"
+        ],
+        cofounderTag: "核心创始成员",
+        member1Name: "唐松龙",
+        member1List: [
+          "开源鸿蒙产业协会发起人。",
+          "IEEE SOLI Outreach Chair。",
+          "深耕科技互联网与开发者社区运营。"
+        ],
+        member2Name: "王君",
+        member2List: [
+          "具备网络安全与合规专业经验。",
+          "熟悉 AI、大模型、数字孪生、Web3.0。",
+          "多次参与 5G 相关行业标准制定。"
+        ],
+        member3Name: "杨轩",
+        member3List: [
+          "Linux Foundation 亚太区副总裁。",
+          "负责开源软件学园与生态合作。",
+          "拥有 20+ 年国际软件产业经验。"
+        ],
+        member4Name: "沈平",
+        member4List: [
+          "南方科技大学讲席教授、副系主任。",
+          "IEEE / SPIE / OPTICA Fellow。",
+          "特种光纤与光子技术领域顶尖学者。"
+        ],
+
+        orgTitle: "组织架构",
+        orgSub: "多层协同机制：治理、召集、支持与技术专题组",
+        orgH1: "顾问委员会",
+        orgP1: "提供战略方向、产业资源与关键决策支持。",
+        orgH2: "召集人小组",
+        orgP2: "统筹活动、合作伙伴与跨机构协同推进。",
+        orgH3: "支持机构",
+        supportChips: [
+          "LF AI & Data",
+          "中国开源软件推进联盟",
+          "香港科技协进会",
+          "天工开物开源基金会",
+          "南方科技大学"
+        ],
+        orgH4: "特别兴趣小组",
+        sigChips: ["AI（人工智能）", "OS（操作系统）", "Blockchain（区块链）", "etc."],
+
+        ossecTitle: "项目孵化 —— OTH-OSSEC（开源治理大模型）",
+        ossecSub: "以 AI 驱动开源合规、安全与治理能力升级",
+        painTitle: "痛点问题",
+        painList: [
+          "企业违规使用开源软件可能导致高额代价与法律风险。",
+          "开源安全与治理需要技术 + 法律复合型人才，供给稀缺。",
+          "外部专家咨询成本高，难以覆盖持续治理需求。"
+        ],
+        marketTitle: "市场需求及规模",
+        marketList: [
+          "全球 97% 开发者、99% 企业使用开源软件。",
+          "全球 70% 以上新立项软件采用开源模式。",
+          "中国 87% 以上企业使用开源项目，需求规模巨大。"
+        ],
+        businessTitle: "盈利模式",
+        businessList: [
+          "基础开源版本：建立生态与标准能力。",
+          "增强商业版本：SaaS License 授权。",
+          "私有化部署：面向高合规行业客户。"
+        ],
+        compTitle: "竞对分析",
+        compText: "当前存在开源治理平台软件，但“开源治理大模型”仍处于早期窗口期，具备差异化创新机会。",
+
+        roadmapTitle: "研发流程及规划",
+        roadmapSub: "从平台启动到开源与商业运营的里程碑路径",
+        timeline: [
+          ["2024年5月", "OTH 启动及推广", "在 AICon HK 论坛宣布 OTH 成立。"],
+          ["2024年6月", "OTH-OSSEC 立项", "明确目标场景与技术路线。"],
+          ["2024年7–8月", "基座模型评估", "选择开源 Base LLM 并完成可行性评估。"],
+          ["2024年8–10月", "语料库构建", "收集/采购开源安全语料，完成清洗处理。"],
+          ["2024年11月", "增强预训练", "围绕治理与合规任务进行领域增强。"],
+          ["2024年12月", "精调（Fine-tuning）", "多轮微调，提升专业问答与分析能力。"],
+          ["2025年1月起", "评测优化与运营", "完成评测优化并进入开源+商业长期运营。"]
+        ],
+
+        footerText: "© Open Technology Hub (OTH) · 开放技术枢纽 · Hong Kong"
+      },
+
+      en: {
+        brandName: "Open Technology Hub · 开放技术枢纽",
+        brandSub: "Hong Kong · 香港",
+        navAbout: "Background",
+        navTeam: "Founding Team",
+        navOrg: "Organization",
+        navOSSEC: "OTH-OSSEC",
+        navRoadmap: "Roadmap",
+
+        heroPill: "Open Source Innovation · Ecosystem Collaboration · Incubation",
+        heroTitle: 'Open Technology Hub <span class="accent">开放技术枢纽</span>',
+        heroDesc: "A Hong Kong-based open technology platform connecting enterprises, universities, foundations, and developer communities to accelerate AI, OS, and blockchain collaboration, while incubating OTH-OSSEC for open-source governance.",
+        heroCardTag: "Industry Signals",
+        heroCardText: "Open source is now strategic infrastructure for digital transformation. We focus on a three-in-one framework: compliance, security governance, and AI enablement.",
+        stat1: "developers use open source",
+        stat2: "enterprises use open source",
+        stat3: "new software projects are open-source-based",
+        stat4: "Chinese enterprises use open-source projects",
+
+        aboutTitle: "Project Background",
+        aboutSub: "Open Source as an Engine of New Productive Forces",
+        aboutH1: "Why Now",
+        aboutList1: [
+          "Open source has become a dominant model for global innovation and collaboration.",
+          "Cases like Android, MySQL, and LLaMA show open source as a core technology driver.",
+          "Demand for scalable open-source security and governance is rising rapidly."
+        ],
+        aboutH2: "Global Policy & Ecosystem Trends",
+        aboutList2: [
+          "China's national plans explicitly support open-source ecosystem development.",
+          "The EU open-source strategy emphasizes innovation, reuse, and public value.",
+          "The U.S. OSINT strategy highlights strategic importance of open-source intelligence."
+        ],
+
+        teamTitle: "Founding Team",
+        teamSub: "A cross-disciplinary team spanning open ecosystems, industry practice, and academia",
+        founderTag: "Founder & CEO",
+        founderName: "Meng Wei",
+        founderRole: "Open-source strategy and standards expert",
+        founderBullets: [
+          "Director of Standards & Open Source Strategy, ZTE.",
+          "Global Board Chair of LF AI & Data (Linux Foundation).",
+          "Chair of ITU ML5G architecture group; active in global standards.",
+          "20 years in R&D, including 12 years in standards and open source."
+        ],
+        cofounderTag: "Core Founding Members",
+        member1Name: "Tang Songlong",
+        member1List: [
+          "Initiator of OpenHarmony industry association.",
+          "IEEE SOLI Outreach Chair.",
+          "Strong experience in developer ecosystem operations."
+        ],
+        member2Name: "Wang Jun",
+        member2List: [
+          "Expertise in cybersecurity and compliance.",
+          "Experienced in AI, LLMs, digital twin, and Web3.0.",
+          "Participated in multiple 5G industry standards."
+        ],
+        member3Name: "Yang Xuan",
+        member3List: [
+          "APAC VP at Linux Foundation.",
+          "Leads open-source academy and ecosystem programs.",
+          "20+ years in international software industry."
+        ],
+        member4Name: "Shen Ping",
+        member4List: [
+          "Chair Professor at SUSTech.",
+          "Fellow of IEEE / SPIE / OPTICA.",
+          "Leading scholar in fiber optics and photonics."
+        ],
+
+        orgTitle: "Organization Structure",
+        orgSub: "Multi-layer collaboration across governance, convening, support, and SIGs",
+        orgH1: "Advisory Committee",
+        orgP1: "Provides strategic direction, industry resources, and high-level guidance.",
+        orgH2: "Convener Group",
+        orgP2: "Coordinates events, partnerships, and cross-organization execution.",
+        orgH3: "Support Organizations",
+        supportChips: [
+          "LF AI & Data",
+          "China OSS Promotion Union",
+          "Hong Kong Association for Sci-Tech Advancement",
+          "The Chance Foundation",
+          "Southern University of Science and Technology"
+        ],
+        orgH4: "Special Interest Groups",
+        sigChips: ["AI", "Operating System", "Blockchain", "etc."],
+
+        ossecTitle: "Incubation Project — OTH-OSSEC (Open-Source Governance LLM)",
+        ossecSub: "AI-powered compliance, security, and governance for open source",
+        painTitle: "Pain Points",
+        painList: [
+          "Improper OSS usage can lead to substantial legal and business risks.",
+          "Governance requires both technical and legal capabilities, with talent shortage.",
+          "Expert consulting is costly and hard to scale continuously."
+        ],
+        marketTitle: "Market Demand & Size",
+        marketList: [
+          "97% of developers and 99% of enterprises use open-source software.",
+          "Over 70% of new software projects adopt open-source models.",
+          "Over 87% of enterprises in China use open-source projects."
+        ],
+        businessTitle: "Business Model",
+        businessList: [
+          "Open base edition to build ecosystem adoption.",
+          "Enhanced commercial edition via SaaS licensing.",
+          "Private deployment for high-compliance industries."
+        ],
+        compTitle: "Competitive Landscape",
+        compText: "While OSS governance platforms exist, governance-focused LLM products remain at an early stage with strong differentiation opportunities.",
+
+        roadmapTitle: "R&D Process & Roadmap",
+        roadmapSub: "Milestones from launch to open-source and commercial operations",
+        timeline: [
+          ["May 2024", "OTH Launch & Promotion", "Officially announced at AICon HK."],
+          ["Jun 2024", "Project Kickoff", "Defined scenarios and technical route for OTH-OSSEC."],
+          ["Jul–Aug 2024", "Base LLM Selection", "Evaluated open-source foundation models."],
+          ["Aug–Oct 2024", "Corpus Construction", "Collected/purchased OSS security corpus and cleaned data."],
+          ["Nov 2024", "Enhanced Pre-training", "Domain adaptation for governance and compliance tasks."],
+          ["Dec 2024", "Fine-tuning", "Multi-round tuning for expert QA and analysis."],
+          ["From Jan 2025", "Evaluation, Optimization & Ops", "Continuous evaluation and long-term open-source + commercial operation."]
+        ],
+
+        footerText: "© Open Technology Hub (OTH) · Hong Kong"
+      }
+    };
+
+    const ids = [
+      "brandName","brandSub","navAbout","navTeam","navOrg","navOSSEC","navRoadmap",
+      "heroPill","heroTitle","heroDesc","heroCardTag","heroCardText",
+      "stat1","stat2","stat3","stat4",
+      "aboutTitle","aboutSub","aboutH1","aboutH2",
+      "teamTitle","teamSub","founderTag","founderName","founderRole","cofounderTag",
+      "member1Name","member2Name","member3Name","member4Name",
+      "orgTitle","orgSub","orgH1","orgP1","orgH2","orgP2","orgH3","orgH4",
+      "ossecTitle","ossecSub","painTitle","marketTitle","businessTitle","compTitle","compText",
+      "roadmapTitle","roadmapSub","footerText"
+    ];
+
+    function fillList(id, arr){
+      const el = document.getElementById(id);
+      el.innerHTML = arr.map(x => `<li>${x}</li>`).join("");
+    }
+
+    function fillChips(id, arr){
+      const el = document.getElementById(id);
+      el.innerHTML = arr.map(x => `<span class="chip">${x}</span>`).join("");
+    }
+
+    function fillTimeline(arr){
+      const root = document.getElementById("timeline");
+      root.innerHTML = arr.map(item => `
+        <article class="step">
+          <span class="date">${item[0]}</span>
+          <h4>${item[1]}</h4>
+          <p>${item[2]}</p>
+        </article>
+      `).join("");
+    }
+
+    function setLang(lang){
+      const t = i18n[lang];
+      ids.forEach(id => {
+        const el = document.getElementById(id);
+        if(!el) return;
+        if(id === "heroTitle"){
+          el.innerHTML = t[id];
+        } else {
+          el.textContent = t[id];
+        }
+      });
+
+      fillList("aboutList1", t.aboutList1);
+      fillList("aboutList2", t.aboutList2);
+      fillList("founderBullets", t.founderBullets);
+      fillList("member1List", t.member1List);
+      fillList("member2List", t.member2List);
+      fillList("member3List", t.member3List);
+      fillList("member4List", t.member4List);
+      fillList("painList", t.painList);
+      fillList("marketList", t.marketList);
+      fillList("businessList", t.businessList);
+
+      fillChips("supportChips", t.supportChips);
+      fillChips("sigChips", t.sigChips);
+      fillTimeline(t.timeline);
+
+      document.getElementById("btnZh").classList.toggle("active", lang === "zh");
+      document.getElementById("btnEn").classList.toggle("active", lang === "en");
+      document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+    }
+
+    document.getElementById("btnZh").addEventListener("click", () => setLang("zh"));
+    document.getElementById("btnEn").addEventListener("click", () => setLang("en"));
+
+    setLang("zh");
+  </script>
+
+
+</body></html>
