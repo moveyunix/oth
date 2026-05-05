@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The Open Agentic AI Foundation (OAAIF) is a neutral platform founded in 2026 to advance open, interoperable, and trustworthy agentic AI infrastructure.">
+  <title>The Open Agentic AI Foundation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header">
+    <a class="logo" href="index.html" aria-label="The Open Agentic AI Foundation home">
+      <img class="logo__image logo__image--full" src="assets/images/oaaif-logo-full.svg" alt="The Open Agentic AI Foundation logo">
+      <img class="logo__image logo__image--mark" src="assets/images/oaaif-logo-mark.svg" alt="Open Agentic AI Foundation mark">
+    </a>
+    <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav class="nav-links">
+      <a href="#main-content" data-i18n="nav-home">Home</a>
+      <a href="#programs" data-i18n="nav-projects">Projects</a>
+      <a href="#pillars" data-i18n="nav-standards">Standards</a>
+      <a href="#community" data-i18n="nav-activities">Activities</a>
+      <a href="#members" data-i18n="nav-developers">Developers</a>
+      <a href="#resources" data-i18n="nav-open-lab">Open Lab</a>
+      <a href="#join" data-i18n="nav-training">Training & Certification</a>
+      <div class="nav-item nav-item--dropdown">
+        <a href="about.html#overview" data-i18n="nav-about">About Us</a>
+        <div class="nav-dropdown">
+          <a href="about.html#overview" data-i18n="nav-about-foundation">Foundation overview</a>
+          <a href="about.html#mission" data-i18n="nav-about-mission">Mission</a>
+          <a href="about.html#pillars" data-i18n="nav-about-charter">Charter</a>
+          <a href="about.html#members" data-i18n="nav-about-structure">Organization structure</a>
+          <a href="about.html#resources" data-i18n="nav-about-donors">Donor directory</a>
+        </div>
+      </div>
+    </nav>
+    <div class="header-actions">
+      <select id="language-switcher" aria-label="Language selector">
+        <option value="en">English</option>
+        <option value="ar">العربية</option>
+        <option value="zh-CN">简体中文</option>
+        <option value="zh-TW">繁體中文</option>
+        <option value="ja">日本語</option>
+        <option value="fr">Français</option>
+      </select>
+      <a class="btn ghost" href="#join" data-i18n="hero-cta-secondary">See the roadmap</a>
+      <a class="btn" href="#community" data-i18n="hero-cta-primary">Join the movement</a>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero">
+      <div class="hero__content">
+        <p class="eyebrow" data-i18n="hero-eyebrow">Open standards for AI agents</p>
+        <h1 data-i18n="hero-title">Building safe, open agentic AI infrastructure for everyone.</h1>
+        <p class="lead" data-i18n="hero-subtitle">We are a global coalition advancing interoperable tooling, trustworthy governance, and a thriving ecosystem for AI agents.</p>
+        <div class="hero__actions">
+          <a class="btn" href="#community" data-i18n="hero-cta-primary">Join the movement</a>
+          <a class="btn ghost" href="#resources" data-i18n="hero-cta-secondary">See the roadmap</a>
+        </div>
+        <div class="metrics">
+          <div class="metric">
+          <div class="metric__value" data-i18n="metric-1-value">Jan 2026</div>
+          <div class="metric__label" data-i18n="metric-countries">Foundation established</div>
+        </div>
+        <div class="metric">
+          <div class="metric__value" data-i18n="metric-2-value">3</div>
+          <div class="metric__label" data-i18n="metric-partners">Structural risks to solve</div>
+        </div>
+        <div class="metric">
+          <div class="metric__value" data-i18n="metric-3-value">China → Global</div>
+          <div class="metric__label" data-i18n="metric-impact">Our positioning</div>
+        </div>
+      </div>
+      </div>
+      <div class="hero__panel">
+        <div class="panel">
+          <div class="panel__header">
+            <span class="pill pill--accent" data-i18n="panel-live">Live</span>
+            <span class="pill" data-i18n="panel-updated">Updated weekly</span>
+          </div>
+          <div class="panel__body">
+            <h3 data-i18n="panel-title">Agentic AI ecosystem in motion</h3>
+            <ul class="timeline">
+              <li>
+                <span class="timeline__time">Q2</span>
+                <div>
+                  <p class="timeline__title" data-i18n="timeline-1-title">Open Agent Safety Benchmark</p>
+                  <p class="timeline__desc" data-i18n="timeline-1-desc">Community-driven evaluations for autonomy, alignment, and resilience.</p>
+                </div>
+              </li>
+              <li>
+                <span class="timeline__time">Q3</span>
+                <div>
+                  <p class="timeline__title" data-i18n="timeline-2-title">Interoperability Standards</p>
+                  <p class="timeline__desc" data-i18n="timeline-2-desc">Reference specs for agent messaging, memory, and tool safety.</p>
+                </div>
+              </li>
+              <li>
+                <span class="timeline__time">Q4</span>
+                <div>
+                  <p class="timeline__title" data-i18n="timeline-3-title">Global Builder Summits</p>
+                  <p class="timeline__desc" data-i18n="timeline-3-desc">Multi-city gatherings to publish learnings, roadmaps, and open datasets.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="panel__footer" data-i18n="panel-footer">Created with researchers, startups, enterprises, and public institutions.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="mission" class="section">
+      <div class="section__header">
+        <p class="eyebrow" data-i18n="mission-eyebrow">Our mission</p>
+        <h2 data-i18n="mission-title">Enable open, safe, and useful agentic AI for society.</h2>
+        <p class="section__description" data-i18n="mission-body">We coordinate standards, funding, and governance so that builders across the world can create trustworthy agentic systems—independent, interoperable, and aligned with human values.</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <h3 data-i18n="mission-card-1-title">Open protocols</h3>
+          <p data-i18n="mission-card-1-body">We maintain open specifications for agent messaging, identity, safety, and data stewardship so ecosystems can interoperate.</p>
+        </article>
+        <article class="card">
+          <h3 data-i18n="mission-card-2-title">Safety & assurance</h3>
+          <p data-i18n="mission-card-2-body">We convene researchers to define benchmarks, threat models, and red-team exercises for autonomous systems.</p>
+        </article>
+        <article class="card">
+          <h3 data-i18n="mission-card-3-title">Inclusive governance</h3>
+          <p data-i18n="mission-card-3-body">We bring civil society, academia, and industry together to shape transparent, accountable governance.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="pillars" class="section section--alt">
+      <div class="section__header">
+        <p class="eyebrow" data-i18n="pillars-eyebrow">Strategic pillars</p>
+        <h2 data-i18n="pillars-title">What we build together.</h2>
+        <p class="section__description" data-i18n="pillars-body">From technical standards to public-private collaboration, we focus on the capabilities that make agentic AI reliable, transparent, and universally accessible.</p>
+      </div>
+      <div class="pillars">
+        <article class="pillar">
+          <div class="pill pill--accent" data-i18n="pillar-1-tag">Infrastructure</div>
+          <h3 data-i18n="pillar-1-title">Reference architecture</h3>
+          <p data-i18n="pillar-1-body">Open-source blueprints for memory, planning, and evaluation layers that teams can adopt and extend.</p>
+          <ul>
+            <li data-i18n="pillar-1-li-1">Composable agent lifecycle models</li>
+            <li data-i18n="pillar-1-li-2">Secure tool & data access controls</li>
+            <li data-i18n="pillar-1-li-3">Shared telemetry for safety signals</li>
+          </ul>
+        </article>
+        <article class="pillar">
+          <div class="pill pill--accent" data-i18n="pillar-2-tag">Standards</div>
+          <h3 data-i18n="pillar-2-title">Interoperability & trust</h3>
+          <p data-i18n="pillar-2-body">Specifications and conformance suites that let agent networks collaborate across vendors and jurisdictions.</p>
+          <ul>
+            <li data-i18n="pillar-2-li-1">Open agent interface spec (OAIS)</li>
+            <li data-i18n="pillar-2-li-2">Identity, provenance, and auditability</li>
+            <li data-i18n="pillar-2-li-3">Safety, alignment, and resilience benchmarks</li>
+          </ul>
+        </article>
+        <article class="pillar">
+          <div class="pill pill--accent" data-i18n="pillar-3-tag">Impact</div>
+          <h3 data-i18n="pillar-3-title">Ecosystem programs</h3>
+          <p data-i18n="pillar-3-body">Fellowships, grants, and summits that accelerate open-source agentic AI and real-world deployments.</p>
+          <ul>
+            <li data-i18n="pillar-3-li-1">Builder residencies & red-team labs</li>
+            <li data-i18n="pillar-3-li-2">Global policy and safety forums</li>
+            <li data-i18n="pillar-3-li-3">Open datasets & evaluation challenges</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="programs" class="section">
+      <div class="section__header">
+        <p class="eyebrow" data-i18n="programs-eyebrow">Programs</p>
+        <h2 data-i18n="programs-title">Where we invest.</h2>
+        <p class="section__description" data-i18n="programs-body">Our programs channel funding, knowledge, and community energy toward the most urgent needs for agentic AI.</p>
+      </div>
+      <div class="programs">
+        <article class="program">
+          <div class="program__meta">2026</div>
+          <h3 data-i18n="program-1-title">Open Agent Safety Benchmark</h3>
+          <p data-i18n="program-1-body">Collaborative evaluation suite and public leaderboards for autonomy, reliability, and security.</p>
+        </article>
+        <article class="program">
+          <div class="program__meta">2026</div>
+          <h3 data-i18n="program-2-title">Agent Interoperability Lab</h3>
+          <p data-i18n="program-2-body">Reference implementations for messaging, memory exchange, and safety guardrails.</p>
+        </article>
+        <article class="program">
+          <div class="program__meta">2026</div>
+          <h3 data-i18n="program-3-title">Global Builder Summits</h3>
+          <p data-i18n="program-3-body">Multi-region gatherings to publish roadmaps and deepen collaboration between industry and researchers.</p>
+        </article>
+        <article class="program">
+          <div class="program__meta">2026</div>
+          <h3 data-i18n="program-4-title">Open Impact Fund</h3>
+          <p data-i18n="program-4-body">Non-dilutive grants for open-source agent frameworks, safety tooling, and public-good deployments.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="members" class="section section--alt">
+      <div class="section__header">
+        <p class="eyebrow" data-i18n="members-eyebrow">Members</p>
+        <h2 data-i18n="members-title">Our member organizations</h2>
+        <p class="section__description" data-i18n="members-body">The Open Agentic AI Foundation would not be possible without the support, development efforts, and open collaboration of our founding platinum members.</p>
+      </div>
+      <div class="logo-wall">
+        <div class="logo-item">
+          <img src="assets/images/logo/1百度.png" alt="百度" class="member-logo">
+        </div>
+        <div class="logo-item">
+          <img src="assets/images/logo/2中国信通院.png" alt="中国信通院" class="member-logo">
+        </div>
+        <div class="logo-item">
+          <img src="assets/images/logo/3电子四院.png" alt="电子四院" class="member-logo">
+        </div>
+        <div class="logo-item">
+          <img src="assets/images/logo/4中国旅游集团.png" alt="中国旅游集团" class="member-logo">
+        </div>
+        <div class="logo-item">
+          <img src="assets/images/logo/5中国数联.png" alt="中国数联" class="member-logo">
+        </div>
+        <div class="logo-item">
+          <img src="assets/images/logo/6华中科技大学.png" alt="华中科技大学" class="member-logo">
+        </div>
+        <div class="logo-item">
+          <img src="assets/images/logo/7开源社.png" alt="开源社" class="member-logo">
+        </div>
+        <div class="logo-item">
+          <img src="assets/images/logo/8Intel.png" alt="Intel" class="member-logo">
+        </div>
+        <div class="logo-item">
+          <img src="assets/images/logo/9英飞流.png" alt="英飞流" class="member-logo">
+        </div>
+        <div class="logo-item">
+          <img src="assets/images/logo/10沐曦股份.png" alt="沐曦股份" class="member-logo">
+        </div>
+        <div class="logo-item">
+          <img src="assets/images/logo/11龙蜥社区.png" alt="龙蜥社区" class="member-logo">
+        </div>
+        <div class="logo-item">
+          <img src="assets/images/logo/12北京大学.png" alt="北京大学" class="member-logo">
+        </div>
+        <div class="logo-item">
+          <img src="assets/images/logo/13RedHat.png" alt="RedHat" class="member-logo">
+        </div>
+        <div class="logo-item">
+          <img src="assets/images/logo/14腾讯.png" alt="腾讯" class="member-logo">
+        </div>
+        <div class="logo-item">
+          <img src="assets/images/logo/15中兴通讯.png" alt="中兴通讯" class="member-logo">
+        </div>
+      </div>
+    </section>
+
+    <section id="guidance" class="section">
+      <div class="section__header">
+        <p class="eyebrow" data-i18n="guidance-eyebrow">Guidance Agency</p>
+        <h2 data-i18n="guidance-title">Our guidance organizations</h2>
+        <p class="section__description" data-i18n="guidance-body">Strategic guidance and oversight from leading organizations ensuring our mission aligns with global standards and best practices.</p>
+      </div>
+      <div class="logo-wall">
+        <div class="logo-item">
+          <img src="assets/images/guidance agency/1cf.png" alt="CF" class="member-logo">
+        </div>
+        <div class="logo-item">
+          <img src="assets/images/guidance agency/2coia.png" alt="COIA" class="member-logo">
+        </div>
+        <div class="logo-item">
+          <img src="assets/images/guidance agency/3copu.png" alt="COPU" class="member-logo">
+        </div>
+      </div>
+    </section>
+
+    <section id="partner-communities" class="section section--alt">
+      <div class="section__header">
+        <p class="eyebrow" data-i18n="partner-communities-eyebrow">Partner Communities</p>
+        <h2 data-i18n="partner-communities-title">Our partner communities</h2>
+        <p class="section__description" data-i18n="partner-communities-body">Collaborative communities working together to advance open agentic AI standards and innovation.</p>
+      </div>
+      <div class="community-list">
+        <div class="community-item">ANP社区</div>
+        <div class="community-item">CO-SIGHT社区</div>
+        <div class="community-item">CO-TAP社区</div>
+        <div class="community-item">OpenTenBase社区</div>
+        <div class="community-item">RAGFlow社区</div>
+        <div class="community-item">WeOpen社区</div>
+      </div>
+    </section>
+
+    <section id="community" class="section">
+      <div class="section__header">
+        <p class="eyebrow" data-i18n="community-eyebrow">Community</p>
+        <h2 data-i18n="community-title">A global coalition of builders, researchers, and policymakers.</h2>
+        <p class="section__description" data-i18n="community-body">We convene open-source contributors, startups, enterprises, universities, and civil society to co-design the next era of agentic AI.</p>
+      </div>
+      <div class="grid">
+        <article class="highlight">
+          <h3 data-i18n="highlight-1-title">Open & neutral</h3>
+          <p data-i18n="highlight-1-body">We publish artifacts under open licenses and encourage cross-organizational governance.</p>
+        </article>
+        <article class="highlight">
+          <h3 data-i18n="highlight-2-title">Safety first</h3>
+          <p data-i18n="highlight-2-body">Threat modeling, evals, and incident response are built into every program.</p>
+        </article>
+        <article class="highlight">
+          <h3 data-i18n="highlight-3-title">Global access</h3>
+          <p data-i18n="highlight-3-body">We support multilingual resources and regionally distributed summits.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="resources" class="section">
+      <div class="section__header">
+        <p class="eyebrow" data-i18n="resources-eyebrow">Resources</p>
+        <h2 data-i18n="resources-title">Start building with us.</h2>
+        <p class="section__description" data-i18n="resources-body">Explore our living roadmap, specifications, and community channels to contribute from day one.</p>
+      </div>
+      <div class="resource-grid">
+        <article class="resource">
+          <div class="pill" data-i18n="resource-1-tag">Roadmap</div>
+          <h3 data-i18n="resource-1-title">Agent standards preview</h3>
+          <p data-i18n="resource-1-body">Draft specifications for interfaces, memory, and safe tool access.</p>
+          <a href="#" class="link" data-i18n="resource-1-link">View the docs</a>
+        </article>
+        <article class="resource">
+          <div class="pill" data-i18n="resource-2-tag">Community</div>
+          <h3 data-i18n="resource-2-title">Join the forum</h3>
+          <p data-i18n="resource-2-body">Connect with contributors, propose initiatives, and join working groups.</p>
+          <a href="https://oaaif.org/" class="link" data-i18n="resource-2-link">Open workspace</a>
+        </article>
+        <article class="resource">
+          <div class="pill" data-i18n="resource-3-tag">Funding</div>
+          <h3 data-i18n="resource-3-title">Apply for grants</h3>
+          <p data-i18n="resource-3-body">Support for open-source projects, research, and deployments that move the ecosystem forward.</p>
+          <a href="mailto:admin@oaaif.org" class="link" data-i18n="resource-3-link">Start an application</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="join" class="section section--cta">
+      <div class="cta">
+        <div>
+          <p class="eyebrow" data-i18n="cta-eyebrow">Get involved</p>
+          <h2 data-i18n="cta-title">Bring your expertise to The Open Agentic AI Foundation.</h2>
+          <p data-i18n="cta-body">Contribute to standards, participate in safety evaluations, and shape open governance for agentic systems.</p>
+        </div>
+        <div class="cta__actions">
+          <a class="btn" href="#community" data-i18n="cta-primary">Join the coalition</a>
+          <a class="btn ghost" href="#resources" data-i18n="cta-secondary">Browse resources</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__brand" data-i18n="brand-name">The Open Agentic AI Foundation</div>
+    <p class="footer__text" data-i18n="footer-copy">Open, safe, and interoperable agentic AI for everyone.</p>
+    <div class="footer__links">
+      <a href="#main-content" data-i18n="nav-home">Home</a>
+      <a href="#programs" data-i18n="nav-projects">Projects</a>
+      <a href="#pillars" data-i18n="nav-standards">Standards</a>
+      <a href="#community" data-i18n="nav-activities">Activities</a>
+      <a href="#members" data-i18n="nav-developers">Developers</a>
+      <a href="#resources" data-i18n="nav-open-lab">Open Lab</a>
+      <a href="#join" data-i18n="nav-training">Training & Certification</a>
+      <a href="about.html#overview" data-i18n="nav-about">About Us</a>
+    </div>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html
