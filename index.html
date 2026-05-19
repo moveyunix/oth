@@ -1,728 +1,1011 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta name="x-poe-datastore-behavior" content="local_only"><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>开放技术枢纽 | Open Technology Hub</title>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OPEN Technology Hub | 开放技术枢纽</title>
+  <meta name="description" content="OPEN Technology Hub - 开源技术生态建设者，助力AI时代企业创新。" />
+
+  <!-- Google Fonts（已按要求使用现代无衬线字体） -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome（图标库） -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWix+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkR4j8l7fQm9Q6VQ6wN3fL4x0xIM+B07jRMg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
   <style>
-    :root{
-      --bg:#f4f7fb;
-      --bg-soft:#ffffff;
-      --card:#ffffff;
-      --text:#0f172a;
-      --muted:#475569;
-      --line:#dbe5f1;
-      --accent:#76b900;
-      --accent-2:#0ea5e9;
-      --shadow: 0 10px 24px rgba(15, 23, 42, .08);
-      --radius:18px;
-      --max:1200px;
+    :root {
+      --bg: #ffffff;
+      --text: #1a1a1a;
+      --text-2: #333333;
+      --muted: #666666;
+      --muted-2: #999999;
+      --line: #e9edf4;
+
+      --blue: #0066cc;
+      --blue-dark: #003366;
+      --purple: #6d28d9;
+      --purple-soft: #8b5cf6;
+
+      --radius: 14px;
+      --radius-lg: 18px;
+      --shadow-sm: 0 6px 20px rgba(17, 24, 39, 0.06);
+      --shadow-md: 0 10px 28px rgba(17, 24, 39, 0.1);
+      --container: 1200px;
     }
 
-    *{box-sizing:border-box}
-    html,body{
-      margin:0;padding:0;
-      background:
-        radial-gradient(circle at 10% -10%, rgba(118,185,0,.18), transparent 30%),
-        radial-gradient(circle at 90% 0%, rgba(14,165,233,.12), transparent 30%),
-        linear-gradient(180deg, #f8fbff 0%, #f4f7fb 40%, #f4f7fb 100%);
-      color:var(--text);
-      font-family: "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
-      scroll-behavior:smooth;
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      scroll-behavior: smooth;
     }
 
-    a{color:inherit;text-decoration:none}
-    .container{width:min(var(--max), 92vw); margin:0 auto}
-    .pill{
-      display:inline-flex; align-items:center; gap:8px;
-      border:1px solid rgba(118,185,0,.35);
-      color:#2f5f00; padding:6px 12px; border-radius:999px;
-      background:rgba(118,185,0,.12); font-size:.88rem;
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(100% - 2rem, var(--container));
+      margin-inline: auto;
     }
 
-    /* Header */
-    .header{
-      position:sticky; top:0; z-index:20;
-      backdrop-filter: blur(8px);
-      background:rgba(255,255,255,.88);
-      border-bottom:1px solid var(--line);
-    }
-    .nav{
-      display:flex; align-items:center; justify-content:space-between;
-      min-height:72px;
-    }
-    .brand{
-      display:flex; align-items:center; gap:12px; font-weight:700;
-    }
-    .brand-mark{
-      width:34px;height:34px;border-radius:10px;
-      background:linear-gradient(145deg, rgba(118,185,0,.95), rgba(14,165,233,.9));
-      box-shadow:0 0 16px rgba(118,185,0,.25);
-    }
-    .brand small{display:block;color:var(--muted);font-weight:500;font-size:.72rem;margin-top:2px}
-
-    .nav-links{
-      display:flex; gap:16px; flex-wrap:wrap; justify-content:center;
-    }
-    .nav-links a{
-      color:#334155; font-size:.95rem; padding:6px 10px; border-radius:10px;
-      transition:.2s ease;
-    }
-    .nav-links a:hover{background:#edf3fb;color:#0f172a}
-
-    .lang-switch{
-      display:flex; gap:8px;
-    }
-    .lang-btn{
-      border:1px solid #c8d7ea; background:#fff; color:#1e293b;
-      padding:8px 12px; border-radius:10px; cursor:pointer; transition:.2s;
-      font-weight:600;
-    }
-    .lang-btn.active{
-      border-color:rgba(118,185,0,.65); color:#2f5f00;
-      box-shadow: inset 0 0 0 1px rgba(118,185,0,.25);
-      background:linear-gradient(180deg, rgba(118,185,0,.16), rgba(118,185,0,.08));
+    .section {
+      padding: 76px 0;
     }
 
-    /* Hero */
-    .hero{
-      padding:86px 0 64px;
-      position:relative;
-      overflow:hidden;
-    }
-    .hero-grid{
-      display:grid; grid-template-columns:1.2fr .8fr; gap:26px; align-items:stretch;
-    }
-    .hero h1{
-      font-size:clamp(2rem, 5vw, 4rem);
-      line-height:1.08; margin:.4rem 0 .7rem; letter-spacing:.3px;
-    }
-    .hero h1 .accent{
-      color:#4f7f00;
-      text-shadow:0 0 20px rgba(118,185,0,.25);
-    }
-    .hero p{color:#334155; font-size:1.05rem; line-height:1.75; max-width:60ch}
-    .hero-card{
-      border:1px solid #d7e3f3;
-      border-radius:var(--radius);
-      background:linear-gradient(180deg, #ffffff, #f8fbff);
-      box-shadow:var(--shadow);
-      padding:22px;
-      display:flex; flex-direction:column; justify-content:space-between;
-    }
-    .hero-stats{
-      display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-top:14px;
-    }
-    .stat{
-      border:1px solid #dbe5f1; border-radius:14px; padding:14px;
-      background:#ffffff;
-    }
-    .stat b{display:block; font-size:1.6rem; color:#4f7f00; margin-bottom:4px}
-    .stat span{color:#475569; font-size:.9rem}
-
-    /* Common section */
-    section{padding:58px 0; border-top:1px solid #e6edf7}
-    .section-title{
-      display:flex; align-items:end; justify-content:space-between; gap:16px; margin-bottom:20px;
-    }
-    .section-title h2{
-      margin:0; font-size:clamp(1.4rem, 3vw, 2rem);
-      letter-spacing:.2px;
-    }
-    .section-title p{margin:0; color:var(--muted)}
-
-    .grid-2{display:grid; grid-template-columns:repeat(2,1fr); gap:16px}
-    .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
-    .grid-4{display:grid; grid-template-columns:repeat(4,1fr); gap:16px}
-
-    .card{
-      border:1px solid var(--line); border-radius:var(--radius);
-      background:var(--card);
-      padding:18px; box-shadow:var(--shadow);
-    }
-    .card h3{margin:0 0 10px; font-size:1.1rem}
-    .card p{margin:0; color:#334155; line-height:1.7}
-    .card ul{margin:8px 0 0 18px; padding:0; color:#334155; line-height:1.7}
-    .tag{
-      display:inline-block; padding:4px 10px; border-radius:999px; font-size:.8rem;
-      border:1px solid #bfe7fb; color:#0369a1; background:rgba(14,165,233,.10);
-      margin-bottom:10px;
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid #dbeafe;
+      background: linear-gradient(90deg, #eff6ff 0%, #f5f3ff 100%);
+      color: var(--blue-dark);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-weight: 600;
+      font-size: 13px;
     }
 
-    /* Team */
-    .profile{
-      display:flex; gap:14px; align-items:flex-start;
-    }
-    .avatar{
-      width:56px; height:56px; border-radius:14px;
-      background:linear-gradient(145deg, rgba(118,185,0,.25), rgba(14,165,233,.25));
-      border:1px solid #b9d4ef;
-      display:flex; align-items:center; justify-content:center; font-weight:700; color:#0f172a;
-      flex-shrink:0;
-    }
-    .profile h4{margin:0 0 6px}
-    .profile small{color:#64748b}
-
-    /* Org chips */
-    .chips{display:flex; flex-wrap:wrap; gap:8px}
-    .chip{
-      border:1px solid #cdddf0; padding:7px 10px; border-radius:999px;
-      color:#334155; font-size:.88rem; background:#f8fbff;
+    .title {
+      margin: 0;
+      font-size: clamp(28px, 4.4vw, 56px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--blue-dark);
+      font-weight: 800;
     }
 
-    /* Roadmap */
-    .timeline{
-      display:grid; grid-template-columns:repeat(7, minmax(180px,1fr)); gap:12px;
-      overflow-x:auto; padding-bottom:6px;
-    }
-    .step{
-      min-width:180px;
-      border:1px solid #d4e1f1; border-radius:14px; padding:14px;
-      background:linear-gradient(180deg, #ffffff, #f8fbff);
-      position:relative;
-    }
-    .step::before{
-      content:""; position:absolute; top:50%; right:-13px; width:12px; height:2px; background:#b9cbe2;
-    }
-    .step:last-child::before{display:none}
-    .step .date{
-      color:#0369a1; font-size:.86rem; margin-bottom:8px; display:block;
-    }
-    .step h4{margin:0 0 8px; font-size:1rem}
-    .step p{margin:0; color:#334155; font-size:.92rem; line-height:1.6}
-
-    /* Footer */
-    footer{
-      border-top:1px solid #e6edf7;
-      padding:28px 0 36px; color:#64748b;
+    .subtitle {
+      margin-top: 16px;
+      font-size: clamp(16px, 2.1vw, 22px);
+      color: var(--text-2);
+      font-weight: 600;
     }
 
-    @media (max-width: 960px){
-      .hero-grid,.grid-4,.grid-3,.grid-2{grid-template-columns:1fr}
-      .nav{gap:10px; padding:8px 0; flex-wrap:wrap}
-      .nav-links{order:3; width:100%; justify-content:flex-start}
-      .hero{padding-top:56px}
-      .timeline{grid-template-columns:repeat(7, 230px)}
+    .desc {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+    .btns {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .btn {
+      border: 1px solid transparent;
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .btn-primary {
+      color: #fff;
+      background: linear-gradient(90deg, var(--blue) 0%, var(--purple) 100%);
+      box-shadow: 0 8px 24px rgba(0, 102, 204, 0.22);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px rgba(109, 40, 217, 0.26);
+    }
+
+    .btn-outline {
+      color: var(--blue-dark);
+      border-color: #c6dafd;
+      background: #fff;
+    }
+    .btn-outline:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+      transform: translateY(-1px);
+    }
+
+    /* ========== Header ========== */
+    .topbar {
+      background: linear-gradient(90deg, #eff6ff 0%, #f5f3ff 100%);
+      border-bottom: 1px solid #e5edff;
+      font-size: 13px;
+      color: #27436b;
+    }
+    .topbar .container {
+      min-height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding: 6px 0;
+    }
+    .topbar a {
+      color: var(--blue);
+      font-weight: 600;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: #fff;
+      border-bottom: 1px solid transparent;
+      transition: box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    header.scrolled {
+      box-shadow: var(--shadow-sm);
+      border-color: var(--line);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      color: var(--blue-dark);
+      font-size: 18px;
+      letter-spacing: 0.01em;
+    }
+    .brand-mark {
+      width: 30px;
+      height: 30px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, var(--blue) 0%, var(--purple) 100%);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 14px;
+      box-shadow: 0 8px 16px rgba(0, 102, 204, 0.25);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: #243b5f;
+      font-weight: 500;
+    }
+    .nav-links a:hover { color: var(--blue); }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .lang-switch {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      display: inline-flex;
+      padding: 3px;
+      background: #fff;
+    }
+    .lang-switch button {
+      border: none;
+      background: transparent;
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-weight: 600;
+      cursor: pointer;
+      color: #4a5568;
+    }
+    .lang-switch button.active {
+      background: linear-gradient(90deg, #eaf2ff, #f2edff);
+      color: var(--blue-dark);
+    }
+
+    .menu-toggle {
+      display: none;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 10px;
+      padding: 8px 10px;
+      font-size: 18px;
+      color: var(--blue-dark);
+      cursor: pointer;
+    }
+
+    /* ========== Hero ========== */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .hero-highlight {
+      margin-top: 18px;
+      color: var(--purple);
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+
+    .hero-figure {
+      border: 1px solid #dbe7ff;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      background: linear-gradient(180deg, #f8fbff 0%, #f8f5ff 100%);
+    }
+    .hero-figure img {
+      width: 100%;
+      height: clamp(290px, 42vw, 470px);
+      object-fit: cover;
+    }
+    .hero-figure figcaption {
+      padding: 10px 14px 14px;
+      font-size: 12px;
+      color: var(--muted-2);
+    }
+
+    /* ========== Cards ========== */
+    .cards-grid {
+      margin-top: 26px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      border: 1px solid #e6ecf8;
+      border-radius: var(--radius);
+      padding: 22px;
+      background: #fff;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      min-height: 220px;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+      border-color: #cddfff;
+    }
+    .card .icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: linear-gradient(135deg, var(--blue) 0%, var(--purple-soft) 100%);
+      margin-bottom: 14px;
+      font-size: 18px;
+    }
+    .card h3 {
+      margin: 0 0 10px;
+      color: var(--blue-dark);
+      font-size: 19px;
+      line-height: 1.35;
+    }
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* ========== Partners Carousel ========== */
+    .partners-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .partners-head h2 {
+      margin: 0;
+      color: var(--blue-dark);
+      font-size: clamp(24px, 3vw, 34px);
+    }
+    .partners-head p {
+      margin: 6px 0 0;
+      color: var(--muted);
+    }
+
+    .carousel-wrap {
+      position: relative;
+      border: 1px solid #e5ebf8;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(180deg, #fbfdff 0%, #faf7ff 100%);
+      overflow: hidden;
+      padding: 18px;
+    }
+
+    .carousel {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      cursor: grab;
+      user-select: none;
+    }
+    .carousel::-webkit-scrollbar { display: none; }
+    .carousel.dragging { cursor: grabbing; }
+
+    .member-card {
+      flex: 0 0 clamp(160px, 18vw, 220px);
+      border: 1px solid #dde6fb;
+      border-radius: 14px;
+      padding: 16px;
+      background: #fff;
+      display: grid;
+      justify-items: center;
+      text-align: center;
+      gap: 12px;
+      min-height: 142px;
+    }
+    .logo-mark {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #eaf2ff 0%, #f0eaff 100%);
+      color: var(--blue-dark);
+      font-weight: 800;
+      font-size: 18px;
+      border: 1px solid #d7e4ff;
+    }
+    .member-name {
+      font-weight: 700;
+      color: #2b3f63;
+      font-size: 15px;
+    }
+
+    .carousel-controls {
+      margin-top: 14px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+    .arrow-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      border: 1px solid #d5def3;
+      background: #fff;
+      color: var(--blue-dark);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .arrow-btn:hover {
+      background: linear-gradient(90deg, #eff6ff, #f4efff);
+      border-color: #bfd5fb;
+    }
+
+    /* ========== Getting Started ========== */
+    .start-box {
+      border: 1px solid #e6ecf8;
+      border-radius: var(--radius-lg);
+      padding: clamp(20px, 4vw, 34px);
+      background: linear-gradient(180deg, #ffffff 0%, #f8fbff 48%, #f8f5ff 100%);
+      box-shadow: var(--shadow-sm);
+    }
+    .start-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 26px;
+      align-items: center;
+    }
+    .steps {
+      margin-top: 18px;
+      display: grid;
+      gap: 12px;
+    }
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #2f415f;
+      font-weight: 600;
+      padding: 10px 12px;
+      border: 1px dashed #d4e1fb;
+      border-radius: 10px;
+      background: #fff;
+    }
+    .step .num {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: linear-gradient(135deg, var(--blue) 0%, var(--purple) 100%);
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .start-figure {
+      border: 1px solid #dbe7ff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      background: #fff;
+    }
+    .start-figure img {
+      width: 100%;
+      height: clamp(260px, 35vw, 390px);
+      object-fit: cover;
+    }
+    .start-figure figcaption {
+      font-size: 12px;
+      color: var(--muted-2);
+      padding: 10px 12px 12px;
+    }
+
+    /* ========== Footer ========== */
+    footer {
+      margin-top: 30px;
+      border-top: 1px solid var(--line);
+      background: #fafcff;
+    }
+    .footer-grid {
+      padding: 42px 0 26px;
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr;
+      gap: 28px;
+    }
+
+    .footer-title {
+      margin: 0 0 12px;
+      color: var(--blue-dark);
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .footer-text {
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 14px;
+      margin: 0;
+    }
+    .footer-links {
+      display: grid;
+      gap: 10px;
+      color: #2b3f63;
+      font-size: 14px;
+    }
+    .footer-links a:hover { color: var(--blue); }
+
+    .socials {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .socials a {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      border: 1px solid #d7dff3;
+      display: grid;
+      place-items: center;
+      color: #35527f;
+      background: #fff;
+    }
+    .socials a:hover {
+      color: var(--blue);
+      border-color: #bdd0f5;
+      background: #f3f8ff;
+    }
+
+    .copyright {
+      border-top: 1px solid var(--line);
+      padding: 14px 0 20px;
+      color: #6d7a8f;
+      font-size: 13px;
+      text-align: center;
+    }
+
+    /* ========== Responsive ========== */
+    @media (max-width: 1024px) {
+      .hero-grid,
+      .start-grid {
+        grid-template-columns: 1fr;
+      }
+      .cards-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 820px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 76px;
+        left: 0;
+        right: 0;
+        background: #fff;
+        border-bottom: 1px solid var(--line);
+        padding: 14px 1rem 16px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+      }
+      .nav-links.open { display: flex; }
+      .menu-toggle { display: inline-flex; }
+      .nav .btn-primary.nav-cta { display: none; }
+    }
+
+    @media (max-width: 640px) {
+      .section { padding: 58px 0; }
+      .cards-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .partners-head { flex-direction: column; align-items: flex-start; }
+      .member-card { flex-basis: 70%; }
     }
   </style>
 </head>
 <body>
-  <header class="header">
-    <div class="container nav">
-      <div class="brand">
-        <div class="brand-mark" aria-hidden="true"></div>
-        <div>
-          <div id="brandName">开放技术枢纽 · Open Technology Hub</div>
-          <small id="brandSub">香港 · Hong Kong</small>
-        </div>
-      </div>
 
-      <nav class="nav-links">
-        <a href="#about" id="navAbout">项目背景</a>
-        <a href="#team" id="navTeam">创始团队</a>
-        <a href="#org" id="navOrg">组织架构</a>
-        <a href="#ossec" id="navOSSEC">OTH-OSSEC</a>
-        <a href="#roadmap" id="navRoadmap">研发规划</a>
+  <!-- 顶部提示条（参考 Linux Foundation 风格） -->
+  <div class="topbar">
+    <div class="container">
+      <span data-i18n="top_notice">Join us to build trusted open innovation ecosystems.</span>
+      <a href="#contact" data-i18n="top_action">Get in Touch</a>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header id="siteHeader">
+    <div class="container nav">
+      <a href="#" class="brand">
+        <span class="brand-mark"><i class="fa-solid fa-network-wired"></i></span>
+        <span data-i18n="brand">OPEN Technology Hub</span>
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#home" data-i18n="nav_home">Home</a>
+        <a href="#about" data-i18n="nav_about">About</a>
+        <a href="#ecosystem" data-i18n="nav_ecosystem">Ecosystem</a>
+        <a href="#join" data-i18n="nav_join">Join</a>
       </nav>
 
-      <div class="lang-switch">
-        <button class="lang-btn active" id="btnZh" type="button">中文</button>
-        <button class="lang-btn" id="btnEn" type="button">EN</button>
+      <div class="nav-right">
+        <div class="lang-switch" aria-label="Language switch">
+          <button id="lang-en" class="active" type="button">EN</button>
+          <button id="lang-zh" type="button">中文</button>
+        </div>
+        <a href="#contact" class="btn btn-primary nav-cta" data-i18n="contact_btn">Contact</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
       </div>
     </div>
   </header>
 
-  <main>
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <span class="pill" id="heroPill">开源创新 · 生态协同 · 产业孵化</span>
-          <h1 id="heroTitle">
-            开放技术枢纽 <span class="accent">Open Technology Hub</span>
-          </h1>
-          <p id="heroDesc">
-            面向香港与全球的开源科技创新平台，连接企业、高校、基金会与开发者社区，
-            推动 AI、操作系统、区块链等关键技术协作，孵化开源治理大模型 OTH-OSSEC。
-          </p>
-        </div>
-
-        <div class="hero-card">
-          <div>
-            <div class="tag" id="heroCardTag">核心行业观察</div>
-            <p id="heroCardText">
-              开源已成为国家战略与产业升级的重要基础设施。我们聚焦“开源合规 + 安全治理 + AI赋能”三位一体，
-              打造可持续的技术与商业协同模式。
-            </p>
-          </div>
-          <div class="hero-stats">
-            <div class="stat"><b>97%</b><span id="stat1">开发者使用开源软件</span></div>
-            <div class="stat"><b>99%</b><span id="stat2">企业使用开源软件</span></div>
-            <div class="stat"><b>70%+</b><span id="stat3">新软件项目采用开源模式</span></div>
-            <div class="stat"><b>87%+</b><span id="stat4">中国企业使用开源项目</span></div>
-          </div>
+  <!-- Hero -->
+  <main id="home" class="section">
+    <div class="container hero-grid">
+      <div>
+        <span class="badge"><i class="fa-solid fa-shield-heart"></i> <span data-i18n="hero_badge">Open • Innovation • Trust</span></span>
+        <h1 class="title" data-i18n="hero_title">Open Technology Hub</h1>
+        <p class="subtitle" data-i18n="hero_subtitle_en">Empowering Enterprise Innovation with Open Source</p>
+        <p class="desc" data-i18n="hero_subtitle_zh">开放技术枢纽，做开源技术与AI生态的建设者，帮助企业实现前沿科技的落地应用。</p>
+        <p class="hero-highlight" data-i18n="hero_tagline">Open Innovation. Built for Trust.</p>
+        <div class="btns">
+          <a href="#ecosystem" class="btn btn-primary" data-i18n="hero_btn_1">探索技术生态</a>
+          <a href="#contact" class="btn btn-outline" data-i18n="hero_btn_2">联系我们</a>
         </div>
       </div>
-    </section>
 
-    <section id="about">
-      <div class="container">
-        <div class="section-title">
-          <h2 id="aboutTitle">项目背景</h2>
-          <p id="aboutSub">开源：新质生产力的发展引擎与国家战略</p>
-        </div>
-        <div class="grid-2">
-          <div class="card">
-            <h3 id="aboutH1">为什么是现在</h3>
-            <ul id="aboutList1"></ul>
-          </div>
-          <div class="card">
-            <h3 id="aboutH2">全球趋势与政策信号</h3>
-            <ul id="aboutList2"></ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="team">
-      <div class="container">
-        <div class="section-title">
-          <h2 id="teamTitle">创始团队</h2>
-          <p id="teamSub">跨开源生态、产业落地与学术科研的复合型团队</p>
-        </div>
-
-        <div class="grid-2">
-          <div class="card">
-            <span class="tag" id="founderTag">创始人兼 CEO</span>
-            <div class="profile">
-              <div class="avatar">MW</div>
-              <div>
-                <h4 id="founderName">孟伟</h4>
-                <small id="founderRole">标准与开源战略专家</small>
-              </div>
-            </div>
-            <ul id="founderBullets"></ul>
-          </div>
-
-          <div class="card">
-            <span class="tag" id="cofounderTag">核心创始成员</span>
-            <div class="grid-2">
-              <div>
-                <h3 id="member1Name">唐松龙</h3>
-                <ul id="member1List"></ul>
-              </div>
-              <div>
-                <h3 id="member2Name">王君</h3>
-                <ul id="member2List"></ul>
-              </div>
-              <div>
-                <h3 id="member3Name">杨轩</h3>
-                <ul id="member3List"></ul>
-              </div>
-              <div>
-                <h3 id="member4Name">沈平</h3>
-                <ul id="member4List"></ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="org">
-      <div class="container">
-        <div class="section-title">
-          <h2 id="orgTitle">组织架构</h2>
-          <p id="orgSub">多层协同机制：治理、召集、支持与技术专题组</p>
-        </div>
-
-        <div class="grid-4">
-          <div class="card">
-            <h3 id="orgH1">顾问委员会</h3>
-            <p id="orgP1">提供战略方向、产业资源与关键决策支持。</p>
-          </div>
-          <div class="card">
-            <h3 id="orgH2">召集人小组</h3>
-            <p id="orgP2">统筹活动、合作伙伴与跨机构协同推进。</p>
-          </div>
-          <div class="card">
-            <h3 id="orgH3">支持机构</h3>
-            <div class="chips" id="supportChips"></div>
-          </div>
-          <div class="card">
-            <h3 id="orgH4">特别兴趣小组</h3>
-            <div class="chips" id="sigChips"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="ossec">
-      <div class="container">
-        <div class="section-title">
-          <h2 id="ossecTitle">项目孵化 —— OTH-OSSEC（开源治理大模型）</h2>
-          <p id="ossecSub">以 AI 驱动开源合规、安全与治理能力升级</p>
-        </div>
-        <div class="grid-2">
-          <div class="card">
-            <h3 id="painTitle">痛点问题</h3>
-            <ul id="painList"></ul>
-          </div>
-          <div class="card">
-            <h3 id="marketTitle">市场需求及规模</h3>
-            <ul id="marketList"></ul>
-          </div>
-          <div class="card">
-            <h3 id="businessTitle">盈利模式</h3>
-            <ul id="businessList"></ul>
-          </div>
-          <div class="card">
-            <h3 id="compTitle">竞对分析</h3>
-            <p id="compText"></p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="roadmap">
-      <div class="container">
-        <div class="section-title">
-          <h2 id="roadmapTitle">研发流程及规划</h2>
-          <p id="roadmapSub">从平台启动到开源与商业运营的里程碑路径</p>
-        </div>
-        <div class="timeline" id="timeline"></div>
-      </div>
-    </section>
+      <figure class="hero-figure">
+        <!-- 推荐图片风格建议：
+             科技节点 / 全球连接网络 / 蓝白冷色调 / 带光效的抽象网络图
+             可替换为你后续选定的品牌图。 -->
+        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80" alt="Global technology network visualization" />
+        <figcaption data-i18n="hero_img_note">
+          推荐图风：全球连接、节点网络、AI未来主义（Unsplash 可替换）
+        </figcaption>
+      </figure>
+    </div>
   </main>
 
-  <footer>
-    <div class="container" id="footerText">
-      © Open Technology Hub (OTH) · 开放技术枢纽 · Hong Kong
+  <!-- Core Capabilities -->
+  <section id="ecosystem" class="section" style="padding-top: 0;">
+    <div class="container">
+      <span class="badge"><i class="fa-solid fa-layer-group"></i> <span data-i18n="core_badge">Core Capabilities</span></span>
+      <h2 style="margin:14px 0 0; color: var(--blue-dark); font-size: clamp(26px, 3.4vw, 40px);" data-i18n="core_title">
+        核心业务与技术能力
+      </h2>
+
+      <div class="cards-grid">
+        <article class="card">
+          <div class="icon"><i class="fa-solid fa-brain"></i></div>
+          <h3 data-i18n="card1_title">AI & 大模型应用</h3>
+          <p data-i18n="card1_desc">帮助企业落地生成式AI、大语言模型等技术，构建智能应用。</p>
+        </article>
+
+        <article class="card">
+          <div class="icon"><i class="fa-solid fa-code-branch"></i></div>
+          <h3 data-i18n="card2_title">开源技术生态</h3>
+          <p data-i18n="card2_desc">构建开源生态体系，促进技术共享与协同创新。</p>
+        </article>
+
+        <article class="card">
+          <div class="icon"><i class="fa-solid fa-industry"></i></div>
+          <h3 data-i18n="card3_title">垂直行业解决方案</h3>
+          <p data-i18n="card3_desc">深耕金融、医疗、制造等行业，将前沿科技转化为行业生产力。</p>
+        </article>
+
+        <article class="card">
+          <div class="icon"><i class="fa-solid fa-compass-drafting"></i></div>
+          <h3 data-i18n="card4_title">企业技术咨询</h3>
+          <p data-i18n="card4_desc">专业技术团队为企业提供从战略规划到落地实施的全流程支持。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partners / Members -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="partners-head">
+        <div>
+          <h2 data-i18n="partner_title">Meet Our Partners & Members</h2>
+          <p data-i18n="partner_sub">合作伙伴与成员</p>
+        </div>
+      </div>
+
+      <div class="carousel-wrap">
+        <div class="carousel" id="partnerCarousel" aria-label="Partners carousel">
+          <!-- 一组卡片（后续会由JS复制，形成无缝循环） -->
+          <article class="member-card"><div class="logo-mark">NV</div><div class="member-name">NVIDIA</div></article>
+          <article class="member-card"><div class="logo-mark">GH</div><div class="member-name">GitHub</div></article>
+          <article class="member-card"><div class="logo-mark">IBM</div><div class="member-name">IBM</div></article>
+          <article class="member-card"><div class="logo-mark">MS</div><div class="member-name">Microsoft</div></article>
+          <article class="member-card"><div class="logo-mark">AWS</div><div class="member-name">AWS</div></article>
+          <article class="member-card"><div class="logo-mark">HF</div><div class="member-name">Hugging Face</div></article>
+          <article class="member-card"><div class="logo-mark">RS</div><div class="member-name">Red Hat</div></article>
+          <article class="member-card"><div class="logo-mark">AL</div><div class="member-name">Alibaba Cloud</div></article>
+        </div>
+
+        <div class="carousel-controls">
+          <button class="arrow-btn" id="prevBtn" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+          <button class="arrow-btn" id="nextBtn" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Getting Started -->
+  <section class="section" id="join" style="padding-top: 0;">
+    <div class="container">
+      <div class="start-box">
+        <div class="start-grid">
+          <div>
+            <span class="badge"><i class="fa-solid fa-rocket"></i> <span data-i18n="start_badge">Getting Started is Easy</span></span>
+            <h2 style="margin:14px 0 0; color: var(--blue-dark); font-size: clamp(24px, 3.2vw, 38px);" data-i18n="start_title">
+              Getting Started is Easy — 轻松开启技术转型之旅
+            </h2>
+            <p class="desc" style="margin-top: 12px;" data-i18n="start_desc">
+              无论您是初创企业还是行业巨头，我们都能为您匹配合适的开源技术生态和赋能方案。
+            </p>
+
+            <div class="steps">
+              <div class="step"><span class="num">1</span><span data-i18n="step1">联系专家 / Talk with Experts</span></div>
+              <div class="step"><span class="num">2</span><span data-i18n="step2">方案定制 / Tailored Solution</span></div>
+              <div class="step"><span class="num">3</span><span data-i18n="step3">落地赋能 / Production Enablement</span></div>
+            </div>
+
+            <div class="btns">
+              <a href="#contact" class="btn btn-primary" data-i18n="start_btn">立即开始</a>
+            </div>
+          </div>
+
+          <figure class="start-figure">
+            <!-- 推荐图片风格建议：
+                 团队协作 + 科技元素 + 节点连接可视化 + 柔和蓝紫光影 -->
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1400&q=80" alt="Collaborative technology guidance visual" />
+            <figcaption data-i18n="start_img_note">
+              推荐图风：协同办公、连接引导、现代科技生态（Unsplash 可替换）
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="container footer-grid">
+      <div>
+        <div class="brand" style="margin-bottom: 10px;">
+          <span class="brand-mark"><i class="fa-solid fa-network-wired"></i></span>
+          <span data-i18n="brand">OPEN Technology Hub</span>
+        </div>
+        <p class="footer-text" data-i18n="footer_desc">
+          开放技术枢纽——开源技术生态建设者，助力AI时代企业创新。
+        </p>
+      </div>
+
+      <div>
+        <h4 class="footer-title" data-i18n="footer_links_title">快速链接</h4>
+        <div class="footer-links">
+          <a href="#home" data-i18n="nav_home">Home</a>
+          <a href="#ecosystem" data-i18n="nav_ecosystem">Ecosystem</a>
+          <a href="#about" data-i18n="nav_about">About</a>
+          <a href="#join" data-i18n="nav_join">Join</a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="footer-title" data-i18n="footer_contact_title">联系我们</h4>
+        <div class="footer-links">
+          <a href="mailto:contact@opentechhub.example">contact@opentechhub.example</a>
+          <a href="tel:+860000000000">+86 000-0000-0000</a>
+        </div>
+        <div class="socials">
+          <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container copyright">
+      <span data-i18n="copyright">Copyright © 2026 OPEN Technology Hub. All rights reserved.</span>
     </div>
   </footer>
 
   <script>
+    // ==============================
+    // 1) Header 滚动阴影
+    // ==============================
+    const siteHeader = document.getElementById("siteHeader");
+    window.addEventListener("scroll", () => {
+      siteHeader.classList.toggle("scrolled", window.scrollY > 8);
+    });
+
+    // ==============================
+    // 2) 移动端菜单
+    // ==============================
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+    menuToggle.addEventListener("click", () => navLinks.classList.toggle("open"));
+    navLinks.querySelectorAll("a").forEach(a => a.addEventListener("click", () => navLinks.classList.remove("open")));
+
+    // ==============================
+    // 3) 中英双语切换
+    // ==============================
     const i18n = {
-      zh: {
-        brandName: "开放技术枢纽 · Open Technology Hub",
-        brandSub: "香港 · Hong Kong",
-        navAbout: "项目背景",
-        navTeam: "创始团队",
-        navOrg: "组织架构",
-        navOSSEC: "OTH-OSSEC",
-        navRoadmap: "研发规划",
-
-        heroPill: "开源创新 · 生态协同 · 产业孵化",
-        heroTitle: '开放技术枢纽 <span class="accent">Open Technology Hub</span>',
-        heroDesc: "面向香港与全球的开源科技创新平台，连接企业、高校、基金会与开发者社区，推动 AI、操作系统、区块链等关键技术协作，孵化开源治理大模型 OTH-OSSEC。",
-        heroCardTag: "核心行业观察",
-        heroCardText: "开源已成为国家战略与产业升级的重要基础设施。我们聚焦“开源合规 + 安全治理 + AI赋能”三位一体，打造可持续的技术与商业协同模式。",
-        stat1: "开发者使用开源软件",
-        stat2: "企业使用开源软件",
-        stat3: "新软件项目采用开源模式",
-        stat4: "中国企业使用开源项目",
-
-        aboutTitle: "项目背景",
-        aboutSub: "开源：新质生产力的发展引擎与国家战略",
-        aboutH1: "为什么是现在",
-        aboutList1: [
-          "开源（Open Source）已成为全球技术创新与协同发展的主流模式。",
-          "Android、MySQL、LLaMA 等案例证明开源是下一代信息技术基础动力。",
-          "开源安全与治理需求快速上升，企业亟需可规模化的治理能力。"
-        ],
-        aboutH2: "全球趋势与政策信号",
-        aboutList2: [
-          "中国“十四五”及数字中国建设规划明确支持开源生态建设。",
-          "欧盟发布开源软件战略，强调创新合作、知识复用与公共价值。",
-          "美国发布 OSINT 战略，显示开源情报与开源技术的战略地位。"
-        ],
-
-        teamTitle: "创始团队",
-        teamSub: "跨开源生态、产业落地与学术科研的复合型团队",
-        founderTag: "创始人兼 CEO",
-        founderName: "孟伟",
-        founderRole: "标准与开源战略专家",
-        founderBullets: [
-          "中兴通讯标准与开源战略总监。",
-          "Linux Foundation LF AI & Data 全球董事会主席。",
-          "ITU ML5G 架构组主席，长期参与国际标准制定。",
-          "IT 技术研发 20 年，标准与开源工作 12 年。"
-        ],
-        cofounderTag: "核心创始成员",
-        member1Name: "唐松龙",
-        member1List: [
-          "开源鸿蒙产业协会发起人。",
-          "IEEE SOLI Outreach Chair。",
-          "深耕科技互联网与开发者社区运营。"
-        ],
-        member2Name: "王君",
-        member2List: [
-          "具备网络安全与合规专业经验。",
-          "熟悉 AI、大模型、数字孪生、Web3.0。",
-          "多次参与 5G 相关行业标准制定。"
-        ],
-        member3Name: "杨轩",
-        member3List: [
-          "Linux Foundation 亚太区副总裁。",
-          "负责开源软件学园与生态合作。",
-          "拥有 20+ 年国际软件产业经验。"
-        ],
-        member4Name: "沈平",
-        member4List: [
-          "南方科技大学讲席教授、副系主任。",
-          "IEEE / SPIE / OPTICA Fellow。",
-          "特种光纤与光子技术领域顶尖学者。"
-        ],
-
-        orgTitle: "组织架构",
-        orgSub: "多层协同机制：治理、召集、支持与技术专题组",
-        orgH1: "顾问委员会",
-        orgP1: "提供战略方向、产业资源与关键决策支持。",
-        orgH2: "召集人小组",
-        orgP2: "统筹活动、合作伙伴与跨机构协同推进。",
-        orgH3: "支持机构",
-        supportChips: [
-          "LF AI & Data",
-          "中国开源软件推进联盟",
-          "香港科技协进会",
-          "天工开物开源基金会",
-          "南方科技大学"
-        ],
-        orgH4: "特别兴趣小组",
-        sigChips: ["AI（人工智能）", "OS（操作系统）", "Blockchain（区块链）", "etc."],
-
-        ossecTitle: "项目孵化 —— OTH-OSSEC（开源治理大模型）",
-        ossecSub: "以 AI 驱动开源合规、安全与治理能力升级",
-        painTitle: "痛点问题",
-        painList: [
-          "企业违规使用开源软件可能导致高额代价与法律风险。",
-          "开源安全与治理需要技术 + 法律复合型人才，供给稀缺。",
-          "外部专家咨询成本高，难以覆盖持续治理需求。"
-        ],
-        marketTitle: "市场需求及规模",
-        marketList: [
-          "全球 97% 开发者、99% 企业使用开源软件。",
-          "全球 70% 以上新立项软件采用开源模式。",
-          "中国 87% 以上企业使用开源项目，需求规模巨大。"
-        ],
-        businessTitle: "盈利模式",
-        businessList: [
-          "基础开源版本：建立生态与标准能力。",
-          "增强商业版本：SaaS License 授权。",
-          "私有化部署：面向高合规行业客户。"
-        ],
-        compTitle: "竞对分析",
-        compText: "当前存在开源治理平台软件，但“开源治理大模型”仍处于早期窗口期，具备差异化创新机会。",
-
-        roadmapTitle: "研发流程及规划",
-        roadmapSub: "从平台启动到开源与商业运营的里程碑路径",
-        timeline: [
-          ["2024年5月", "OTH 启动及推广", "在 AICon HK 论坛宣布 OTH 成立。"],
-          ["2024年6月", "OTH-OSSEC 立项", "明确目标场景与技术路线。"],
-          ["2024年7–8月", "基座模型评估", "选择开源 Base LLM 并完成可行性评估。"],
-          ["2024年8–10月", "语料库构建", "收集/采购开源安全语料，完成清洗处理。"],
-          ["2024年11月", "增强预训练", "围绕治理与合规任务进行领域增强。"],
-          ["2024年12月", "精调（Fine-tuning）", "多轮微调，提升专业问答与分析能力。"],
-          ["2025年1月起", "评测优化与运营", "完成评测优化并进入开源+商业长期运营。"]
-        ],
-
-        footerText: "© Open Technology Hub (OTH) · 开放技术枢纽 · Hong Kong"
-      },
-
       en: {
-        brandName: "Open Technology Hub · 开放技术枢纽",
-        brandSub: "Hong Kong · 香港",
-        navAbout: "Background",
-        navTeam: "Founding Team",
-        navOrg: "Organization",
-        navOSSEC: "OTH-OSSEC",
-        navRoadmap: "Roadmap",
+        top_notice: "Join us to build trusted open innovation ecosystems.",
+        top_action: "Get in Touch",
+        brand: "OPEN Technology Hub",
+        nav_home: "Home",
+        nav_about: "About",
+        nav_ecosystem: "Ecosystem",
+        nav_join: "Join",
+        contact_btn: "Contact",
 
-        heroPill: "Open Source Innovation · Ecosystem Collaboration · Incubation",
-        heroTitle: 'Open Technology Hub <span class="accent">开放技术枢纽</span>',
-        heroDesc: "A Hong Kong-based open technology platform connecting enterprises, universities, foundations, and developer communities to accelerate AI, OS, and blockchain collaboration, while incubating OTH-OSSEC for open-source governance.",
-        heroCardTag: "Industry Signals",
-        heroCardText: "Open source is now strategic infrastructure for digital transformation. We focus on a three-in-one framework: compliance, security governance, and AI enablement.",
-        stat1: "developers use open source",
-        stat2: "enterprises use open source",
-        stat3: "new software projects are open-source-based",
-        stat4: "Chinese enterprises use open-source projects",
+        hero_badge: "Open • Innovation • Trust",
+        hero_title: "Open Technology Hub",
+        hero_subtitle_en: "Empowering Enterprise Innovation with Open Source",
+        hero_subtitle_zh: "Open Technology Hub builds open-source and AI ecosystems to help enterprises deploy frontier technologies.",
+        hero_tagline: "Open Innovation. Built for Trust.",
+        hero_btn_1: "Explore Ecosystem",
+        hero_btn_2: "Contact Us",
+        hero_img_note: "Suggested style: global network, node graph, AI futurism (replaceable Unsplash image)",
 
-        aboutTitle: "Project Background",
-        aboutSub: "Open Source as an Engine of New Productive Forces",
-        aboutH1: "Why Now",
-        aboutList1: [
-          "Open source has become a dominant model for global innovation and collaboration.",
-          "Cases like Android, MySQL, and LLaMA show open source as a core technology driver.",
-          "Demand for scalable open-source security and governance is rising rapidly."
-        ],
-        aboutH2: "Global Policy & Ecosystem Trends",
-        aboutList2: [
-          "China's national plans explicitly support open-source ecosystem development.",
-          "The EU open-source strategy emphasizes innovation, reuse, and public value.",
-          "The U.S. OSINT strategy highlights strategic importance of open-source intelligence."
-        ],
+        core_badge: "Core Capabilities",
+        core_title: "Core Business & Technical Capabilities",
+        card1_title: "AI & Foundation Model Applications",
+        card1_desc: "Implement GenAI and large language models to build enterprise-grade intelligent applications.",
+        card2_title: "Open Source Ecosystem",
+        card2_desc: "Build open ecosystems that accelerate knowledge sharing and collaborative innovation.",
+        card3_title: "Vertical Industry Solutions",
+        card3_desc: "Deep expertise in finance, healthcare, and manufacturing to convert frontier tech into productivity.",
+        card4_title: "Enterprise Technology Consulting",
+        card4_desc: "End-to-end support from strategy planning to implementation and delivery.",
 
-        teamTitle: "Founding Team",
-        teamSub: "A cross-disciplinary team spanning open ecosystems, industry practice, and academia",
-        founderTag: "Founder & CEO",
-        founderName: "Meng Wei",
-        founderRole: "Open-source strategy and standards expert",
-        founderBullets: [
-          "Director of Standards & Open Source Strategy, ZTE.",
-          "Global Board Chair of LF AI & Data (Linux Foundation).",
-          "Chair of ITU ML5G architecture group; active in global standards.",
-          "20 years in R&D, including 12 years in standards and open source."
-        ],
-        cofounderTag: "Core Founding Members",
-        member1Name: "Tang Songlong",
-        member1List: [
-          "Initiator of OpenHarmony industry association.",
-          "IEEE SOLI Outreach Chair.",
-          "Strong experience in developer ecosystem operations."
-        ],
-        member2Name: "Wang Jun",
-        member2List: [
-          "Expertise in cybersecurity and compliance.",
-          "Experienced in AI, LLMs, digital twin, and Web3.0.",
-          "Participated in multiple 5G industry standards."
-        ],
-        member3Name: "Yang Xuan",
-        member3List: [
-          "APAC VP at Linux Foundation.",
-          "Leads open-source academy and ecosystem programs.",
-          "20+ years in international software industry."
-        ],
-        member4Name: "Shen Ping",
-        member4List: [
-          "Chair Professor at SUSTech.",
-          "Fellow of IEEE / SPIE / OPTICA.",
-          "Leading scholar in fiber optics and photonics."
-        ],
+        partner_title: "Meet Our Partners & Members",
+        partner_sub: "Partners & Members",
 
-        orgTitle: "Organization Structure",
-        orgSub: "Multi-layer collaboration across governance, convening, support, and SIGs",
-        orgH1: "Advisory Committee",
-        orgP1: "Provides strategic direction, industry resources, and high-level guidance.",
-        orgH2: "Convener Group",
-        orgP2: "Coordinates events, partnerships, and cross-organization execution.",
-        orgH3: "Support Organizations",
-        supportChips: [
-          "LF AI & Data",
-          "China OSS Promotion Union",
-          "Hong Kong Association for Sci-Tech Advancement",
-          "The Chance Foundation",
-          "Southern University of Science and Technology"
-        ],
-        orgH4: "Special Interest Groups",
-        sigChips: ["AI", "Operating System", "Blockchain", "etc."],
+        start_badge: "Getting Started is Easy",
+        start_title: "Getting Started is Easy — Launch Your Transformation",
+        start_desc: "Whether you're a startup or an industry leader, we match your business with the right open technology ecosystem and enablement plan.",
+        step1: "Talk with Experts",
+        step2: "Tailored Solution",
+        step3: "Production Enablement",
+        start_btn: "Start Now",
+        start_img_note: "Suggested style: collaboration, guidance, connected tech ecosystem (replaceable Unsplash image)",
 
-        ossecTitle: "Incubation Project — OTH-OSSEC (Open-Source Governance LLM)",
-        ossecSub: "AI-powered compliance, security, and governance for open source",
-        painTitle: "Pain Points",
-        painList: [
-          "Improper OSS usage can lead to substantial legal and business risks.",
-          "Governance requires both technical and legal capabilities, with talent shortage.",
-          "Expert consulting is costly and hard to scale continuously."
-        ],
-        marketTitle: "Market Demand & Size",
-        marketList: [
-          "97% of developers and 99% of enterprises use open-source software.",
-          "Over 70% of new software projects adopt open-source models.",
-          "Over 87% of enterprises in China use open-source projects."
-        ],
-        businessTitle: "Business Model",
-        businessList: [
-          "Open base edition to build ecosystem adoption.",
-          "Enhanced commercial edition via SaaS licensing.",
-          "Private deployment for high-compliance industries."
-        ],
-        compTitle: "Competitive Landscape",
-        compText: "While OSS governance platforms exist, governance-focused LLM products remain at an early stage with strong differentiation opportunities.",
+        footer_desc: "Open technology ecosystem builder empowering enterprise innovation in the AI era.",
+        footer_links_title: "Quick Links",
+        footer_contact_title: "Contact",
+        copyright: "Copyright © 2026 OPEN Technology Hub. All rights reserved."
+      },
+      zh: {
+        top_notice: "与我们一起构建可信赖的开放创新生态。",
+        top_action: "立即联系",
+        brand: "OPEN Technology Hub",
+        nav_home: "首页",
+        nav_about: "关于我们",
+        nav_ecosystem: "技术生态",
+        nav_join: "加入我们",
+        contact_btn: "立即咨询",
 
-        roadmapTitle: "R&D Process & Roadmap",
-        roadmapSub: "Milestones from launch to open-source and commercial operations",
-        timeline: [
-          ["May 2024", "OTH Launch & Promotion", "Officially announced at AICon HK."],
-          ["Jun 2024", "Project Kickoff", "Defined scenarios and technical route for OTH-OSSEC."],
-          ["Jul–Aug 2024", "Base LLM Selection", "Evaluated open-source foundation models."],
-          ["Aug–Oct 2024", "Corpus Construction", "Collected/purchased OSS security corpus and cleaned data."],
-          ["Nov 2024", "Enhanced Pre-training", "Domain adaptation for governance and compliance tasks."],
-          ["Dec 2024", "Fine-tuning", "Multi-round tuning for expert QA and analysis."],
-          ["From Jan 2025", "Evaluation, Optimization & Ops", "Continuous evaluation and long-term open-source + commercial operation."]
-        ],
+        hero_badge: "开放 • 创新 • 信任",
+        hero_title: "Open Technology Hub",
+        hero_subtitle_en: "Empowering Enterprise Innovation with Open Source",
+        hero_subtitle_zh: "开放技术枢纽，做开源技术与AI生态的建设者，帮助企业实现前沿科技的落地应用。",
+        hero_tagline: "Open Innovation. Built for Trust.",
+        hero_btn_1: "探索技术生态",
+        hero_btn_2: "联系我们",
+        hero_img_note: "推荐图风：全球连接、节点网络、AI未来主义（Unsplash 可替换）",
 
-        footerText: "© Open Technology Hub (OTH) · Hong Kong"
+        core_badge: "核心能力",
+        core_title: "核心业务与技术能力",
+        card1_title: "AI & 大模型应用",
+        card1_desc: "帮助企业落地生成式AI、大语言模型等技术，构建智能应用。",
+        card2_title: "开源技术生态",
+        card2_desc: "构建开源生态体系，促进技术共享与协同创新。",
+        card3_title: "垂直行业解决方案",
+        card3_desc: "深耕金融、医疗、制造等行业，将前沿科技转化为行业生产力。",
+        card4_title: "企业技术咨询",
+        card4_desc: "专业技术团队为企业提供从战略规划到落地实施的全流程支持。",
+
+        partner_title: "Meet Our Partners & Members",
+        partner_sub: "合作伙伴与成员",
+
+        start_badge: "轻松上手",
+        start_title: "Getting Started is Easy — 轻松开启技术转型之旅",
+        start_desc: "无论您是初创企业还是行业巨头，我们都能为您匹配合适的开源技术生态和赋能方案。",
+        step1: "联系专家",
+        step2: "方案定制",
+        step3: "落地赋能",
+        start_btn: "立即开始",
+        start_img_note: "推荐图风：协同办公、连接引导、现代科技生态（Unsplash 可替换）",
+
+        footer_desc: "开放技术枢纽——开源技术生态建设者，助力AI时代企业创新。",
+        footer_links_title: "快速链接",
+        footer_contact_title: "联系方式",
+        copyright: "Copyright © 2026 OPEN Technology Hub. All rights reserved."
       }
     };
 
-    const ids = [
-      "brandName","brandSub","navAbout","navTeam","navOrg","navOSSEC","navRoadmap",
-      "heroPill","heroTitle","heroDesc","heroCardTag","heroCardText",
-      "stat1","stat2","stat3","stat4",
-      "aboutTitle","aboutSub","aboutH1","aboutH2",
-      "teamTitle","teamSub","founderTag","founderName","founderRole","cofounderTag",
-      "member1Name","member2Name","member3Name","member4Name",
-      "orgTitle","orgSub","orgH1","orgP1","orgH2","orgP2","orgH3","orgH4",
-      "ossecTitle","ossecSub","painTitle","marketTitle","businessTitle","compTitle","compText",
-      "roadmapTitle","roadmapSub","footerText"
-    ];
+    const enBtn = document.getElementById("lang-en");
+    const zhBtn = document.getElementById("lang-zh");
 
-    function fillList(id, arr){
-      const el = document.getElementById(id);
-      el.innerHTML = arr.map(x => `<li>${x}</li>`).join("");
-    }
-
-    function fillChips(id, arr){
-      const el = document.getElementById(id);
-      el.innerHTML = arr.map(x => `<span class="chip">${x}</span>`).join("");
-    }
-
-    function fillTimeline(arr){
-      const root = document.getElementById("timeline");
-      root.innerHTML = arr.map(item => `
-        <article class="step">
-          <span class="date">${item[0]}</span>
-          <h4>${item[1]}</h4>
-          <p>${item[2]}</p>
-        </article>
-      `).join("");
-    }
-
-    function setLang(lang){
-      const t = i18n[lang];
-      ids.forEach(id => {
-        const el = document.getElementById(id);
-        if(!el) return;
-        if(id === "heroTitle"){
-          el.innerHTML = t[id];
-        } else {
-          el.textContent = t[id];
-        }
-      });
-
-      fillList("aboutList1", t.aboutList1);
-      fillList("aboutList2", t.aboutList2);
-      fillList("founderBullets", t.founderBullets);
-      fillList("member1List", t.member1List);
-      fillList("member2List", t.member2List);
-      fillList("member3List", t.member3List);
-      fillList("member4List", t.member4List);
-      fillList("painList", t.painList);
-      fillList("marketList", t.marketList);
-      fillList("businessList", t.businessList);
-
-      fillChips("supportChips", t.supportChips);
-      fillChips("sigChips", t.sigChips);
-      fillTimeline(t.timeline);
-
-      document.getElementById("btnZh").classList.toggle("active", lang === "zh");
-      document.getElementById("btnEn").classList.toggle("active", lang === "en");
+    function applyLanguage(lang) {
       document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (i18n[lang] && i18n[lang][key]) el.textContent = i18n[lang][key];
+      });
+      enBtn.classList.toggle("active", lang === "en");
+      zhBtn.classList.toggle("active", lang === "zh");
     }
 
-    document.getElementById("btnZh").addEventListener("click", () => setLang("zh"));
-    document.getElementById("btnEn").addEventListener("click", () => setLang("en"));
+    enBtn.addEventListener("click", () => applyLanguage("en"));
+    zhBtn.addEventListener("click", () => applyLanguage("zh"));
+    applyLanguage("zh"); // 默认中文，可改为 "en"
 
-    setLang("zh");
+    // ==============================
+    // 4) 合作伙伴轮播（自动 + 按钮 + 拖拽）
+    // ==============================
+    const carousel = document.getElementById("partnerCarousel");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+
+    // 复制一份内容形成循环滚动效果
+    carousel.innerHTML += carousel.innerHTML;
+
+    function scrollStep() {
+      const card = carousel.querySelector(".member-card");
+      return card ? card.getBoundingClientRect().width + 14 : 220;
+    }
+
+    function normalizeLoop() {
+      const half = carousel.scrollWidth / 2;
+      if (carousel.scrollLeft >= half) carousel.scrollLeft -= half;
+      if (carousel.scrollLeft <= 0) carousel.scrollLeft += half;
+    }
+
+    let autoTimer = null;
+    function startAuto() {
+      stopAuto();
+      autoTimer = setInterval(() => {
+        carousel.scrollBy({ left: scrollStep(), behavior: "smooth" });
+        setTimeout(normalizeLoop, 420);
+      }, 2500);
+    }
+    function stopAuto() {
+      if (autoTimer) clearInterval(autoTimer);
+    }
+
+    nextBtn.addEventListener("click", () => {
+      stopAuto();
+      carousel.scrollBy({ left: scrollStep(), behavior: "smooth" });
+      setTimeout(() => { normalizeLoop(); startAuto(); }, 500);
+    });
+
+    prevBtn.addEventListener("click", () => {
+      stopAuto();
+      carousel.scrollBy({ left: -scrollStep(), behavior: "smooth" });
+      setTimeout(() => { normalizeLoop(); startAuto(); }, 500);
+    });
+
+    // 拖拽
+    let isDown = false, startX = 0, startLeft = 0;
+    carousel.addEventListener("pointerdown", (e) => {
+      isDown = true;
+      carousel.classList.add("dragging");
+      startX = e.clientX;
+      startLeft = carousel.scrollLeft;
+      stopAuto();
+    });
+    window.addEventListener("pointerup", () => {
+      if (!isDown) return;
+      isDown = false;
+      carousel.classList.remove("dragging");
+      normalizeLoop();
+      startAuto();
+    });
+    window.addEventListener("pointermove", (e) => {
+      if (!isDown) return;
+      const dx = e.clientX - startX;
+      carousel.scrollLeft = startLeft - dx;
+    });
+
+    carousel.addEventListener("mouseenter", stopAuto);
+    carousel.addEventListener("mouseleave", startAuto);
+
+    // 初始定位到中间，避免向左滚动时突兀
+    window.addEventListener("load", () => {
+      carousel.scrollLeft = carousel.scrollWidth / 4;
+      startAuto();
+    });
+    window.addEventListener("resize", normalizeLoop);
   </script>
-
-
-</body></html>
+</body>
+</html>
