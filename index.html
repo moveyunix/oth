@@ -3,13 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>OPEN Technology Hub | 开放技术枢纽</title>
-  <meta name="description" content="OPEN Technology Hub - 基于 OPEA 私有化部署平台，助力企业构建安全可控的 AI 应用与知识评测体系。" />
+
+  <meta
+    name="description"
+    content="OPEN Technology Hub - 基于 OPEA 私有化部署平台，助力企业构建安全可控的 AI 应用与知识评测体系。"
+  />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
 
   <!-- Font Awesome -->
   <link
@@ -27,12 +35,12 @@
       --text-2: #333333;
       --muted: #666666;
       --muted-2: #999999;
-      --line: #e9edf4;
+      --line: #e5e7eb;
 
-      --blue: #0066cc;
-      --blue-dark: #003366;
-      --purple: #6d28d9;
-      --purple-soft: #8b5cf6;
+      --blue: #5b21e8;
+      --blue-dark: #202020;
+      --purple: #5b21e8;
+      --purple-soft: #ec008c;
 
       --radius: 14px;
       --radius-lg: 18px;
@@ -41,9 +49,12 @@
       --container: 1200px;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
-    html, body {
+    html,
+    body {
       margin: 0;
       padding: 0;
       background: var(--bg);
@@ -52,8 +63,15 @@
       scroll-behavior: smooth;
     }
 
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
     .container {
       width: min(100% - 2rem, var(--container));
@@ -68,9 +86,9 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      border: 1px solid #dbeafe;
-      background: linear-gradient(90deg, #eff6ff 0%, #f5f3ff 100%);
-      color: var(--blue-dark);
+      border: 1px solid #5b21e8;
+      background: #f4f0ff;
+      color: #202020;
       border-radius: 999px;
       padding: 8px 14px;
       font-weight: 600;
@@ -82,7 +100,7 @@
       font-size: clamp(28px, 4.4vw, 56px);
       line-height: 1.05;
       letter-spacing: -0.02em;
-      color: var(--blue-dark);
+      color: #202020;
       font-weight: 800;
     }
 
@@ -110,45 +128,117 @@
     .btn {
       border: 1px solid transparent;
       border-radius: 999px;
-      padding: 12px 18px;
-      font-weight: 600;
+      padding: 12px 20px;
+      font-weight: 700;
       font-size: 15px;
       cursor: pointer;
-      transition: all 0.25s ease;
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        filter 0.25s ease,
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease;
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 9px;
+      min-height: 46px;
+      white-space: nowrap;
     }
 
     .btn-primary {
-      color: #fff;
-      background: linear-gradient(90deg, var(--blue) 0%, var(--purple) 100%);
-      box-shadow: 0 8px 24px rgba(0, 102, 204, 0.22);
+      color: #ffffff;
+      border: none;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+
+      background:
+        radial-gradient(circle at 22% 18%, rgba(255, 255, 255, 0.38), transparent 24%),
+        radial-gradient(circle at 78% 80%, rgba(255, 0, 200, 0.52), transparent 38%),
+        linear-gradient(135deg, #6a2cff 0%, #a000ff 45%, #ff0099 100%);
+
+      box-shadow:
+        0 10px 24px rgba(160, 0, 255, 0.35),
+        0 4px 12px rgba(255, 0, 153, 0.28),
+        inset 0 1px 1px rgba(255, 255, 255, 0.35),
+        inset 0 -8px 18px rgba(85, 0, 170, 0.25);
+    }
+
+    .btn-primary::before {
+      content: "";
+      position: absolute;
+      inset: -45%;
+      z-index: -1;
+      background: linear-gradient(
+        120deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.58) 46%,
+        rgba(255, 255, 255, 0.2) 52%,
+        transparent 68%
+      );
+      transform: translateX(-75%) rotate(10deg);
+      transition: transform 0.65s ease;
+    }
+
+    .btn-primary::after {
+      content: "";
+      position: absolute;
+      inset: 2px;
+      z-index: -1;
+      border-radius: inherit;
+      background: linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.22),
+        transparent 45%,
+        rgba(255, 255, 255, 0.08)
+      );
+      pointer-events: none;
     }
 
     .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 14px 28px rgba(109, 40, 217, 0.26);
+      transform: translateY(-3px) scale(1.02);
+      filter: saturate(1.18) brightness(1.05);
+      box-shadow:
+        0 16px 34px rgba(160, 0, 255, 0.48),
+        0 8px 20px rgba(255, 0, 153, 0.38),
+        0 0 26px rgba(190, 40, 255, 0.45),
+        inset 0 1px 1px rgba(255, 255, 255, 0.45),
+        inset 0 -8px 18px rgba(85, 0, 170, 0.22);
+    }
+
+    .btn-primary:hover::before {
+      transform: translateX(75%) rotate(10deg);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0) scale(0.98);
+      box-shadow:
+        0 7px 16px rgba(160, 0, 255, 0.34),
+        0 3px 10px rgba(255, 0, 153, 0.26),
+        inset 0 3px 8px rgba(80, 0, 150, 0.28);
     }
 
     .btn-outline {
-      color: var(--blue-dark);
-      border-color: #c6dafd;
-      background: #fff;
+      color: #202020;
+      border-color: #5b21e8;
+      background: #ffffff;
     }
 
     .btn-outline:hover {
-      border-color: var(--blue);
-      color: var(--blue);
-      transform: translateY(-1px);
+      color: #ffffff;
+      border-color: #5b21e8;
+      background: #5b21e8;
+      transform: translateY(-2px);
     }
 
     /* ========== Header ========== */
     .topbar {
-      background: linear-gradient(90deg, #eff6ff 0%, #f5f3ff 100%);
-      border-bottom: 1px solid #e5edff;
+      background: #5b21e8;
+      border-bottom: 1px solid #5b21e8;
       font-size: 13px;
-      color: #27436b;
+      color: #ffffff;
     }
 
     .topbar .container {
@@ -162,22 +252,25 @@
     }
 
     .topbar a {
-      color: var(--blue);
+      color: #ffffff;
       font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 3px;
     }
 
     header {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: #fff;
-      border-bottom: 1px solid transparent;
+      background: #202020;
+      border-bottom: 1px solid #202020;
       transition: box-shadow 0.25s ease, border-color 0.25s ease;
     }
 
     header.scrolled {
-      box-shadow: var(--shadow-sm);
-      border-color: var(--line);
+      background: #202020;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+      border-color: #202020;
     }
 
     .nav {
@@ -193,7 +286,7 @@
       align-items: center;
       gap: 10px;
       font-weight: 800;
-      color: var(--blue-dark);
+      color: #ffffff;
       font-size: 18px;
       letter-spacing: 0.01em;
     }
@@ -202,24 +295,30 @@
       width: 30px;
       height: 30px;
       border-radius: 9px;
-      background: linear-gradient(135deg, var(--blue) 0%, var(--purple) 100%);
+      background: #ffffff;
       display: grid;
       place-items: center;
-      color: #fff;
+      color: #202020;
       font-size: 14px;
-      box-shadow: 0 8px 16px rgba(0, 102, 204, 0.25);
+      box-shadow: none;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
       gap: 18px;
-      color: #243b5f;
+      color: #ffffff;
       font-weight: 500;
       font-size: 15px;
     }
 
-    .nav-links a:hover { color: var(--blue); }
+    .nav-links a {
+      color: #ffffff;
+    }
+
+    .nav-links a:hover {
+      color: #ec008c;
+    }
 
     .nav-right {
       display: flex;
@@ -228,11 +327,11 @@
     }
 
     .lang-switch {
-      border: 1px solid var(--line);
+      border: 1px solid rgba(255, 255, 255, 0.35);
       border-radius: 999px;
       display: inline-flex;
       padding: 3px;
-      background: #fff;
+      background: transparent;
     }
 
     .lang-switch button {
@@ -242,23 +341,29 @@
       padding: 6px 12px;
       font-weight: 600;
       cursor: pointer;
-      color: #4a5568;
+      color: #ffffff;
     }
 
     .lang-switch button.active {
-      background: linear-gradient(90deg, #eaf2ff, #f2edff);
-      color: var(--blue-dark);
+      background: #ffffff;
+      color: #202020;
     }
 
     .menu-toggle {
       display: none;
-      border: 1px solid var(--line);
-      background: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      background: transparent;
       border-radius: 10px;
       padding: 8px 10px;
       font-size: 18px;
-      color: var(--blue-dark);
+      color: #ffffff;
       cursor: pointer;
+    }
+
+    .nav-cta {
+      min-height: 40px;
+      padding: 9px 16px;
+      font-size: 14px;
     }
 
     /* ========== Hero ========== */
@@ -271,7 +376,7 @@
 
     .hero-highlight {
       margin-top: 18px;
-      color: var(--purple);
+      color: #ec008c;
       font-weight: 700;
       letter-spacing: 0.01em;
       font-size: 14px;
@@ -304,8 +409,8 @@
       border: 1px solid #e1e9f8;
       border-radius: var(--radius-lg);
       background:
-        radial-gradient(circle at top left, rgba(0, 102, 204, 0.1), transparent 34%),
-        radial-gradient(circle at bottom right, rgba(109, 40, 217, 0.12), transparent 34%),
+        radial-gradient(circle at top left, rgba(91, 33, 232, 0.1), transparent 34%),
+        radial-gradient(circle at bottom right, rgba(236, 0, 140, 0.12), transparent 34%),
         #ffffff;
       box-shadow: var(--shadow-md);
       overflow: hidden;
@@ -321,7 +426,7 @@
     .product-kicker {
       display: inline-flex;
       margin-bottom: 12px;
-      color: var(--purple);
+      color: #ec008c;
       font-size: 13px;
       font-weight: 800;
       letter-spacing: 0.08em;
@@ -330,7 +435,7 @@
 
     .product-content h3 {
       margin: 0;
-      color: var(--blue-dark);
+      color: #202020;
       font-size: clamp(28px, 3.6vw, 46px);
       line-height: 1.12;
       letter-spacing: -0.03em;
@@ -347,7 +452,7 @@
     .product-slogan {
       margin-top: 12px;
       display: inline-flex;
-      color: var(--purple);
+      color: #ec008c;
       font-weight: 800;
       font-size: 15px;
     }
@@ -367,9 +472,9 @@
     }
 
     .industry-tags span {
-      border: 1px solid #dbeafe;
-      background: #f8fbff;
-      color: var(--blue-dark);
+      border: 1px solid #ddd6fe;
+      background: #f8f5ff;
+      color: #202020;
       border-radius: 999px;
       padding: 8px 13px;
       font-size: 13px;
@@ -401,13 +506,13 @@
       display: grid;
       place-items: center;
       color: #fff;
-      background: linear-gradient(135deg, var(--blue) 0%, var(--purple-soft) 100%);
+      background: linear-gradient(135deg, #5b21e8 0%, #ec008c 100%);
       font-size: 15px;
     }
 
     .product-feature h4 {
       margin: 0 0 6px;
-      color: var(--blue-dark);
+      color: #202020;
       font-size: 16px;
     }
 
@@ -419,9 +524,12 @@
     }
 
     .product-panel {
-      border-left: 1px solid #dbe7ff;
-      background: linear-gradient(180deg, #0f172a 0%, #172554 100%);
-      color: #fff;
+      border-left: 1px solid #eee7ff;
+      background:
+        radial-gradient(circle at 14% 10%, rgba(236, 0, 140, 0.11), transparent 28%),
+        radial-gradient(circle at 90% 86%, rgba(91, 33, 232, 0.12), transparent 32%),
+        linear-gradient(180deg, #ffffff 0%, #fbf8ff 100%);
+      color: #202020;
       padding: 22px;
       display: flex;
       flex-direction: column;
@@ -431,52 +539,62 @@
     .product-panel-header {
       height: 38px;
       border-radius: 12px 12px 0 0;
-      background: rgba(255, 255, 255, 0.09);
+      background: linear-gradient(90deg, #ffffff 0%, #faf5ff 100%);
       display: flex;
       align-items: center;
       gap: 7px;
       padding: 0 14px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      border: 1px solid #eadcff;
       border-bottom: none;
+      box-shadow: inset 0 -1px 0 rgba(91, 33, 232, 0.06);
     }
 
     .product-panel-header span {
       width: 9px;
       height: 9px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.45);
+      background: linear-gradient(135deg, #6a2cff 0%, #ff0099 100%);
+      box-shadow: 0 0 10px rgba(236, 0, 140, 0.35);
     }
 
     .product-flow {
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      border: 1px solid #eadcff;
       border-radius: 0 0 12px 12px;
       padding: 22px;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(250, 245, 255, 0.92));
+      box-shadow: 0 16px 36px rgba(91, 33, 232, 0.08);
     }
 
     .flow-item {
       display: flex;
       align-items: center;
       gap: 12px;
-      border: 1px solid rgba(147, 197, 253, 0.35);
+      border: 1px solid #e5d6ff;
       border-radius: 12px;
       padding: 13px 14px;
-      background: rgba(15, 23, 42, 0.72);
-      font-weight: 700;
-      color: #eff6ff;
+      background:
+        radial-gradient(circle at 8% 50%, rgba(236, 0, 140, 0.08), transparent 34%),
+        #ffffff;
+      font-weight: 800;
+      color: #202020;
+      box-shadow:
+        0 8px 20px rgba(91, 33, 232, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
     }
 
     .flow-item i {
-      color: #93c5fd;
+      color: #ec008c;
       width: 18px;
       text-align: center;
+      filter: drop-shadow(0 0 6px rgba(236, 0, 140, 0.28));
     }
 
     .flow-arrow {
       display: grid;
       place-items: center;
       height: 28px;
-      color: #a78bfa;
+      color: #5b21e8;
     }
 
     /* ========== Cards ========== */
@@ -509,14 +627,14 @@
       display: grid;
       place-items: center;
       color: #fff;
-      background: linear-gradient(135deg, var(--blue) 0%, var(--purple-soft) 100%);
+      background: linear-gradient(135deg, #5b21e8 0%, #ec008c 100%);
       margin-bottom: 14px;
       font-size: 18px;
     }
 
     .card h3 {
       margin: 0 0 10px;
-      color: var(--blue-dark);
+      color: #202020;
       font-size: 19px;
       line-height: 1.35;
     }
@@ -539,7 +657,7 @@
 
     .partners-head h2 {
       margin: 0;
-      color: var(--blue-dark);
+      color: #202020;
       font-size: clamp(24px, 3vw, 34px);
     }
 
@@ -603,13 +721,11 @@
       display: grid;
       place-items: center;
       text-align: center;
-      filter: grayscale(0%);
       opacity: 1;
       transition: opacity 0.25s ease, filter 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
     }
 
     .member-card:hover {
-      filter: grayscale(0%);
       opacity: 1;
       transform: translateY(-3px);
       box-shadow: var(--shadow-sm);
@@ -627,7 +743,10 @@
       white-space: nowrap;
     }
 
-    .logo-wordmark.nvidia { color: #76b900; font-size: 27px; }
+    .logo-wordmark.nvidia {
+      color: #76b900;
+      font-size: 27px;
+    }
 
     .logo-wordmark.github {
       color: #181717;
@@ -658,10 +777,21 @@
       flex-shrink: 0;
     }
 
-    .microsoft-mark span:nth-child(1) { background: #f25022; }
-    .microsoft-mark span:nth-child(2) { background: #7fba00; }
-    .microsoft-mark span:nth-child(3) { background: #00a4ef; }
-    .microsoft-mark span:nth-child(4) { background: #ffb900; }
+    .microsoft-mark span:nth-child(1) {
+      background: #f25022;
+    }
+
+    .microsoft-mark span:nth-child(2) {
+      background: #7fba00;
+    }
+
+    .microsoft-mark span:nth-child(3) {
+      background: #00a4ef;
+    }
+
+    .microsoft-mark span:nth-child(4) {
+      background: #ffb900;
+    }
 
     .logo-wordmark.aws {
       color: #232f3e;
@@ -689,32 +819,91 @@
       gap: 8px;
     }
 
-    .logo-wordmark.redhat { color: #ee0000; font-size: 26px; font-weight: 800; }
-    .logo-wordmark.alibaba { color: #ff6a00; font-size: 23px; font-weight: 800; }
-    .logo-wordmark.oracle { color: #c74634; font-size: 30px; }
-    .logo-wordmark.intel { color: #0068b5; font-size: 32px; font-weight: 700; }
+    .logo-wordmark.redhat {
+      color: #ee0000;
+      font-size: 26px;
+      font-weight: 800;
+    }
+
+    .logo-wordmark.alibaba {
+      color: #ff6a00;
+      font-size: 23px;
+      font-weight: 800;
+    }
+
+    .logo-wordmark.oracle {
+      color: #c74634;
+      font-size: 30px;
+    }
+
+    .logo-wordmark.intel {
+      color: #0068b5;
+      font-size: 32px;
+      font-weight: 700;
+    }
 
     .logo-wordmark.google {
       font-size: 28px;
       font-weight: 700;
     }
 
-    .google .g1 { color: #4285f4; }
-    .google .g2 { color: #ea4335; }
-    .google .g3 { color: #fbbc05; }
-    .google .g4 { color: #4285f4; }
-    .google .g5 { color: #34a853; }
-    .google .g6 { color: #ea4335; }
+    .google .g1 {
+      color: #4285f4;
+    }
 
-    .logo-wordmark.meta { color: #0668e1; font-size: 30px; }
-    .logo-wordmark.cncf { color: #3069de; font-size: 29px; }
-    .logo-wordmark.apache { color: #d22128; font-size: 27px; }
-    .logo-wordmark.kubernetes { color: #326ce5; font-size: 24px; }
-    .logo-wordmark.docker { color: #2496ed; font-size: 29px; }
+    .google .g2 {
+      color: #ea4335;
+    }
+
+    .google .g3 {
+      color: #fbbc05;
+    }
+
+    .google .g4 {
+      color: #4285f4;
+    }
+
+    .google .g5 {
+      color: #34a853;
+    }
+
+    .google .g6 {
+      color: #ea4335;
+    }
+
+    .logo-wordmark.meta {
+      color: #0668e1;
+      font-size: 30px;
+    }
+
+    .logo-wordmark.cncf {
+      color: #3069de;
+      font-size: 29px;
+    }
+
+    .logo-wordmark.apache {
+      color: #d22128;
+      font-size: 27px;
+    }
+
+    .logo-wordmark.kubernetes {
+      color: #326ce5;
+      font-size: 24px;
+    }
+
+    .logo-wordmark.docker {
+      color: #2496ed;
+      font-size: 29px;
+    }
 
     @keyframes logoMarquee {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
     }
 
     /* ========== Getting Started ========== */
@@ -758,7 +947,7 @@
       display: grid;
       place-items: center;
       color: #fff;
-      background: linear-gradient(135deg, var(--blue) 0%, var(--purple) 100%);
+      background: linear-gradient(135deg, #5b21e8 0%, #ec008c 100%);
       font-size: 13px;
       font-weight: 700;
       flex-shrink: 0;
@@ -787,8 +976,14 @@
     /* ========== Footer ========== */
     footer {
       margin-top: 30px;
-      border-top: 1px solid var(--line);
-      background: #fafcff;
+      border-top: 6px solid #5b21e8;
+      background: linear-gradient(
+        90deg,
+        #0d84cc 0%,
+        #0d84cc 42%,
+        #000000 42%,
+        #000000 100%
+      );
     }
 
     .footer-grid {
@@ -798,58 +993,84 @@
       gap: 28px;
     }
 
+    .footer-grid > div:first-child {
+      padding-right: 38px;
+    }
+
     .footer-title {
       margin: 0 0 12px;
-      color: var(--blue-dark);
+      color: #ffffff;
       font-size: 16px;
-      font-weight: 700;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
     }
 
     .footer-text {
-      color: var(--muted);
+      color: #ffffff;
       line-height: 1.8;
       font-size: 14px;
       margin: 0;
+      max-width: 420px;
     }
 
     .footer-links {
       display: grid;
       gap: 10px;
-      color: #2b3f63;
+      color: #ffffff;
       font-size: 14px;
     }
 
-    .footer-links a:hover { color: var(--blue); }
+    .footer-links a {
+      color: #ffffff;
+    }
+
+    .footer-links a:hover {
+      color: #ec008c;
+    }
+
+    footer .brand {
+      color: #ffffff;
+    }
+
+    footer .brand-mark {
+      background: #ffffff;
+      color: #0d84cc;
+    }
 
     .socials {
       display: flex;
       gap: 10px;
-      margin-top: 10px;
+      margin-top: 14px;
     }
 
     .socials a {
       width: 34px;
       height: 34px;
       border-radius: 999px;
-      border: 1px solid #d7dff3;
+      border: none;
       display: grid;
       place-items: center;
-      color: #35527f;
-      background: #fff;
+      color: #ffffff;
+      background: transparent;
+      font-size: 17px;
     }
 
     .socials a:hover {
-      color: var(--blue);
-      border-color: #bdd0f5;
-      background: #f3f8ff;
+      color: #ffffff;
+      background: #ec008c;
     }
 
     .copyright {
-      border-top: 1px solid var(--line);
+      border-top: none;
       padding: 14px 0 20px;
-      color: #6d7a8f;
+      color: #ffffff;
       font-size: 13px;
       text-align: center;
+    }
+
+    footer .copyright {
+      background: transparent;
     }
 
     /* ========== Responsive ========== */
@@ -869,7 +1090,7 @@
 
       .product-panel {
         border-left: none;
-        border-top: 1px solid #dbe7ff;
+        border-top: 1px solid #eee7ff;
       }
 
       .cards-grid {
@@ -888,21 +1109,49 @@
         top: 76px;
         left: 0;
         right: 0;
-        background: #fff;
-        border-bottom: 1px solid var(--line);
+        background: #202020;
+        border-bottom: 1px solid #333333;
         padding: 14px 1rem 16px;
         flex-direction: column;
         align-items: flex-start;
         gap: 14px;
       }
 
-      .nav-links.open { display: flex; }
-      .menu-toggle { display: inline-flex; }
-      .nav .btn-primary.nav-cta { display: none; }
+      .nav-links.open {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      .nav .btn-primary.nav-cta {
+        display: none;
+      }
+
+      footer {
+        background: linear-gradient(
+          180deg,
+          #0d84cc 0%,
+          #0d84cc 42%,
+          #000000 42%,
+          #000000 100%
+        );
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid > div:first-child {
+        padding-right: 0;
+      }
     }
 
     @media (max-width: 640px) {
-      .section { padding: 58px 0; }
+      .section {
+        padding: 58px 0;
+      }
 
       .product-features {
         grid-template-columns: 1fr;
@@ -916,9 +1165,18 @@
         padding: 16px;
       }
 
-      .cards-grid { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr; }
-      .partners-head { flex-direction: column; align-items: flex-start; }
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .partners-head {
+        flex-direction: column;
+        align-items: flex-start;
+      }
 
       .carousel-wrap::before,
       .carousel-wrap::after {
@@ -937,8 +1195,8 @@
     }
   </style>
 </head>
-<body>
 
+<body>
   <!-- Topbar -->
   <div class="topbar">
     <div class="container">
@@ -951,7 +1209,9 @@
   <header id="siteHeader">
     <div class="container nav">
       <a href="#" class="brand">
-        <span class="brand-mark"><i class="fa-solid fa-network-wired"></i></span>
+        <span class="brand-mark">
+          <i class="fa-solid fa-network-wired"></i>
+        </span>
         <span data-i18n="brand">OPEN Technology Hub</span>
       </a>
 
@@ -968,7 +1228,9 @@
           <button id="lang-en" type="button">EN</button>
           <button id="lang-zh" class="active" type="button">中文</button>
         </div>
+
         <a href="#contact" class="btn btn-primary nav-cta" data-i18n="contact_btn">立即咨询</a>
+
         <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
           <i class="fa-solid fa-bars"></i>
         </button>
@@ -1006,7 +1268,10 @@
       </div>
 
       <figure class="hero-figure">
-        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80" alt="Global technology network visualization" />
+        <img
+          src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80"
+          alt="Global technology network visualization"
+        />
       </figure>
     </div>
   </main>
@@ -1019,7 +1284,10 @@
         <span data-i18n="products_badge">产品方案</span>
       </span>
 
-      <h2 style="margin:14px 0 0; color: var(--blue-dark); font-size: clamp(26px, 3.4vw, 40px);" data-i18n="products_title">
+      <h2
+        style="margin:14px 0 0; color: #202020; font-size: clamp(26px, 3.4vw, 40px);"
+        data-i18n="products_title"
+      >
         产品与解决方案
       </h2>
 
@@ -1033,9 +1301,7 @@
             OPEN Apps / Private OPEA Deployment
           </div>
 
-          <h3 data-i18n="product_title">
-            Knowvia 知维
-          </h3>
+          <h3 data-i18n="product_title">Knowvia 知维</h3>
 
           <div class="product-subtitle" data-i18n="product_subtitle">
             面向全行业的企业私有知识学习与智能评测应用
@@ -1067,7 +1333,9 @@
               </div>
               <div>
                 <h4 data-i18n="product_feature1_title">私有化部署，资料不出域</h4>
-                <p data-i18n="product_feature1_desc">企业内部文档、制度、培训材料和知识库均在私有环境中处理，降低敏感信息外泄风险。</p>
+                <p data-i18n="product_feature1_desc">
+                  企业内部文档、制度、培训材料和知识库均在私有环境中处理，降低敏感信息外泄风险。
+                </p>
               </div>
             </div>
 
@@ -1077,7 +1345,9 @@
               </div>
               <div>
                 <h4 data-i18n="product_feature2_title">AI 自动出题</h4>
-                <p data-i18n="product_feature2_desc">基于企业内部资料自动生成单选、多选、判断、问答等多种题型，减少人工命题成本。</p>
+                <p data-i18n="product_feature2_desc">
+                  基于企业内部资料自动生成单选、多选、判断、问答等多种题型，减少人工命题成本。
+                </p>
               </div>
             </div>
 
@@ -1087,7 +1357,9 @@
               </div>
               <div>
                 <h4 data-i18n="product_feature3_title">在线考核与智能批改</h4>
-                <p data-i18n="product_feature3_desc">支持员工在线答题、自动评分、主观题智能批改和成绩统计，提升培训考核效率。</p>
+                <p data-i18n="product_feature3_desc">
+                  支持员工在线答题、自动评分、主观题智能批改和成绩统计，提升培训考核效率。
+                </p>
               </div>
             </div>
 
@@ -1097,7 +1369,9 @@
               </div>
               <div>
                 <h4 data-i18n="product_feature4_title">结果分析与能力评估</h4>
-                <p data-i18n="product_feature4_desc">帮助企业了解员工知识掌握情况，发现培训短板，为后续学习计划提供依据。</p>
+                <p data-i18n="product_feature4_desc">
+                  帮助企业了解员工知识掌握情况，发现培训短板，为后续学习计划提供依据。
+                </p>
               </div>
             </div>
           </div>
@@ -1170,33 +1444,50 @@
         <span data-i18n="core_badge">核心能力</span>
       </span>
 
-      <h2 style="margin:14px 0 0; color: var(--blue-dark); font-size: clamp(26px, 3.4vw, 40px);" data-i18n="core_title">
+      <h2
+        style="margin:14px 0 0; color: #202020; font-size: clamp(26px, 3.4vw, 40px);"
+        data-i18n="core_title"
+      >
         核心业务与技术能力
       </h2>
 
       <div class="cards-grid">
         <article class="card">
-          <div class="icon"><i class="fa-solid fa-brain"></i></div>
+          <div class="icon">
+            <i class="fa-solid fa-brain"></i>
+          </div>
           <h3 data-i18n="card1_title">AI & 大模型应用</h3>
           <p data-i18n="card1_desc">帮助企业落地生成式AI、大语言模型等技术，构建智能应用。</p>
         </article>
 
         <article class="card">
-          <div class="icon"><i class="fa-solid fa-code-branch"></i></div>
+          <div class="icon">
+            <i class="fa-solid fa-code-branch"></i>
+          </div>
           <h3 data-i18n="card2_title">开源技术生态</h3>
-          <p data-i18n="card2_desc">基于开放技术生态，帮助企业构建可扩展、可集成、可持续演进的 AI 应用平台。</p>
+          <p data-i18n="card2_desc">
+            基于开放技术生态，帮助企业构建可扩展、可集成、可持续演进的 AI 应用平台。
+          </p>
         </article>
 
         <article class="card">
-          <div class="icon"><i class="fa-solid fa-server"></i></div>
+          <div class="icon">
+            <i class="fa-solid fa-server"></i>
+          </div>
           <h3 data-i18n="card3_title">私有化部署方案</h3>
-          <p data-i18n="card3_desc">支持企业在内网、私有云或专有环境中部署 OPEA 平台与 AI 应用，满足数据安全与合规需求。</p>
+          <p data-i18n="card3_desc">
+            支持企业在内网、私有云或专有环境中部署 OPEA 平台与 AI 应用，满足数据安全与合规需求。
+          </p>
         </article>
 
         <article class="card">
-          <div class="icon"><i class="fa-solid fa-compass-drafting"></i></div>
+          <div class="icon">
+            <i class="fa-solid fa-compass-drafting"></i>
+          </div>
           <h3 data-i18n="card4_title">企业技术咨询</h3>
-          <p data-i18n="card4_desc">专业技术团队为企业提供从平台规划、应用部署到运营落地的全流程支持。</p>
+          <p data-i18n="card4_desc">
+            专业技术团队为企业提供从平台规划、应用部署到运营落地的全流程支持。
+          </p>
         </article>
       </div>
     </div>
@@ -1384,7 +1675,10 @@
               <span data-i18n="start_badge">轻松上手</span>
             </span>
 
-            <h2 style="margin:14px 0 0; color: var(--blue-dark); font-size: clamp(24px, 3.2vw, 38px);" data-i18n="start_title">
+            <h2
+              style="margin:14px 0 0; color: #202020; font-size: clamp(24px, 3.2vw, 38px);"
+              data-i18n="start_title"
+            >
               轻松开启 OPEA 私有化部署与 AI 应用落地
             </h2>
 
@@ -1415,7 +1709,10 @@
           </div>
 
           <figure class="start-figure">
-            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1400&q=80" alt="Collaborative technology guidance visual" />
+            <img
+              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1400&q=80"
+              alt="Collaborative technology guidance visual"
+            />
           </figure>
         </div>
       </div>
@@ -1427,7 +1724,9 @@
     <div class="container footer-grid">
       <div>
         <div class="brand" style="margin-bottom: 10px;">
-          <span class="brand-mark"><i class="fa-solid fa-network-wired"></i></span>
+          <span class="brand-mark">
+            <i class="fa-solid fa-network-wired"></i>
+          </span>
           <span data-i18n="brand">OPEN Technology Hub</span>
         </div>
 
@@ -1455,9 +1754,15 @@
         </div>
 
         <div class="socials">
-          <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-          <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="#" aria-label="Twitter">
+            <i class="fa-brands fa-x-twitter"></i>
+          </a>
+          <a href="#" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+          <a href="#" aria-label="GitHub">
+            <i class="fa-brands fa-github"></i>
+          </a>
         </div>
       </div>
     </div>
@@ -1468,30 +1773,25 @@
   </footer>
 
   <script>
-    // ==============================
-    // 1) Header scroll shadow
-    // ==============================
     const siteHeader = document.getElementById("siteHeader");
 
     window.addEventListener("scroll", () => {
       siteHeader.classList.toggle("scrolled", window.scrollY > 8);
     });
 
-    // ==============================
-    // 2) Mobile menu
-    // ==============================
     const menuToggle = document.getElementById("menuToggle");
     const navLinks = document.getElementById("navLinks");
 
-    menuToggle.addEventListener("click", () => navLinks.classList.toggle("open"));
-
-    navLinks.querySelectorAll("a").forEach(a => {
-      a.addEventListener("click", () => navLinks.classList.remove("open"));
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
     });
 
-    // ==============================
-    // 3) i18n
-    // ==============================
+    navLinks.querySelectorAll("a").forEach((a) => {
+      a.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+      });
+    });
+
     const i18n = {
       en: {
         top_notice: "Join us to build trusted open innovation ecosystems.",
@@ -1507,20 +1807,24 @@
         hero_badge: "Open • Innovation • Trust",
         hero_title: "Open Technology Hub",
         hero_subtitle_en: "Empowering Enterprise Innovation with Open Source",
-        hero_subtitle_zh: "Built on private OPEA deployments, we help enterprises create secure AI application environments for internal knowledge learning, assessment, intelligent question generation, and automated grading.",
+        hero_subtitle_zh:
+          "Built on private OPEA deployments, we help enterprises create secure AI application environments for internal knowledge learning, assessment, intelligent question generation, and automated grading.",
         hero_tagline: "Open Innovation. Built for Trust.",
         hero_btn_1: "Explore Knowvia",
         hero_btn_2: "Book a Demo",
 
         products_badge: "Product Solutions",
         products_title: "Products & Solutions",
-        products_desc: "Built on private OPEA deployments, our solutions help enterprises create secure, controllable, and scalable AI application environments for internal knowledge learning, quiz generation, assessment, and grading.",
+        products_desc:
+          "Built on private OPEA deployments, our solutions help enterprises create secure, controllable, and scalable AI application environments for internal knowledge learning, quiz generation, assessment, and grading.",
 
         product_kicker: "OPEN Apps / Private OPEA Deployment",
         product_title: "Knowvia",
-        product_subtitle: "An Industry-Ready Private Enterprise Knowledge Learning & Assessment App",
+        product_subtitle:
+          "An Industry-Ready Private Enterprise Knowledge Learning & Assessment App",
         product_slogan: "Turn enterprise knowledge into measurable capability.",
-        product_desc: "Built on a private OPEA deployment, Knowvia helps organizations across finance, healthcare, manufacturing, energy, government, education, retail, technology services, and other industries securely connect internal documents, policies, business materials, training content, product manuals, compliance files, and technical knowledge bases. AI then supports knowledge understanding, question generation, employee assessment, intelligent grading, and result analytics — reducing training and assessment workload while protecting enterprise knowledge assets.",
+        product_desc:
+          "Built on a private OPEA deployment, Knowvia helps organizations across finance, healthcare, manufacturing, energy, government, education, retail, technology services, and other industries securely connect internal documents, policies, business materials, training content, product manuals, compliance files, and technical knowledge bases. AI then supports knowledge understanding, question generation, employee assessment, intelligent grading, and result analytics — reducing training and assessment workload while protecting enterprise knowledge assets.",
 
         industry_finance: "Finance",
         industry_healthcare: "Healthcare",
@@ -1532,16 +1836,17 @@
         industry_tech: "Technology Services",
 
         product_feature1_title: "Private Deployment, Data Stays Internal",
-        product_feature1_desc: "Internal documents, policies, training materials, and knowledge bases are processed within the enterprise's private environment to reduce sensitive information leakage risks.",
-
+        product_feature1_desc:
+          "Internal documents, policies, training materials, and knowledge bases are processed within the enterprise's private environment to reduce sensitive information leakage risks.",
         product_feature2_title: "AI-powered Question Generation",
-        product_feature2_desc: "Automatically generate single-choice, multiple-choice, true/false, and open-ended questions from enterprise documents, reducing manual question-writing workload.",
-
+        product_feature2_desc:
+          "Automatically generate single-choice, multiple-choice, true/false, and open-ended questions from enterprise documents, reducing manual question-writing workload.",
         product_feature3_title: "Online Assessment & Smart Grading",
-        product_feature3_desc: "Support online exams, automatic scoring, AI-assisted grading for open-ended answers, and result statistics.",
-
+        product_feature3_desc:
+          "Support online exams, automatic scoring, AI-assisted grading for open-ended answers, and result statistics.",
         product_feature4_title: "Result Analytics & Capability Evaluation",
-        product_feature4_desc: "Help enterprises understand employees' knowledge mastery, identify training gaps, and improve future learning plans.",
+        product_feature4_desc:
+          "Help enterprises understand employees' knowledge mastery, identify training gaps, and improve future learning plans.",
 
         product_btn_primary: "Book a Demo",
         product_btn_secondary: "Deployment Process",
@@ -1555,26 +1860,32 @@
         core_badge: "Core Capabilities",
         core_title: "Core Business & Technical Capabilities",
         card1_title: "AI & Foundation Model Applications",
-        card1_desc: "Implement GenAI and large language models to build enterprise-grade intelligent applications.",
+        card1_desc:
+          "Implement GenAI and large language models to build enterprise-grade intelligent applications.",
         card2_title: "Open Source Ecosystem",
-        card2_desc: "Build scalable, integrable, and sustainable AI application platforms based on open technology ecosystems.",
+        card2_desc:
+          "Build scalable, integrable, and sustainable AI application platforms based on open technology ecosystems.",
         card3_title: "Private Deployment Solutions",
-        card3_desc: "Deploy OPEA platforms and AI applications in intranets, private clouds, or dedicated environments to meet security and compliance requirements.",
+        card3_desc:
+          "Deploy OPEA platforms and AI applications in intranets, private clouds, or dedicated environments to meet security and compliance requirements.",
         card4_title: "Enterprise Technology Consulting",
-        card4_desc: "End-to-end support from platform planning and application deployment to operational enablement.",
+        card4_desc:
+          "End-to-end support from platform planning and application deployment to operational enablement.",
 
         partner_title: "Meet Our Partners & Members",
         partner_sub: "Partners & Members",
 
         start_badge: "Getting Started is Easy",
         start_title: "Launch Private OPEA Deployment and AI Applications with Ease",
-        start_desc: "We help enterprises implement the full process from requirement assessment and platform deployment to application onboarding and assessment operations.",
+        start_desc:
+          "We help enterprises implement the full process from requirement assessment and platform deployment to application onboarding and assessment operations.",
         step1: "Requirement Discussion & Material Assessment",
         step2: "Private OPEA Platform Deployment",
         step3: "Knowvia Application Launch",
         start_btn: "Start Now",
 
-        footer_desc: "Built on open technology ecosystems and private OPEA deployments, we help enterprises create secure AI applications and knowledge assessment systems.",
+        footer_desc:
+          "Built on open technology ecosystems and private OPEA deployments, we help enterprises create secure AI applications and knowledge assessment systems.",
         footer_links_title: "Quick Links",
         footer_contact_title: "Contact",
         copyright: "Copyright © 2026 OPEN Technology Hub. All rights reserved."
@@ -1594,20 +1905,23 @@
         hero_badge: "开放 • 创新 • 信任",
         hero_title: "Open Technology Hub",
         hero_subtitle_en: "Empowering Enterprise Innovation with Open Source",
-        hero_subtitle_zh: "基于 OPEA 私有化部署平台，帮助企业构建安全可控的 AI 应用环境，支持内部知识学习、智能出题、在线考核与自动批改。",
+        hero_subtitle_zh:
+          "基于 OPEA 私有化部署平台，帮助企业构建安全可控的 AI 应用环境，支持内部知识学习、智能出题、在线考核与自动批改。",
         hero_tagline: "Open Innovation. Built for Trust.",
         hero_btn_1: "了解 Knowvia 知维",
         hero_btn_2: "预约产品演示",
 
         products_badge: "产品方案",
         products_title: "产品与解决方案",
-        products_desc: "基于 OPEA 私有化部署平台，为企业构建安全、可控、可扩展的 AI 应用环境，帮助企业在内部网络中完成知识学习、智能出题、在线考核与自动批改。",
+        products_desc:
+          "基于 OPEA 私有化部署平台，为企业构建安全、可控、可扩展的 AI 应用环境，帮助企业在内部网络中完成知识学习、智能出题、在线考核与自动批改。",
 
         product_kicker: "OPEN Apps / Private OPEA Deployment",
         product_title: "Knowvia 知维",
         product_subtitle: "面向全行业的企业私有知识学习与智能评测应用",
         product_slogan: "让企业知识变成可学习、可评测、可提升的能力。",
-        product_desc: "基于 OPEA 私有化部署平台，Knowvia 知维帮助金融、医疗、制造、能源、政务、教育、零售、科技服务等行业企业，在安全可控的私有环境中接入内部资料、制度规范、业务文档、培训课件、产品手册、合规文件和技术知识库，由 AI 自动完成知识理解、题目生成、员工考核、智能批改与结果分析，降低培训考核成本，保护企业知识资产安全。",
+        product_desc:
+          "基于 OPEA 私有化部署平台，Knowvia 知维帮助金融、医疗、制造、能源、政务、教育、零售、科技服务等行业企业，在安全可控的私有环境中接入内部资料、制度规范、业务文档、培训课件、产品手册、合规文件和技术知识库，由 AI 自动完成知识理解、题目生成、员工考核、智能批改与结果分析，降低培训考核成本，保护企业知识资产安全。",
 
         industry_finance: "金融",
         industry_healthcare: "医疗",
@@ -1619,16 +1933,17 @@
         industry_tech: "科技服务",
 
         product_feature1_title: "私有化部署，资料不出域",
-        product_feature1_desc: "企业内部文档、制度、培训材料和知识库均在私有环境中处理，降低敏感信息外泄风险。",
-
+        product_feature1_desc:
+          "企业内部文档、制度、培训材料和知识库均在私有环境中处理，降低敏感信息外泄风险。",
         product_feature2_title: "AI 自动出题",
-        product_feature2_desc: "基于企业内部资料自动生成单选、多选、判断、问答等多种题型，减少人工命题成本。",
-
+        product_feature2_desc:
+          "基于企业内部资料自动生成单选、多选、判断、问答等多种题型，减少人工命题成本。",
         product_feature3_title: "在线考核与智能批改",
-        product_feature3_desc: "支持员工在线答题、自动评分、主观题智能批改和成绩统计，提升培训考核效率。",
-
+        product_feature3_desc:
+          "支持员工在线答题、自动评分、主观题智能批改和成绩统计，提升培训考核效率。",
         product_feature4_title: "结果分析与能力评估",
-        product_feature4_desc: "帮助企业了解员工知识掌握情况，发现培训短板，为后续学习计划提供依据。",
+        product_feature4_desc:
+          "帮助企业了解员工知识掌握情况，发现培训短板，为后续学习计划提供依据。",
 
         product_btn_primary: "预约产品演示",
         product_btn_secondary: "了解部署流程",
@@ -1644,24 +1959,29 @@
         card1_title: "AI & 大模型应用",
         card1_desc: "帮助企业落地生成式AI、大语言模型等技术，构建智能应用。",
         card2_title: "开源技术生态",
-        card2_desc: "基于开放技术生态，帮助企业构建可扩展、可集成、可持续演进的 AI 应用平台。",
+        card2_desc:
+          "基于开放技术生态，帮助企业构建可扩展、可集成、可持续演进的 AI 应用平台。",
         card3_title: "私有化部署方案",
-        card3_desc: "支持企业在内网、私有云或专有环境中部署 OPEA 平台与 AI 应用，满足数据安全与合规需求。",
+        card3_desc:
+          "支持企业在内网、私有云或专有环境中部署 OPEA 平台与 AI 应用，满足数据安全与合规需求。",
         card4_title: "企业技术咨询",
-        card4_desc: "专业技术团队为企业提供从平台规划、应用部署到运营落地的全流程支持。",
+        card4_desc:
+          "专业技术团队为企业提供从平台规划、应用部署到运营落地的全流程支持。",
 
         partner_title: "Meet Our Partners & Members",
         partner_sub: "合作伙伴与成员",
 
         start_badge: "轻松上手",
         start_title: "轻松开启 OPEA 私有化部署与 AI 应用落地",
-        start_desc: "我们帮助企业完成从需求评估、平台部署、应用接入到培训考核运营的全流程落地。",
+        start_desc:
+          "我们帮助企业完成从需求评估、平台部署、应用接入到培训考核运营的全流程落地。",
         step1: "需求沟通与资料评估",
         step2: "OPEA 平台私有化部署",
         step3: "Knowvia 知维应用上线",
         start_btn: "立即开始",
 
-        footer_desc: "基于开放技术生态与 OPEA 私有化部署平台，助力企业构建安全可控的 AI 应用与知识评测体系。",
+        footer_desc:
+          "基于开放技术生态与 OPEA 私有化部署平台，助力企业构建安全可控的 AI 应用与知识评测体系。",
         footer_links_title: "快速链接",
         footer_contact_title: "联系方式",
         copyright: "Copyright © 2026 OPEN Technology Hub. All rights reserved."
@@ -1674,7 +1994,7 @@
     function applyLanguage(lang) {
       document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
 
-      document.querySelectorAll("[data-i18n]").forEach(el => {
+      document.querySelectorAll("[data-i18n]").forEach((el) => {
         const key = el.getAttribute("data-i18n");
 
         if (i18n[lang] && i18n[lang][key]) {
