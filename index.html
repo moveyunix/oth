@@ -2,642 +2,287 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Open Technology Hub | Bridging Open Source to Industry</title>
-    <!-- Font Awesome 6 (Free Icons) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Fonts: Inter & Roboto for modern tech look -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #ffffff;
-            color: #1e293b;
-            line-height: 1.5;
-            scroll-behavior: smooth;
-        }
-
-        /* Color Palette Inspired by ZTE Tech Style */
-        :root {
-            --primary: #0052D9;
-            --primary-dark: #0036A3;
-            --primary-light: #E8F0FF;
-            --secondary: #1e293b;
-            --gray-light: #f8fafc;
-            --gray-border: #e2e8f0;
-            --text-dark: #0f172a;
-            --text-muted: #475569;
-            --accent-blue: #0a66c2;
-        }
-
-        /* Layout */
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 32px;
-        }
-
-        /* Header / Nav */
-        .header {
-            position: sticky;
-            top: 0;
-            background: rgba(255,255,255,0.96);
-            backdrop-filter: blur(8px);
-            box-shadow: 0 1px 2px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.02);
-            z-index: 100;
-            border-bottom: 1px solid var(--gray-border);
-        }
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 0;
-            flex-wrap: wrap;
-        }
-        .logo a {
-            font-size: 1.8rem;
-            font-weight: 800;
-            text-decoration: none;
-            letter-spacing: -0.02em;
-            background: linear-gradient(135deg, var(--primary) 0%, #2b7aff 100%);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-        }
-        .logo .logo-sub {
-            font-size: 0.8rem;
-            font-weight: 400;
-            color: var(--text-muted);
-            letter-spacing: normal;
-            display: block;
-            margin-top: 2px;
-        }
-        .nav-links {
-            display: flex;
-            gap: 32px;
-            align-items: center;
-            list-style: none;
-        }
-        .nav-links li a {
-            text-decoration: none;
-            font-weight: 500;
-            color: var(--text-dark);
-            transition: color 0.2s;
-            font-size: 1rem;
-        }
-        .nav-links li a:hover {
-            color: var(--primary);
-        }
-        .lang-switch {
-            display: flex;
-            gap: 8px;
-            background: var(--gray-light);
-            padding: 6px 12px;
-            border-radius: 40px;
-            border: 1px solid var(--gray-border);
-        }
-        .lang-btn {
-            background: none;
-            border: none;
-            font-weight: 600;
-            cursor: pointer;
-            padding: 4px 12px;
-            border-radius: 30px;
-            font-size: 0.85rem;
-            transition: all 0.2s;
-            color: var(--text-muted);
-        }
-        .lang-btn.active {
-            background: var(--primary);
-            color: white;
-        }
-        .menu-icon {
-            display: none;
-            font-size: 1.8rem;
-            cursor: pointer;
-            color: var(--primary);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(105deg, #f0f6ff 0%, #ffffff 100%);
-            padding: 80px 0 90px;
-            border-bottom: 1px solid var(--gray-border);
-        }
-        .hero-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-            max-width: 800px;
-        }
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1.2;
-            letter-spacing: -0.02em;
-            background: linear-gradient(135deg, #0f172a 0%, var(--primary) 80%);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-        }
-        .hero .hero-tagline {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            margin: 16px 0 8px;
-            border-left: 4px solid var(--primary);
-            padding-left: 20px;
-        }
-        .btn-primary {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 12px 32px;
-            border-radius: 40px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.25s;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0,82,217,0.2);
-        }
-
-        /* Section common */
-        .section {
-            padding: 80px 0;
-            border-bottom: 1px solid var(--gray-border);
-        }
-        .section-alt {
-            background-color: var(--gray-light);
-        }
-        .section-title {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            letter-spacing: -0.01em;
-        }
-        .section-subhead {
-            color: var(--text-muted);
-            max-width: 700px;
-            margin-bottom: 48px;
-            font-size: 1.1rem;
-        }
-        .grid-2col, .grid-3col {
-            display: grid;
-            gap: 32px;
-        }
-        .grid-2col {
-            grid-template-columns: repeat(2, 1fr);
-        }
-        .grid-3col {
-            grid-template-columns: repeat(3, 1fr);
-        }
-        .card {
-            background: white;
-            border-radius: 24px;
-            padding: 32px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03), 0 1px 2px rgba(0,0,0,0.05);
-            transition: all 0.25s ease;
-            border: 1px solid var(--gray-border);
-        }
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
-        }
-        .card-icon {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-        .card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 12px;
-            font-weight: 600;
-        }
-        .badge-list {
-            list-style: none;
-            margin-top: 16px;
-        }
-        .badge-list li {
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .badge-list i {
-            color: var(--primary);
-            width: 20px;
-        }
-
-        /* industry grid */
-        .industry-card {
-            background: white;
-            border-radius: 28px;
-            padding: 28px;
-            text-align: center;
-            border: 1px solid var(--gray-border);
-            transition: all 0.2s;
-        }
-        .industry-icon {
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-        }
-
-        /* Vision */
-        .vision-box {
-            background: linear-gradient(120deg, #eef4ff, #ffffff);
-            border-radius: 32px;
-            padding: 48px;
-            text-align: center;
-            border: 1px solid #e0e9ff;
-        }
-        .quote-text {
-            font-size: 1.6rem;
-            font-weight: 600;
-            line-height: 1.3;
-            margin-bottom: 24px;
-        }
-        /* Footer */
-        .footer {
-            background: #0f172a;
-            color: #cbd5e1;
-            padding: 48px 0 32px;
-        }
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 32px;
-            margin-bottom: 32px;
-        }
-        .footer-col h4 {
-            color: white;
-            margin-bottom: 16px;
-            font-weight: 600;
-        }
-        .footer-col p, .footer-col a {
-            color: #94a3b8;
-            text-decoration: none;
-        }
-        .social-links i {
-            font-size: 1.4rem;
-            margin-right: 16px;
-            transition: color 0.2s;
-            color: #94a3b8;
-        }
-        .copyright {
-            text-align: center;
-            padding-top: 24px;
-            border-top: 1px solid #1e293b;
-            font-size: 0.85rem;
-        }
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 24px;
-            }
-            .nav-links {
-                display: none;
-                width: 100%;
-                flex-direction: column;
-                gap: 20px;
-                padding: 24px 0 16px;
-            }
-            .nav-links.active {
-                display: flex;
-            }
-            .menu-icon {
-                display: block;
-            }
-            .grid-2col, .grid-3col {
-                grid-template-columns: 1fr;
-            }
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            .section-title {
-                font-size: 1.8rem;
-            }
-            .vision-box {
-                padding: 32px;
-            }
-            .quote-text {
-                font-size: 1.3rem;
-            }
-        }
-        .inline-dot {
-            height: 8px;
-            width: 8px;
-            background: var(--primary);
-            border-radius: 50%;
-            display: inline-block;
-            margin-right: 8px;
-        }
-        .feature-list {
-            list-style: none;
-        }
-        .feature-list li {
-            margin-bottom: 12px;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Technology Hub - Empowering Open Source Innovation</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-<header class="header">
-    <div class="container">
-        <div class="navbar">
-            <div class="logo">
-                <a href="#" id="logoLink" data-i18n-en="Open Technology Hub" data-i18n-zh="开放技术枢纽">Open Technology Hub</a>
-                <span class="logo-sub" data-i18n-en="Tech Investment & Ecosystem" data-i18n-zh="技术投资 · 生态赋能">Tech Investment & Ecosystem</span>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <div class="logo">OTH</div>
+                <span class="brand-name" data-lang-en="Open Technology Hub" data-lang-zh="开放技术枢纽">Open Technology Hub</span>
             </div>
-            <div class="menu-icon" id="menuToggle">
-                <i class="fas fa-bars"></i>
-            </div>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home" data-i18n-en="Home" data-i18n-zh="首页">Home</a></li>
-                <li><a href="#about" data-i18n-en="About" data-i18n-zh="关于我们">About</a></li>
-                <li><a href="#model" data-i18n-en="Our Model" data-i18n-zh="核心模式">Our Model</a></li>
-                <li><a href="#scenarios" data-i18n-en="Industries" data-i18n-zh="行业场景">Industries</a></li>
-                <li><a href="#vision" data-i18n-en="Vision" data-i18n-zh="愿景">Vision</a></li>
-                <li><a href="#join" data-i18n-en="Join Us" data-i18n-zh="加入我们">Join Us</a></li>
+            <ul class="nav-menu">
+                <li><a href="#home" data-lang-en="Home" data-lang-zh="首页">Home</a></li>
+                <li><a href="#about" data-lang-en="About Us" data-lang-zh="关于我们">About Us</a></li>
+                <li><a href="#model" data-lang-en="Our Model" data-lang-zh="核心模式">Our Model</a></li>
+                <li><a href="#focus" data-lang-en="Focus Areas" data-lang-zh="重点方向">Focus Areas</a></li>
+                <li><a href="#partnership" data-lang-en="Partnership" data-lang-zh="合作伙伴">Partnership</a></li>
+                <li><a href="#contact" data-lang-en="Contact" data-lang-zh="联系我们">Contact</a></li>
+                <li class="lang-switcher">
+                    <button id="langBtn" onclick="toggleLanguage()">
+                        <span id="langText">中文</span>
+                    </button>
+                </li>
             </ul>
-            <div class="lang-switch">
-                <button class="lang-btn" data-lang="en">EN</button>
-                <button class="lang-btn" data-lang="zh">中文</button>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
-    </div>
-</header>
+    </nav>
 
-<main>
     <!-- Hero Section -->
-    <section class="hero" id="home">
+    <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1 class="hero-title"
+                data-lang-en="Empowering Open Source Innovation"
+                data-lang-zh="赋能开源创新">
+                Empowering Open Source Innovation
+            </h1>
+            <p class="hero-subtitle"
+                data-lang-en="Bridging the gap between open source projects and industrial value"
+                data-lang-zh="连接开源项目与产业价值的关键枢纽">
+                Bridging the gap between open source projects and industrial value
+            </p>
+            <a href="#about" class="btn-primary" data-lang-en="Learn More" data-lang-zh="了解更多">Learn More</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
         <div class="container">
-            <div class="hero-grid">
-                <h1 id="heroTitle" data-i18n-en="Discover · Incubate · Connect" data-i18n-zh="发现 · 孵化 · 链接">Discover · Incubate · Connect</h1>
-                <p class="hero-tagline" id="heroTagline" data-i18n-en="We empower early-stage open source projects with technology equity and industry ecosystems." data-i18n-zh="我们以技术入股与产业生态，赋能早期开源项目。">We empower early-stage open source projects with technology equity and industry ecosystems.</p>
-                <div>
-                    <a href="#model" class="btn-primary" id="heroBtn" data-i18n-en="Explore Our Model" data-i18n-zh="探索合作模式">Explore Our Model</a>
+            <h2 class="section-title" data-lang-en="About Us" data-lang-zh="关于我们">About Us</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p data-lang-en="Open Technology Hub is a technology investment and ecosystem enabler focused on future high-potential open source projects. We believe that the next generation of technology forces that will change the industrial landscape often originates from 'edge innovations' within the open source community."
+                       data-lang-zh="开放技术枢纽（Open Technology Hub）是一家专注于未来高潜力开源项目的技术投资与生态赋能机构。我们坚信，下一代改变产业格局的技术力量，往往孕育于开源社区的"边缘创新"之中。">
+                        Open Technology Hub is a technology investment and ecosystem enabler focused on future high-potential open source projects. We believe that the next generation of technology forces that will change the industrial landscape often originates from "edge innovations" within the open source community.
+                    </p>
+                    <p data-lang-en="With our core mission of 'Discover, Incubate, Connect', we are committed to identifying early-stage open source projects with disruptive impact potential. Through equity participation via technical contributions, we deeply engage with project teams to build sustainable development ecosystems and drive their transition from code communities to real industries."
+                       data-lang-zh="因此，我们以"发现、孵化、链接"为核心使命，致力于挖掘尚处早期但具备颠覆性影响力的开源项目，通过技术入股的方式深度参与，帮助项目团队构建可持续的开发生态，并推动其从代码社区走向真实产业。">
+                        With our core mission of "Discover, Incubate, Connect", we are committed to identifying early-stage open source projects with disruptive impact potential. Through equity participation via technical contributions, we deeply engage with project teams to build sustainable development ecosystems and drive their transition from code communities to real industries.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section (Company intro) -->
-    <section class="section" id="about">
-        <div class="container">
-            <h2 class="section-title" data-i18n-en="Open Technology Hub" data-i18n-zh="关于开放技术枢纽">Open Technology Hub</h2>
-            <div class="grid-2col">
-                <div class="card">
-                    <div class="card-icon"><i class="fas fa-microchip"></i></div>
-                    <h3 data-i18n-en="Who We Are" data-i18n-zh="我们是谁">Who We Are</h3>
-                    <p id="aboutDesc1" data-i18n-en="Open Technology Hub is a technology investment & ecosystem empowerment institution focused on future high-potential open source projects. We believe disruptive innovations are born from 'edge innovation' within open source communities, and we dedicate to discovering, incubating and bridging those projects from code to real industry impact." data-i18n-zh="开放技术枢纽是一家专注于未来高潜力开源项目的技术投资与生态赋能机构。我们坚信下一代改变产业格局的技术力量孕育于开源社区的'边缘创新'之中，致力于发现、孵化、链接早期但具备颠覆性影响力的开源项目，通过技术入股深度参与。">Open Technology Hub is a technology investment & ecosystem empowerment institution focused on future high-potential open source projects. We believe disruptive innovations are born from 'edge innovation' within open source communities, and we dedicate to discovering, incubating and bridging those projects from code to real industry impact.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon"><i class="fas fa-handshake"></i></div>
-                    <h3 data-i18n-en="Our Mission" data-i18n-zh="核心使命">Our Mission</h3>
-                    <p id="aboutDesc2" data-i18n-en="To enable every game-changing open source project to find its path to industry. We don't control communities — we provide transparent mechanisms, technical expertise and deep industrial resources to cross the gap between 'technically feasible' and 'industry-ready'." data-i18n-zh="让每一个改变世界的开源项目，都能找到通往产业的路。我们不控制社区，而是通过透明的机制、专业的技术能力和深度的产业资源，帮助开源项目跨越从'技术可行'到'产业可用'之间的鸿沟。">To enable every game-changing open source project to find its path to industry. We don't control communities — we provide transparent mechanisms, technical expertise and deep industrial resources to cross the gap between 'technically feasible' and 'industry-ready'.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Core Model Section (Tech+Industry Dual Drive) -->
-    <section class="section section-alt" id="model">
-        <div class="container">
-            <h2 class="section-title" data-i18n-en="Our Core Model" data-i18n-zh="核心模式 · 双轮驱动">Our Core Model</h2>
-            <p class="section-subhead" data-i18n-en="Technology equity + industry ecosystems — a unique symbiosis model beyond traditional VC and foundations." data-i18n-zh="技术入股+产业生态——超越传统风投与基金会的独特共生模式。">Technology equity + industry ecosystems — a unique symbiosis model beyond traditional VC and foundations.</p>
-            <div class="grid-3col">
-                <div class="card">
-                    <div class="card-icon"><i class="fas fa-chart-line"></i></div>
-                    <h3 data-i18n-en="Technology Equity" data-i18n-zh="技术入股 · 长期共生">Technology Equity</h3>
-                    <p data-i18n-en="We invest via technical contributions, architecture consulting and ecosystem building in exchange for project equity or long-term revenue sharing. Full alignment of interests and risk sharing." data-i18n-zh="以技术贡献、架构咨询、生态运营为核心投入，换取项目股权或长期收益分成，与项目方利益一致、风险共担。">We invest via technical contributions, architecture consulting and ecosystem building in exchange for project equity or long-term revenue sharing. Full alignment of interests and risk sharing.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon"><i class="fas fa-globe"></i></div>
-                    <h3 data-i18n-en="Transparent Industrialization" data-i18n-zh="透明化的产业落地">Transparent Industrialization</h3>
-                    <p data-i18n-en="We co-create open, measurable, phased industry adoption roadmaps — compliance, lighthouse customers, packaged products — while keeping open source communities informed and respected." data-i18n-zh="共同制定公开、可衡量、分阶段的产业落地路线图，从合规路径到标杆客户，全程保持适度透明，确保开放精神不被商业侵蚀。">We co-create open, measurable, phased industry adoption roadmaps — compliance, lighthouse customers, packaged products — while keeping open source communities informed and respected.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon"><i class="fas fa-chalkboard-user"></i></div>
-                    <h3 data-i18n-en="Cross-Industry Deepening" data-i18n-zh="跨行业场景深耕">Cross-Industry Deepening</h3>
-                    <p data-i18n-en="Proven open source industrialization playbooks in high-barrier sectors. We focus on AI+Healthcare, AI+Legal, AI+Training, Industrial Intelligence, Green Computing and more." data-i18n-zh="在高壁垒行业中积累可复用的开源落地方法论，重点推进AI+医疗、AI+法律、AI+培训、工业智能、开源硬件、绿色计算等方向。">Proven open source industrialization playbooks in high-barrier sectors. We focus on AI+Healthcare, AI+Legal, AI+Training, Industrial Intelligence, Green Computing and more.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Scenarios (industry deep dive cards) -->
-    <section class="section" id="scenarios">
-        <div class="container">
-            <h2 class="section-title" data-i18n-en="Industry Deep Dive" data-i18n-zh="跨行业场景深耕">Industry Deep Dive</h2>
-            <p class="section-subhead" data-i18n-en="Driving open source transformation in mission-critical industries." data-i18n-zh="在关键任务型产业中推动开源变革落地。">Driving open source transformation in mission-critical industries.</p>
-            <div class="grid-3col">
-                <div class="industry-card">
-                    <div class="industry-icon"><i class="fas fa-heartbeat"></i></div>
-                    <h3 data-i18n-en="AI+Healthcare" data-i18n-zh="AI+医疗">AI+Healthcare</h3>
-                    <p data-i18n-en="Medical imaging, clinical NLP, structured EMR, privacy-preserving computing — enabling open source models for compliant healthcare AI." data-i18n-zh="医学影像、病历结构化、临床辅助决策，推动开源模型与隐私计算技术在合规前提下落地。">Medical imaging, clinical NLP, structured EMR, privacy-preserving computing — enabling open source models for compliant healthcare AI.</p>
-                </div>
-                <div class="industry-card">
-                    <div class="industry-icon"><i class="fas fa-gavel"></i></div>
-                    <h3 data-i18n-en="AI+Legal" data-i18n-zh="AI+法律">AI+Legal</h3>
-                    <p data-i18n-en="Open-source legal text analytics, case matching, contract review — reducing costs and barriers to legal services." data-i18n-zh="开源的法律文本分析、案例匹配、合同审查工具，降低法律服务的门槛与成本。">Open-source legal text analytics, case matching, contract review — reducing costs and barriers to legal services.</p>
-                </div>
-                <div class="industry-card">
-                    <div class="industry-icon"><i class="fas fa-chalkboard"></i></div>
-                    <h3 data-i18n-en="AI+Training" data-i18n-zh="AI+培训">AI+Training</h3>
-                    <p data-i18n-en="Intelligent training content generation, virtual teachers, learning path recommendation systems — serving corporate L&D and online education." data-i18n-zh="开源的智能培训内容生成、虚拟教师与学习路径推荐系统，服务企业内训与在线教育。">Intelligent training content generation, virtual teachers, learning path recommendation systems — serving corporate L&D and online education.</p>
-                </div>
-                <div class="industry-card">
-                    <div class="industry-icon"><i class="fas fa-microchip"></i></div>
-                    <h3 data-i18n-en="Industrial AI & Open Hardware" data-i18n-zh="工业智能 & 开源硬件">Industrial AI & Open Hardware</h3>
-                    <p data-i18n-en="Exploring smart manufacturing, edge computing, green computing — frontier sectors to empower industrial evolution." data-i18n-zh="工业智能、开源硬件、绿色计算等前沿领域，持续探索产业化路径。">Exploring smart manufacturing, edge computing, green computing — frontier sectors to empower industrial evolution.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Vision + Suitable Projects combined section -->
-    <section class="section" id="vision">
+    <!-- Vision Section -->
+    <section class="section vision">
         <div class="container">
             <div class="vision-box">
-                <i class="fas fa-quote-left" style="font-size: 2rem; color: var(--primary); opacity: 0.5; margin-bottom: 16px; display: inline-block;"></i>
-                <div class="quote-text" data-i18n-en="“Let every game-changing open source project find its road to industry.”" data-i18n-zh="“让每一个改变世界的开源项目，都能找到通往产业的路。”">“Let every game-changing open source project find its road to industry.”</div>
-                <p style="color: #334155;" data-i18n-en="We are the critical bridge connecting code to industrial value — empowering open source without control." data-i18n-zh="我们是连接'代码'与'产业价值'的关键枢纽，赋能开源而不控制社区。">We are the critical bridge connecting code to industrial value — empowering open source without control.</p>
+                <h3 data-lang-en="Our Vision" data-lang-zh="我们的愿景">Our Vision</h3>
+                <p data-lang-en="To ensure every world-changing open source project finds its path to industry"
+                   data-lang-zh="让每一个改变世界的开源项目，都能找到通往产业的路">
+                    To ensure every world-changing open source project finds its path to industry
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- Suitable projects & call to action -->
-    <section class="section section-alt" id="join">
+    <!-- Model Section -->
+    <section id="model" class="section model">
         <div class="container">
-            <h2 class="section-title" data-i18n-en="Partner with Us" data-i18n-zh="适合合作的项目">Partner with Us</h2>
-            <div class="grid-2col">
-                <div class="card">
-                    <h3><i class="fas fa-code-branch" style="margin-right: 12px; color: var(--primary);"></i> <span data-i18n-en="Ideal Project Profile" data-i18n-zh="理想项目特征">Ideal Project Profile</span></h3>
-                    <ul class="badge-list">
-                        <li><i class="fas fa-check-circle"></i> <span data-i18n-en="Clear long-term industrial potential (AI, Data, Privacy, Collaboration tools)" data-i18n-zh="技术方向具有明确的长期产业想象空间（AI、数据、隐私、协作工具等）">Clear long-term industrial potential (AI, Data, Privacy, Collaboration tools)</span></li>
-                        <li><i class="fas fa-check-circle"></i> <span data-i18n-en="Functional demo or early community validation" data-i18n-zh="具备基础功能性演示或小规模社区验证">Functional demo or early community validation</span></li>
-                        <li><i class="fas fa-check-circle"></i> <span data-i18n-en="Want to keep open source governance while exploring sustainable industry feedback loops" data-i18n-zh="希望保留开源形态与社区治理结构，同时探索可持续产业回馈机制">Want to keep open source governance while exploring sustainable industry feedback loops</span></li>
-                    </ul>
+            <h2 class="section-title" data-lang-en="Our Core Model" data-lang-zh="我们的核心模式">Our Core Model</h2>
+            <p class="section-subtitle"
+               data-lang-en="Unlike traditional venture capital that primarily provides funding, and different from typical open source foundations that only focus on community governance, Open Technology Hub adopts a unique 'Technology + Industry' dual-drive model:"
+               data-lang-zh="区别于传统创投机构主要提供资金，也不同于一般开源基金会仅关注社区治理，开放技术枢纽采用独特的"技术+产业"双轮驱动模式：">
+                Unlike traditional venture capital that primarily provides funding, and different from typical open source foundations that only focus on community governance, Open Technology Hub adopts a unique "Technology + Industry" dual-drive model:
+            </p>
+            <div class="model-grid">
+                <div class="model-card">
+                    <div class="model-icon">💡</div>
+                    <h3 data-lang-en="Tech Equity Partnership" data-lang-zh="技术入股，长期共生">Tech Equity Partnership</h3>
+                    <p data-lang-en="We invest through technical contributions, architecture consulting, and ecosystem operations as intangible assets in exchange for project equity or long-term revenue sharing, forming partnerships with aligned interests and shared risks."
+                       data-lang-zh="我们以技术贡献、架构咨询、生态运营等无形资产作为核心投入方式，换取项目股权或长期收益分成，与项目方形成利益一致、风险共担的伙伴关系。">
+                        We invest through technical contributions, architecture consulting, and ecosystem operations as intangible assets in exchange for project equity or long-term revenue sharing, forming partnerships with aligned interests and shared risks.
+                    </p>
                 </div>
-                <div class="card">
-                    <h3><i class="fas fa-users" style="margin-right: 12px; color: var(--primary);"></i> <span data-i18n-en="Join the Action Network" data-i18n-zh="加入共建者网络">Join the Action Network</span></h3>
-                    <p data-i18n-en="Open Technology Hub is more than an institution — it's a network of developers, industry experts, and open source evangelists. The next decade: open source as infrastructure for all industries. Let's move forward together." data-i18n-zh="开放技术枢纽不仅是一个服务机构，更是一个由开发者、产业专家、开源布道师共同组成的行动网络。未来十年，开源将成为所有产业的技术基础设施，我们期望与你并肩前行。">Open Technology Hub is more than an institution — it's a network of developers, industry experts, and open source evangelists. The next decade: open source as infrastructure for all industries. Let's move forward together.</p>
-                    <a href="#" class="btn-primary" style="margin-top: 20px; display: inline-block;" id="contactBtn" data-i18n-en="Contact Us →" data-i18n-zh="联系我们 →">Contact Us →</a>
+                <div class="model-card">
+                    <div class="model-icon">🎯</div>
+                    <h3 data-lang-en="Transparent Industrial Implementation" data-lang-zh="透明化的产业落地应用方案">Transparent Industrial Implementation</h3>
+                    <p data-lang-en="For each partnered open source project, we co-develop public, measurable, phased industrial implementation roadmaps based on technical characteristics and team preferences. The entire process maintains appropriate transparency to ensure the open spirit is not compromised by commercial cooperation."
+                       data-lang-zh="针对每一个合作的开源项目，我们会根据其技术特性与团队意愿，共同制定公开、可衡量、分阶段的产业落地路线图。无论是合规路径、标杆客户对接，还是产业版产品的封装策略，整个过程均向社区与生态伙伴保持适度透明，确保开放精神不被商业合作侵蚀。">
+                        For each partnered open source project, we co-develop public, measurable, phased industrial implementation roadmaps based on technical characteristics and team preferences. The entire process maintains appropriate transparency to ensure the open spirit is not compromised by commercial cooperation.
+                    </p>
+                </div>
+                <div class="model-card">
+                    <div class="model-icon">🌐</div>
+                    <h3 data-lang-en="Cross-Industry Scenario Development" data-lang-zh="跨行业场景深耕">Cross-Industry Scenario Development</h3>
+                    <p data-lang-en="We have accumulated replicable open source implementation methodologies across multiple high-barrier industries, including AI+Healthcare, AI+Legal, AI+Training, industrial intelligence, open source hardware, and green computing."
+                       data-lang-zh="我们已在多个高壁垒行业中积累了可复用的开源落地方法论，重点推进的方向包括但不限于：AI+医疗、AI+法律、AI+培训、工业智能、开源硬件、绿色计算等。">
+                        We have accumulated replicable open source implementation methodologies across multiple high-barrier industries, including AI+Healthcare, AI+Legal, AI+Training, industrial intelligence, open source hardware, and green computing.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
-</main>
 
-<footer class="footer">
-    <div class="container">
-        <div class="footer-content">
-            <div class="footer-col">
-                <h4 data-i18n-en="Open Technology Hub" data-i18n-zh="开放技术枢纽">Open Technology Hub</h4>
-                <p data-i18n-en="Bridging open source innovation to industry reality." data-i18n-zh="连接开源创新与产业现实。">Bridging open source innovation to industry reality.</p>
-                <div class="social-links" style="margin-top: 16px;">
-                    <i class="fab fa-github"></i>
-                    <i class="fab fa-twitter"></i>
-                    <i class="fab fa-linkedin"></i>
+    <!-- Focus Areas -->
+    <section id="focus" class="section focus">
+        <div class="container">
+            <h2 class="section-title" data-lang-en="Focus Areas" data-lang-zh="重点方向">Focus Areas</h2>
+            <div class="focus-grid">
+                <div class="focus-card">
+                    <div class="focus-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <div class="focus-icon">🏥</div>
+                    </div>
+                    <h3 data-lang-en="AI + Healthcare" data-lang-zh="AI+医疗">AI + Healthcare</h3>
+                    <p data-lang-en="Advancing compliant implementation of open source models and privacy computing technologies in medical imaging, medical record structuring, and clinical decision support."
+                       data-lang-zh="围绕医学影像、病历结构化、临床辅助决策等场景，推动开源模型与隐私计算技术的合规落地。">
+                        Advancing compliant implementation of open source models and privacy computing technologies in medical imaging, medical record structuring, and clinical decision support.
+                    </p>
+                </div>
+                <div class="focus-card">
+                    <div class="focus-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <div class="focus-icon">⚖️</div>
+                    </div>
+                    <h3 data-lang-en="AI + Legal" data-lang-zh="AI+法律">AI + Legal</h3>
+                    <p data-lang-en="Supporting open source legal text analysis, case matching, and contract review tools to reduce barriers and costs of legal services."
+                       data-lang-zh="支持开源的法律文本分析、案例匹配、合同审查工具，降低法律服务的门槛与成本。">
+                        Supporting open source legal text analysis, case matching, and contract review tools to reduce barriers and costs of legal services.
+                    </p>
+                </div>
+                <div class="focus-card">
+                    <div class="focus-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        <div class="focus-icon">📚</div>
+                    </div>
+                    <h3 data-lang-en="AI + Training" data-lang-zh="AI+培训">AI + Training</h3>
+                    <p data-lang-en="Building open source intelligent training content generation, virtual teachers, and learning path recommendation systems for corporate training and online education."
+                       data-lang-zh="构建开源的智能培训内容生成、虚拟教师与学习路径推荐系统，服务企业内训与在线教育。">
+                        Building open source intelligent training content generation, virtual teachers, and learning path recommendation systems for corporate training and online education.
+                    </p>
+                </div>
+                <div class="focus-card">
+                    <div class="focus-image" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                        <div class="focus-icon">🏭</div>
+                    </div>
+                    <h3 data-lang-en="Industrial Intelligence" data-lang-zh="工业智能">Industrial Intelligence</h3>
+                    <p data-lang-en="Exploring applications in industrial automation, predictive maintenance, and smart manufacturing."
+                       data-lang-zh="探索工业自动化、预测性维护和智能制造领域的应用。">
+                        Exploring applications in industrial automation, predictive maintenance, and smart manufacturing.
+                    </p>
+                </div>
+                <div class="focus-card">
+                    <div class="focus-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                        <div class="focus-icon">🔧</div>
+                    </div>
+                    <h3 data-lang-en="Open Source Hardware" data-lang-zh="开源硬件">Open Source Hardware</h3>
+                    <p data-lang-en="Supporting development and commercialization of open hardware platforms and ecosystems."
+                       data-lang-zh="支持开源硬件平台和生态系统的开发与商业化。">
+                        Supporting development and commercialization of open hardware platforms and ecosystems.
+                    </p>
+                </div>
+                <div class="focus-card">
+                    <div class="focus-image" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);">
+                        <div class="focus-icon">🌱</div>
+                    </div>
+                    <h3 data-lang-en="Green Computing" data-lang-zh="绿色计算">Green Computing</h3>
+                    <p data-lang-en="Promoting energy-efficient computing solutions and sustainable technology practices."
+                       data-lang-zh="推动节能计算解决方案和可持续技术实践。">
+                        Promoting energy-efficient computing solutions and sustainable technology practices.
+                    </p>
                 </div>
             </div>
-            <div class="footer-col">
-                <h4 data-i18n-en="Contact" data-i18n-zh="联系方式">Contact</h4>
-                <p><i class="fas fa-envelope"></i> hello@opentechhub.org</p>
-                <p><i class="fas fa-map-marker-alt"></i> <span data-i18n-en="Global · Open Source Ecosystem" data-i18n-zh="全球 · 开源生态">Global · Open Source Ecosystem</span></p>
+        </div>
+    </section>
+
+    <!-- Partnership Section -->
+    <section id="partnership" class="section partnership">
+        <div class="container">
+            <h2 class="section-title" data-lang-en="Ideal Partnership" data-lang-zh="适合与我们合作的项目">Ideal Partnership</h2>
+            <p class="section-subtitle"
+               data-lang-en="If you are leading or participating in an open source project with the following characteristics, we would be excited to connect:"
+               data-lang-zh="如果你正在主导或参与一个开源项目，并符合以下特征，我们会非常期待与你沟通：">
+                If you are leading or participating in an open source project with the following characteristics, we would be excited to connect:
+            </p>
+            <div class="partnership-grid">
+                <div class="partnership-item">
+                    <div class="partnership-number">01</div>
+                    <p data-lang-en="Clear long-term industrial potential (especially in AI, data, privacy, collaboration tools)"
+                       data-lang-zh="技术方向具有明确的长期产业想象空间（尤其是AI、数据、隐私、协作工具等领域）">
+                        Clear long-term industrial potential (especially in AI, data, privacy, collaboration tools)
+                    </p>
+                </div>
+                <div class="partnership-item">
+                    <div class="partnership-number">02</div>
+                    <p data-lang-en="Basic functional demonstration or small-scale community validation"
+                       data-lang-zh="项目已具备基础的功能性演示或小规模社区验证">
+                        Basic functional demonstration or small-scale community validation
+                    </p>
+                </div>
+                <div class="partnership-item">
+                    <div class="partnership-number">03</div>
+                    <p data-lang-en="Desire to maintain open source format and community governance while exploring sustainable industrial feedback mechanisms"
+                       data-lang-zh="团队希望保留开源形态与社区治理结构，同时希望探索可持续的产业回馈机制">
+                        Desire to maintain open source format and community governance while exploring sustainable industrial feedback mechanisms
+                    </p>
+                </div>
             </div>
         </div>
-        <div class="copyright">
-            <span data-i18n-en="© 2025 Open Technology Hub — Empowering Open Source for Industry" data-i18n-zh="© 2025 开放技术枢纽 — 赋能开源，链接产业">© 2025 Open Technology Hub — Empowering Open Source for Industry</span>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <h2 class="section-title" data-lang-en="Join Us" data-lang-zh="加入我们">Join Us</h2>
+            <div class="contact-content">
+                <p data-lang-en="Open Technology Hub is not just a service organization, but an action network composed of developers, industry experts, and open source evangelists. We believe that in the next decade, open source will not remain in the developer tool chain, but will become the technological infrastructure of all industries. In this process, we hope to move forward with you."
+                   data-lang-zh="开放技术枢纽不仅是一个服务机构，更是一个由开发者、产业专家、开源布道师共同组成的行动网络。我们相信，未来十年，开源不会停留在开发者工具链中，而会成为所有产业的技术基础设施。在此进程中，我们希望能与你并肩前行。">
+                    Open Technology Hub is not just a service organization, but an action network composed of developers, industry experts, and open source evangelists. We believe that in the next decade, open source will not remain in the developer tool chain, but will become the technological infrastructure of all industries. In this process, we hope to move forward with you.
+                </p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h4 data-lang-en="Email" data-lang-zh="邮箱">Email</h4>
+                        <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f3909c9d87929087b39c83969d8796909b9b8691dd9c8194">[email&#160;protected]</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <h4 data-lang-en="Location" data-lang-zh="地址">Location</h4>
+                        <p data-lang-en="Global Network" data-lang-zh="全球网络">Global Network</p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</footer>
+    </section>
 
-<script>
-    // Bilingual content mapping using data attributes
-    // This script handles language switching and mobile menu toggle.
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">OTH</div>
+                    <p data-lang-en="Empowering Open Source Innovation" data-lang-zh="赋能开源创新">Empowering Open Source Innovation</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4 data-lang-en="Quick Links" data-lang-zh="快速链接">Quick Links</h4>
+                        <ul>
+                            <li><a href="#home" data-lang-en="Home" data-lang-zh="首页">Home</a></li>
+                            <li><a href="#about" data-lang-en="About Us" data-lang-zh="关于我们">About Us</a></li>
+                            <li><a href="#model" data-lang-en="Our Model" data-lang-zh="核心模式">Our Model</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4 data-lang-en="Resources" data-lang-zh="资源">Resources</h4>
+                        <ul>
+                            <li><a href="#focus" data-lang-en="Focus Areas" data-lang-zh="重点方向">Focus Areas</a></li>
+                            <li><a href="#partnership" data-lang-en="Partnership" data-lang-zh="合作伙伴">Partnership</a></li>
+                            <li><a href="#contact" data-lang-en="Contact" data-lang-zh="联系我们">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Open Technology Hub. <span data-lang-en="All rights reserved." data-lang-zh="版权所有。">All rights reserved.</span></p>
+            </div>
+        </div>
+    </footer>
 
-    // Set default language to English
-    let currentLang = 'en';
-
-    // All elements with data-i18n-en / data-i18n-zh attributes
-    function updateLanguage(lang) {
-        const elementsWithI18n = document.querySelectorAll('[data-i18n-en][data-i18n-zh]');
-        elementsWithI18n.forEach(el => {
-            const text = lang === 'en' ? el.getAttribute('data-i18n-en') : el.getAttribute('data-i18n-zh');
-            if (text !== null) {
-                // If element contains nested HTML? innerHTML safe
-                if (el.isContentEditable !== undefined) {
-                    el.textContent = text;
-                } else {
-                    // for headings, p, button, spans, etc.
-                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-                        // not needed
-                    } else {
-                        el.innerHTML = text;
-                    }
-                }
-            }
-        });
-        // Active button style
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-            const langVal = btn.getAttribute('data-lang');
-            if (langVal === lang) {
-                btn.classList.add('active');
-            } else {
-                btn.classList.remove('active');
-            }
-        });
-        // document title and html lang
-        document.documentElement.lang = lang;
-        if (lang === 'en') {
-            document.title = "Open Technology Hub | Bridging Open Source to Industry";
-        } else {
-            document.title = "开放技术枢纽 | 连接开源与产业";
-        }
-        currentLang = lang;
-    }
-
-    // Language switcher event
-    const langBtns = document.querySelectorAll('.lang-btn');
-    langBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const lang = btn.getAttribute('data-lang');
-            if (lang === 'en' || lang === 'zh') {
-                updateLanguage(lang);
-            }
-        });
-    });
-
-    // Mobile menu toggle
-    const menuToggle = document.getElementById('menuToggle');
-    const navLinks = document.getElementById('navLinks');
-    if (menuToggle) {
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-    }
-
-    // Smooth anchor scroll and close mobile menu on click
-    const navAnchors = document.querySelectorAll('.nav-links a');
-    navAnchors.forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            if (targetId && targetId !== '#') {
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({ behavior: 'smooth' });
-                    if (navLinks.classList.contains('active')) {
-                        navLinks.classList.remove('active');
-                    }
-                }
-            } else if (targetId === '#') {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                if (navLinks.classList.contains('active')) navLinks.classList.remove('active');
-            }
-        });
-    });
-
-    // hero button also smooth scroll
-    const heroBtn = document.getElementById('heroBtn');
-    if (heroBtn) {
-        heroBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            const modelSection = document.getElementById('model');
-            if (modelSection) modelSection.scrollIntoView({ behavior: 'smooth' });
-        });
-    }
-    const contactAction = document.getElementById('contactBtn');
-    if (contactAction) {
-        contactAction.addEventListener('click', (e) => {
-            e.preventDefault();
-            alert(currentLang === 'en' ? '📧 Reach us: hello@opentechhub.org — Let’s build the future of open source industry together.' : '📧 联系邮箱: hello@opentechhub.org — 让我们共同构建开源产业化的未来。');
-        });
-    }
-
-    // Initialize default language (English)
-    updateLanguage('en');
-
-    // Fix for any logo link/clicks to home
-    const logoLink = document.getElementById('logoLink');
-    if (logoLink) {
-        logoLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    }
-</script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="script.js"></script>
 </body>
 </html>
