@@ -1,1379 +1,643 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>OPEN Technology Hub | 开放技术枢纽</title>
-
-  <meta
-    name="description"
-    content="OPEN Technology Hub - 基于 OPEA 私有化部署平台，助力企业构建安全可控的 AI 应用与知识评测体系。"
-  />
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  />
-
-  <!-- Font Awesome -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    integrity="sha512-SnH5WK+bZxgPHs44uWix+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkR4j8l7fQm9Q6VQ6wN3fL4x0xIM+B07jRMg=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
-
-  <style>
-    :root {
-      --bg: #ffffff;
-      --text: #1a1a1a;
-      --text-2: #333333;
-      --muted: #666666;
-      --muted-2: #999999;
-      --line: #e5e7eb;
-
-      --blue: #5b21e8;
-      --blue-dark: #202020;
-      --purple: #5b21e8;
-      --purple-soft: #ec008c;
-
-      --radius: 14px;
-      --radius-lg: 18px;
-      --shadow-sm: 0 6px 20px rgba(17, 24, 39, 0.06);
-      --shadow-md: 0 10px 28px rgba(17, 24, 39, 0.1);
-      --container: 1200px;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html,
-    body {
-      margin: 0;
-      padding: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      scroll-behavior: smooth;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    .container {
-      width: min(100% - 2rem, var(--container));
-      margin-inline: auto;
-    }
-
-    .section {
-      padding: 76px 0;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border: 1px solid #5b21e8;
-      background: #f4f0ff;
-      color: #202020;
-      border-radius: 999px;
-      padding: 8px 14px;
-      font-weight: 600;
-      font-size: 13px;
-    }
-
-    .title {
-      margin: 0;
-      font-size: clamp(28px, 4.4vw, 56px);
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      color: #202020;
-      font-weight: 800;
-    }
-
-    .subtitle {
-      margin-top: 16px;
-      font-size: clamp(16px, 2.1vw, 22px);
-      color: var(--text-2);
-      font-weight: 600;
-    }
-
-    .desc {
-      margin-top: 14px;
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1.75;
-    }
-
-    .btns {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 24px;
-    }
-
-    .btn {
-      border: 1px solid transparent;
-      border-radius: 999px;
-      padding: 12px 20px;
-      font-weight: 700;
-      font-size: 15px;
-      cursor: pointer;
-      transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease,
-        filter 0.25s ease,
-        background 0.25s ease,
-        color 0.25s ease,
-        border-color 0.25s ease;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
-      min-height: 46px;
-      white-space: nowrap;
-    }
-
-    .btn-primary {
-      color: #ffffff;
-      border: none;
-      position: relative;
-      overflow: hidden;
-      isolation: isolate;
-
-      background:
-        radial-gradient(circle at 22% 18%, rgba(255, 255, 255, 0.38), transparent 24%),
-        radial-gradient(circle at 78% 80%, rgba(255, 0, 200, 0.52), transparent 38%),
-        linear-gradient(135deg, #6a2cff 0%, #a000ff 45%, #ff0099 100%);
-
-      box-shadow:
-        0 10px 24px rgba(160, 0, 255, 0.35),
-        0 4px 12px rgba(255, 0, 153, 0.28),
-        inset 0 1px 1px rgba(255, 255, 255, 0.35),
-        inset 0 -8px 18px rgba(85, 0, 170, 0.25);
-    }
-
-    .btn-primary::before {
-      content: "";
-      position: absolute;
-      inset: -45%;
-      z-index: -1;
-      background: linear-gradient(
-        120deg,
-        transparent 30%,
-        rgba(255, 255, 255, 0.58) 46%,
-        rgba(255, 255, 255, 0.2) 52%,
-        transparent 68%
-      );
-      transform: translateX(-75%) rotate(10deg);
-      transition: transform 0.65s ease;
-    }
-
-    .btn-primary::after {
-      content: "";
-      position: absolute;
-      inset: 2px;
-      z-index: -1;
-      border-radius: inherit;
-      background: linear-gradient(
-        145deg,
-        rgba(255, 255, 255, 0.22),
-        transparent 45%,
-        rgba(255, 255, 255, 0.08)
-      );
-      pointer-events: none;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-3px) scale(1.02);
-      filter: saturate(1.18) brightness(1.05);
-      box-shadow:
-        0 16px 34px rgba(160, 0, 255, 0.48),
-        0 8px 20px rgba(255, 0, 153, 0.38),
-        0 0 26px rgba(190, 40, 255, 0.45),
-        inset 0 1px 1px rgba(255, 255, 255, 0.45),
-        inset 0 -8px 18px rgba(85, 0, 170, 0.22);
-    }
-
-    .btn-primary:hover::before {
-      transform: translateX(75%) rotate(10deg);
-    }
-
-    .btn-primary:active {
-      transform: translateY(0) scale(0.98);
-      box-shadow:
-        0 7px 16px rgba(160, 0, 255, 0.34),
-        0 3px 10px rgba(255, 0, 153, 0.26),
-        inset 0 3px 8px rgba(80, 0, 150, 0.28);
-    }
-
-    .btn-outline {
-      color: #202020;
-      border-color: #5b21e8;
-      background: #ffffff;
-    }
-
-    .btn-outline:hover {
-      color: #ffffff;
-      border-color: #5b21e8;
-      background: #5b21e8;
-      transform: translateY(-2px);
-    }
-
-    /* Demo 按钮微调 */
-    .btn-demo {
-      background: rgba(0, 0, 0, 0.05);
-      border-color: #cdd9ff;
-      color: #3b2b6f;
-    }
-    .btn-demo i {
-      color: #ec008c;
-    }
-    .btn-demo:hover {
-      background: #1f2937;
-      border-color: #ec008c;
-      color: white;
-    }
-    .btn-demo:hover i {
-      color: white;
-    }
-
-    /* ========== 模态框样式 ========== */
-    .modal-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(8px);
-      z-index: 2000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      visibility: hidden;
-      opacity: 0;
-      transition: visibility 0.2s, opacity 0.2s ease;
-    }
-    .modal-overlay.active {
-      visibility: visible;
-      opacity: 1;
-    }
-    .modal-container {
-      background: #0a0a0a;
-      border-radius: 28px;
-      width: 90%;
-      max-width: 1000px;
-      box-shadow: 0 30px 50px rgba(0, 0, 0, 0.6), 0 0 0 2px rgba(236, 0, 140, 0.3);
-      overflow: hidden;
-      position: relative;
-      transform: scale(0.96);
-      transition: transform 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-    }
-    .modal-overlay.active .modal-container {
-      transform: scale(1);
-    }
-    .modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 14px 20px;
-      background: #111;
-      color: white;
-      border-bottom: 1px solid #2c2c2c;
-    }
-    .modal-header h3 {
-      margin: 0;
-      font-size: 18px;
-      font-weight: 600;
-      letter-spacing: -0.2px;
-    }
-    .close-modal {
-      background: none;
-      border: none;
-      color: #ccc;
-      font-size: 26px;
-      cursor: pointer;
-      line-height: 1;
-      transition: color 0.2s;
-    }
-    .close-modal:hover {
-      color: #ec008c;
-    }
-    .video-wrapper {
-      position: relative;
-      padding-bottom: 56.25%; /* 16:9 */
-      height: 0;
-      background: #000;
-    }
-    .video-wrapper video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      outline: none;
-    }
-    @media (max-width: 680px) {
-      .modal-container {
-        width: 95%;
-      }
-    }
-
-    /* ========== Header ========== */
-    .topbar {
-      background: #5b21e8;
-      border-bottom: 1px solid #5b21e8;
-      font-size: 13px;
-      color: #ffffff;
-    }
-
-    .topbar .container {
-      min-height: 38px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-      padding: 6px 0;
-    }
-
-    .topbar a {
-      color: #ffffff;
-      font-weight: 600;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: #202020;
-      border-bottom: 1px solid #202020;
-      transition: box-shadow 0.25s ease, border-color 0.25s ease;
-    }
-
-    header.scrolled {
-      background: #202020;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
-      border-color: #202020;
-    }
-
-    .nav {
-      min-height: 76px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 800;
-      color: #ffffff;
-      font-size: 18px;
-      letter-spacing: 0.01em;
-    }
-
-    .brand-mark {
-      width: 30px;
-      height: 30px;
-      border-radius: 9px;
-      background: #ffffff;
-      display: grid;
-      place-items: center;
-      color: #202020;
-      font-size: 14px;
-      box-shadow: none;
-      overflow: hidden;
-    }
-
-    .brand-mark svg {
-      width: 30px;
-      height: 30px;
-      display: block;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      color: #ffffff;
-      font-weight: 500;
-      font-size: 15px;
-    }
-
-    .nav-links a {
-      color: #ffffff;
-    }
-
-    .nav-links a:hover {
-      color: #ec008c;
-    }
-
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .lang-switch {
-      border: 1px solid rgba(255, 255, 255, 0.35);
-      border-radius: 999px;
-      display: inline-flex;
-      padding: 3px;
-      background: transparent;
-    }
-
-    .lang-switch button {
-      border: none;
-      background: transparent;
-      border-radius: 999px;
-      padding: 6px 12px;
-      font-weight: 600;
-      cursor: pointer;
-      color: #ffffff;
-    }
-
-    .lang-switch button.active {
-      background: #ffffff;
-      color: #202020;
-    }
-
-    .menu-toggle {
-      display: none;
-      border: 1px solid rgba(255, 255, 255, 0.35);
-      background: transparent;
-      border-radius: 10px;
-      padding: 8px 10px;
-      font-size: 18px;
-      color: #ffffff;
-      cursor: pointer;
-    }
-
-    .nav-cta {
-      min-height: 40px;
-      padding: 9px 16px;
-      font-size: 14px;
-    }
-
-    /* ========== Hero ========== */
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 1fr;
-      gap: 30px;
-      align-items: center;
-    }
-
-    .hero-highlight {
-      margin-top: 18px;
-      color: #ec008c;
-      font-weight: 700;
-      letter-spacing: 0.01em;
-      font-size: 14px;
-      text-transform: uppercase;
-    }
-
-    .hero-figure {
-      border: 1px solid #dbe7ff;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: var(--shadow-md);
-      background: linear-gradient(180deg, #f8fbff 0%, #f8f5ff 100%);
-    }
-
-    .hero-figure img {
-      width: 100%;
-      height: clamp(290px, 42vw, 470px);
-      object-fit: cover;
-    }
-
-    .hero-figure figcaption {
-      padding: 10px 14px 14px;
-      font-size: 12px;
-      color: var(--muted-2);
-    }
-
-    /* ========== Products ========== */
-    .product-card {
-      margin-top: 28px;
-      border: 1px solid #e1e9f8;
-      border-radius: var(--radius-lg);
-      background:
-        radial-gradient(circle at top left, rgba(91, 33, 232, 0.1), transparent 34%),
-        radial-gradient(circle at bottom right, rgba(236, 0, 140, 0.12), transparent 34%),
-        #ffffff;
-      box-shadow: var(--shadow-md);
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 1.25fr 0.85fr;
-      gap: 0;
-    }
-
-    .product-content {
-      padding: clamp(24px, 4vw, 42px);
-    }
-
-    .product-kicker {
-      display: inline-flex;
-      margin-bottom: 12px;
-      color: #ec008c;
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .product-content h3 {
-      margin: 0;
-      color: #202020;
-      font-size: clamp(28px, 3.6vw, 46px);
-      line-height: 1.12;
-      letter-spacing: -0.03em;
-    }
-
-    .product-subtitle {
-      margin: 10px 0 0;
-      color: #263c60;
-      font-size: clamp(17px, 2vw, 22px);
-      font-weight: 700;
-      line-height: 1.5;
-    }
-
-    .product-slogan {
-      margin-top: 12px;
-      display: inline-flex;
-      color: #ec008c;
-      font-weight: 800;
-      font-size: 15px;
-    }
-
-    .product-content > p {
-      margin: 14px 0 0;
-      color: var(--muted);
-      line-height: 1.8;
-      font-size: 16px;
-    }
-
-    .industry-tags {
-      margin-top: 18px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .industry-tags span {
-      border: 1px solid #ddd6fe;
-      background: #f8f5ff;
-      color: #202020;
-      border-radius: 999px;
-      padding: 8px 13px;
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .product-features {
-      margin-top: 24px;
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .product-feature {
-      display: flex;
-      gap: 12px;
-      border: 1px solid #e6ecf8;
-      border-radius: 14px;
-      padding: 16px;
-      background: rgba(255, 255, 255, 0.82);
-      backdrop-filter: blur(8px);
-    }
-
-    .product-feature-icon {
-      width: 38px;
-      height: 38px;
-      flex: 0 0 38px;
-      border-radius: 11px;
-      display: grid;
-      place-items: center;
-      color: #fff;
-      background: linear-gradient(135deg, #5b21e8 0%, #ec008c 100%);
-      font-size: 15px;
-    }
-
-    .product-feature h4 {
-      margin: 0 0 6px;
-      color: #202020;
-      font-size: 16px;
-    }
-
-    .product-feature p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.65;
-    }
-
-    .product-panel {
-      border-left: 1px solid #eee7ff;
-      background:
-        radial-gradient(circle at 14% 10%, rgba(236, 0, 140, 0.11), transparent 28%),
-        radial-gradient(circle at 90% 86%, rgba(91, 33, 232, 0.12), transparent 32%),
-        linear-gradient(180deg, #ffffff 0%, #fbf8ff 100%);
-      color: #202020;
-      padding: 22px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .product-panel-header {
-      height: 38px;
-      border-radius: 12px 12px 0 0;
-      background: linear-gradient(90deg, #ffffff 0%, #faf5ff 100%);
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      padding: 0 14px;
-      border: 1px solid #eadcff;
-      border-bottom: none;
-      box-shadow: inset 0 -1px 0 rgba(91, 33, 232, 0.06);
-    }
-
-    .product-panel-header span {
-      width: 9px;
-      height: 9px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #6a2cff 0%, #ff0099 100%);
-      box-shadow: 0 0 10px rgba(236, 0, 140, 0.35);
-    }
-
-    .product-flow {
-      border: 1px solid #eadcff;
-      border-radius: 0 0 12px 12px;
-      padding: 22px;
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(250, 245, 255, 0.92));
-      box-shadow: 0 16px 36px rgba(91, 33, 232, 0.08);
-    }
-
-    .flow-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      border: 1px solid #e5d6ff;
-      border-radius: 12px;
-      padding: 13px 14px;
-      background:
-        radial-gradient(circle at 8% 50%, rgba(236, 0, 140, 0.08), transparent 34%),
-        #ffffff;
-      font-weight: 800;
-      color: #202020;
-      box-shadow:
-        0 8px 20px rgba(91, 33, 232, 0.06),
-        inset 0 1px 0 rgba(255, 255, 255, 0.9);
-    }
-
-    .flow-item i {
-      color: #ec008c;
-      width: 18px;
-      text-align: center;
-      filter: drop-shadow(0 0 6px rgba(236, 0, 140, 0.28));
-    }
-
-    .flow-arrow {
-      display: grid;
-      place-items: center;
-      height: 28px;
-      color: #5b21e8;
-    }
-
-    /* ========== Cards ========== */
-    .cards-grid {
-      margin-top: 26px;
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .card {
-      border: 1px solid #e6ecf8;
-      border-radius: var(--radius);
-      padding: 22px;
-      background: #fff;
-      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-      min-height: 220px;
-    }
-
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-md);
-      border-color: #cddfff;
-    }
-
-    .card .icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      display: grid;
-      place-items: center;
-      color: #fff;
-      background: linear-gradient(135deg, #5b21e8 0%, #ec008c 100%);
-      margin-bottom: 14px;
-      font-size: 18px;
-    }
-
-    .card h3 {
-      margin: 0 0 10px;
-      color: #202020;
-      font-size: 19px;
-      line-height: 1.35;
-    }
-
-    .card p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: 15px;
-    }
-
-    /* ========== Partners Logo Wall ========== */
-    .partners-head {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-
-    .partners-head h2 {
-      margin: 0;
-      color: #202020;
-      font-size: clamp(24px, 3vw, 34px);
-    }
-
-    .partners-head p {
-      margin: 6px 0 0;
-      color: var(--muted);
-    }
-
-    .carousel-wrap {
-      position: relative;
-      border: 1px solid #e5ebf8;
-      border-radius: var(--radius-lg);
-      background: #fff;
-      overflow: hidden;
-      padding: 26px 0;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .carousel-wrap::before,
-    .carousel-wrap::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      width: 90px;
-      height: 100%;
-      z-index: 3;
-      pointer-events: none;
-    }
-
-    .carousel-wrap::before {
-      left: 0;
-      background: linear-gradient(90deg, #fff 0%, rgba(255, 255, 255, 0) 100%);
-    }
-
-    .carousel-wrap::after {
-      right: 0;
-      background: linear-gradient(270deg, #fff 0%, rgba(255, 255, 255, 0) 100%);
-    }
-
-    .carousel {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      overflow: hidden;
-      width: max-content;
-      animation: logoMarquee 34s linear infinite;
-      will-change: transform;
-    }
-
-    .carousel-wrap:hover .carousel {
-      animation-play-state: paused;
-    }
-
-    .member-card {
-      flex: 0 0 210px;
-      height: 112px;
-      border: 1px solid #e6ecf8;
-      border-radius: 4px;
-      padding: 18px 22px;
-      background: #fff;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      opacity: 1;
-      transition: opacity 0.25s ease, filter 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .member-card:hover {
-      opacity: 1;
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .logo-wordmark {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 50px;
-      color: #1f2937;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      line-height: 1;
-      white-space: nowrap;
-    }
-
-    .logo-wordmark.nvidia {
-      color: #76b900;
-      font-size: 27px;
-    }
-
-    .logo-wordmark.github {
-      color: #181717;
-      font-size: 28px;
-      gap: 8px;
-    }
-
-    .logo-wordmark.ibm {
-      color: #1f70c1;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 34px;
-      letter-spacing: 0.06em;
-    }
-
-    .logo-wordmark.microsoft {
-      color: #5f6368;
-      font-size: 24px;
-      font-weight: 700;
-      gap: 9px;
-    }
-
-    .microsoft-mark {
-      width: 25px;
-      height: 25px;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 3px;
-      flex-shrink: 0;
-    }
-
-    .microsoft-mark span:nth-child(1) {
-      background: #f25022;
-    }
-
-    .microsoft-mark span:nth-child(2) {
-      background: #7fba00;
-    }
-
-    .microsoft-mark span:nth-child(3) {
-      background: #00a4ef;
-    }
-
-    .microsoft-mark span:nth-child(4) {
-      background: #ffb900;
-    }
-
-    .logo-wordmark.aws {
-      color: #232f3e;
-      font-size: 31px;
-      font-weight: 800;
-      position: relative;
-      padding-bottom: 10px;
-    }
-
-    .logo-wordmark.aws::after {
-      content: "";
-      position: absolute;
-      left: 30%;
-      right: 8%;
-      bottom: 0;
-      height: 7px;
-      border-bottom: 3px solid #ff9900;
-      border-radius: 50%;
-      transform: rotate(-4deg);
-    }
-
-    .logo-wordmark.huggingface {
-      color: #334155;
-      font-size: 23px;
-      gap: 8px;
-    }
-
-    .logo-wordmark.redhat {
-      color: #ee0000;
-      font-size: 26px;
-      font-weight: 800;
-    }
-
-    .logo-wordmark.alibaba {
-      color: #ff6a00;
-      font-size: 23px;
-      font-weight: 800;
-    }
-
-    .logo-wordmark.oracle {
-      color: #c74634;
-      font-size: 30px;
-    }
-
-    .logo-wordmark.intel {
-      color: #0068b5;
-      font-size: 32px;
-      font-weight: 700;
-    }
-
-    .logo-wordmark.google {
-      font-size: 28px;
-      font-weight: 700;
-    }
-
-    .google .g1 {
-      color: #4285f4;
-    }
-
-    .google .g2 {
-      color: #ea4335;
-    }
-
-    .google .g3 {
-      color: #fbbc05;
-    }
-
-    .google .g4 {
-      color: #4285f4;
-    }
-
-    .google .g5 {
-      color: #34a853;
-    }
-
-    .google .g6 {
-      color: #ea4335;
-    }
-
-    .logo-wordmark.meta {
-      color: #0668e1;
-      font-size: 30px;
-    }
-
-    .logo-wordmark.cncf {
-      color: #3069de;
-      font-size: 29px;
-    }
-
-    .logo-wordmark.apache {
-      color: #d22128;
-      font-size: 27px;
-    }
-
-    .logo-wordmark.kubernetes {
-      color: #326ce5;
-      font-size: 24px;
-    }
-
-    .logo-wordmark.docker {
-      color: #2496ed;
-      font-size: 29px;
-    }
-
-    @keyframes logoMarquee {
-      from {
-        transform: translateX(0);
-      }
-
-      to {
-        transform: translateX(-50%);
-      }
-    }
-
-    /* ========== Getting Started ========== */
-    .start-box {
-      border: 1px solid #e6ecf8;
-      border-radius: var(--radius-lg);
-      padding: clamp(20px, 4vw, 34px);
-      background: linear-gradient(180deg, #ffffff 0%, #f8fbff 48%, #f8f5ff 100%);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .start-grid {
-      display: grid;
-      grid-template-columns: 1.05fr 1fr;
-      gap: 26px;
-      align-items: center;
-    }
-
-    .steps {
-      margin-top: 18px;
-      display: grid;
-      gap: 12px;
-    }
-
-    .step {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: #2f415f;
-      font-weight: 600;
-      padding: 10px 12px;
-      border: 1px dashed #d4e1fb;
-      border-radius: 10px;
-      background: #fff;
-    }
-
-    .step .num {
-      width: 26px;
-      height: 26px;
-      border-radius: 999px;
-      display: grid;
-      place-items: center;
-      color: #fff;
-      background: linear-gradient(135deg, #5b21e8 0%, #ec008c 100%);
-      font-size: 13px;
-      font-weight: 700;
-      flex-shrink: 0;
-    }
-
-    .start-figure {
-      border: 1px solid #dbe7ff;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: var(--shadow-sm);
-      background: #fff;
-    }
-
-    .start-figure img {
-      width: 100%;
-      height: clamp(260px, 35vw, 390px);
-      object-fit: cover;
-    }
-
-    .start-figure figcaption {
-      font-size: 12px;
-      color: var(--muted-2);
-      padding: 10px 12px 12px;
-    }
-
-    /* ========== Footer ========== */
-    footer {
-      margin-top: 30px;
-      border-top: 18px solid #5b21e8;
-      background: #000000;
-    }
-
-    .footer-grid {
-      padding: 42px 0 26px;
-      display: grid;
-      grid-template-columns: 1.3fr 1fr 1fr;
-      gap: 28px;
-    }
-
-    .footer-grid > div:first-child {
-      padding-right: 38px;
-    }
-
-    .footer-title {
-      margin: 0 0 12px;
-      color: #ffffff;
-      font-size: 16px;
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    .footer-text {
-      color: #ffffff;
-      line-height: 1.8;
-      font-size: 14px;
-      margin: 0;
-      max-width: 420px;
-    }
-
-    .footer-links {
-      display: grid;
-      gap: 10px;
-      color: #ffffff;
-      font-size: 14px;
-    }
-
-    .footer-links a {
-      color: #ffffff;
-    }
-
-    .footer-links a:hover {
-      color: #ec008c;
-    }
-
-    footer .brand {
-      color: #ffffff;
-    }
-
-    footer .brand-mark {
-      background: #ffffff;
-      color: #0d84cc;
-    }
-
-    .socials {
-      display: flex;
-      gap: 10px;
-      margin-top: 14px;
-    }
-
-    .socials a {
-      width: 34px;
-      height: 34px;
-      border-radius: 999px;
-      border: none;
-      display: grid;
-      place-items: center;
-      color: #ffffff;
-      background: transparent;
-      font-size: 17px;
-    }
-
-    .socials a:hover {
-      color: #ffffff;
-      background: #ec008c;
-    }
-
-    .copyright {
-      border-top: none;
-      padding: 14px 0 20px;
-      color: #ffffff;
-      font-size: 13px;
-      text-align: center;
-    }
-
-    footer .copyright {
-      background: transparent;
-    }
-
-    /* ========== Responsive ========== */
-    @media (max-width: 1100px) {
-      .nav-links {
-        gap: 13px;
-        font-size: 14px;
-      }
-    }
-
-    @media (max-width: 1024px) {
-      .hero-grid,
-      .start-grid,
-      .product-card {
-        grid-template-columns: 1fr;
-      }
-
-      .product-panel {
-        border-left: none;
-        border-top: 1px solid #eee7ff;
-      }
-
-      .cards-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    @media (max-width: 900px) {
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 76px;
-        left: 0;
-        right: 0;
-        background: #202020;
-        border-bottom: 1px solid #333333;
-        padding: 14px 1rem 16px;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 14px;
-      }
-
-      .nav-links.open {
-        display: flex;
-      }
-
-      .menu-toggle {
-        display: inline-flex;
-      }
-
-      .nav .btn-primary.nav-cta {
-        display: none;
-      }
-
-      footer {
-        background: #000000;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-grid > div:first-child {
-        padding-right: 0;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .section {
-        padding: 58px 0;
-      }
-
-      .product-features {
-        grid-template-columns: 1fr;
-      }
-
-      .product-panel {
-        padding: 16px;
-      }
-
-      .product-flow {
-        padding: 16px;
-      }
-
-      .cards-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .partners-head {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .carousel-wrap::before,
-      .carousel-wrap::after {
-        width: 46px;
-      }
-
-      .member-card {
-        flex-basis: 170px;
-        height: 94px;
-        padding: 14px 16px;
-      }
-
-      .logo-wordmark {
-        transform: scale(0.88);
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Open Technology Hub | Bridging Open Source to Industry</title>
+    <!-- Font Awesome 6 (Free Icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: Inter & Roboto for modern tech look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #1e293b;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* Color Palette Inspired by ZTE Tech Style */
+        :root {
+            --primary: #0052D9;
+            --primary-dark: #0036A3;
+            --primary-light: #E8F0FF;
+            --secondary: #1e293b;
+            --gray-light: #f8fafc;
+            --gray-border: #e2e8f0;
+            --text-dark: #0f172a;
+            --text-muted: #475569;
+            --accent-blue: #0a66c2;
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* Header / Nav */
+        .header {
+            position: sticky;
+            top: 0;
+            background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.02);
+            z-index: 100;
+            border-bottom: 1px solid var(--gray-border);
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            flex-wrap: wrap;
+        }
+        .logo a {
+            font-size: 1.8rem;
+            font-weight: 800;
+            text-decoration: none;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, var(--primary) 0%, #2b7aff 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .logo .logo-sub {
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: var(--text-muted);
+            letter-spacing: normal;
+            display: block;
+            margin-top: 2px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+            list-style: none;
+        }
+        .nav-links li a {
+            text-decoration: none;
+            font-weight: 500;
+            color: var(--text-dark);
+            transition: color 0.2s;
+            font-size: 1rem;
+        }
+        .nav-links li a:hover {
+            color: var(--primary);
+        }
+        .lang-switch {
+            display: flex;
+            gap: 8px;
+            background: var(--gray-light);
+            padding: 6px 12px;
+            border-radius: 40px;
+            border: 1px solid var(--gray-border);
+        }
+        .lang-btn {
+            background: none;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+            color: var(--text-muted);
+        }
+        .lang-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+        .menu-icon {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(105deg, #f0f6ff 0%, #ffffff 100%);
+            padding: 80px 0 90px;
+            border-bottom: 1px solid var(--gray-border);
+        }
+        .hero-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            max-width: 800px;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #0f172a 0%, var(--primary) 80%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .hero .hero-tagline {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin: 16px 0 8px;
+            border-left: 4px solid var(--primary);
+            padding-left: 20px;
+        }
+        .btn-primary {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 32px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.25s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,82,217,0.2);
+        }
+
+        /* Section common */
+        .section {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--gray-border);
+        }
+        .section-alt {
+            background-color: var(--gray-light);
+        }
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.01em;
+        }
+        .section-subhead {
+            color: var(--text-muted);
+            max-width: 700px;
+            margin-bottom: 48px;
+            font-size: 1.1rem;
+        }
+        .grid-2col, .grid-3col {
+            display: grid;
+            gap: 32px;
+        }
+        .grid-2col {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .grid-3col {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 32px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03), 0 1px 2px rgba(0,0,0,0.05);
+            transition: all 0.25s ease;
+            border: 1px solid var(--gray-border);
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
+        }
+        .card-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        .badge-list {
+            list-style: none;
+            margin-top: 16px;
+        }
+        .badge-list li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .badge-list i {
+            color: var(--primary);
+            width: 20px;
+        }
+
+        /* industry grid */
+        .industry-card {
+            background: white;
+            border-radius: 28px;
+            padding: 28px;
+            text-align: center;
+            border: 1px solid var(--gray-border);
+            transition: all 0.2s;
+        }
+        .industry-icon {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        /* Vision */
+        .vision-box {
+            background: linear-gradient(120deg, #eef4ff, #ffffff);
+            border-radius: 32px;
+            padding: 48px;
+            text-align: center;
+            border: 1px solid #e0e9ff;
+        }
+        .quote-text {
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 24px;
+        }
+        /* Footer */
+        .footer {
+            background: #0f172a;
+            color: #cbd5e1;
+            padding: 48px 0 32px;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .footer-col p, .footer-col a {
+            color: #94a3b8;
+            text-decoration: none;
+        }
+        .social-links i {
+            font-size: 1.4rem;
+            margin-right: 16px;
+            transition: color 0.2s;
+            color: #94a3b8;
+        }
+        .copyright {
+            text-align: center;
+            padding-top: 24px;
+            border-top: 1px solid #1e293b;
+            font-size: 0.85rem;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 24px;
+            }
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 20px;
+                padding: 24px 0 16px;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .menu-icon {
+                display: block;
+            }
+            .grid-2col, .grid-3col {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .vision-box {
+                padding: 32px;
+            }
+            .quote-text {
+                font-size: 1.3rem;
+            }
+        }
+        .inline-dot {
+            height: 8px;
+            width: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+        }
+        .feature-list {
+            list-style: none;
+        }
+        .feature-list li {
+            margin-bottom: 12px;
+        }
+    </style>
 </head>
-
 <body>
-  <!-- Topbar & header (保持不变，略作裁剪以适应篇幅，但完整保留) -->
-  <div class="topbar"><div class="container"><span data-i18n="top_notice">与我们一起构建可信赖的开放创新生态。</span><a href="#contact" data-i18n="top_action">立即联系</a></div></div>
-  <header id="siteHeader"><div class="container nav"><a href="#" class="brand"><span class="brand-mark"><svg viewBox="0 0 887 833" xmlns="http://www.w3.org/2000/svg"><rect width="887" height="833" fill="#ffffff"/><path d="M100 590C75 575 63 548 63 520V275C63 235 84 198 118 177L337 43C375 20 420 47 420 92V350C420 392 398 430 362 452L144 585C130 594 113 598 100 590Z" fill="#000000"/><path d="M475 53C492 42 514 39 533 49L743 172C778 193 799 231 799 272V515C799 558 752 585 715 563L497 435C463 415 442 378 442 339V104C442 83 454 65 475 53Z" fill="#12f21c"/><path d="M165 643L389 515C431 491 482 491 524 515L698 615C760 651 760 741 698 777L506 888C463 913 410 913 367 888L145 760C110 740 110 662 165 643Z" fill="#000000" transform="translate(0 -100)"/><ellipse cx="238" cy="296" rx="115" ry="58" transform="rotate(-63 238 296)" fill="#ffffff"/><ellipse cx="238" cy="296" rx="66" ry="32" transform="rotate(-63 238 296)" fill="#000000"/><path d="M524 137L702 240V304L634 265V482L589 456V239L524 201V137Z" fill="#ffffff"/><path d="M341 548L581 687L532 716L436 660L348 711L399 741L350 770L162 661L210 633L303 686L391 635L293 578L341 548Z" fill="#ffffff" transform="translate(0 -100)"/></svg></span><span data-i18n="brand">OPEN Technology Hub</span></a><nav class="nav-links" id="navLinks"><a href="#home" data-i18n="nav_home">首页</a><a href="#products" data-i18n="nav_products">产品方案</a><a href="#ecosystem" data-i18n="nav_ecosystem">技术生态</a><a href="#about" data-i18n="nav_about">关于我们</a><a href="#join" data-i18n="nav_join">加入我们</a></nav><div class="nav-right"><div class="lang-switch"><button id="lang-en">EN</button><button id="lang-zh" class="active">中文</button></div><a href="#contact" class="btn btn-primary nav-cta" data-i18n="contact_btn">立即咨询</a><button class="menu-toggle" id="menuToggle"><i class="fa-solid fa-bars"></i></button></div></div></header>
 
-  <main id="home" class="section"><div class="container hero-grid"><div><span class="badge"><i class="fa-solid fa-shield-heart"></i><span data-i18n="hero_badge">开放 • 创新 • 信任</span></span><h1 class="title" data-i18n="hero_title">Open Technology Hub</h1><p class="subtitle" data-i18n="hero_subtitle_en">Empowering Enterprise Innovation with Open Source</p><p class="desc" data-i18n="hero_subtitle_zh">基于 OPEA 私有化部署平台，帮助企业构建安全可控的 AI 应用环境，支持内部知识学习、智能出题、在线考核与自动批改。</p><p class="hero-highlight" data-i18n="hero_tagline">Open Innovation. Built for Trust.</p><div class="btns"><a href="#products" class="btn btn-primary" data-i18n="hero_btn_1">了解 SkillPilot 智巡</a><a href="#contact" class="btn btn-outline" data-i18n="hero_btn_2">预约产品介绍</a></div></div><figure class="hero-figure"><img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80" alt="Global technology network visualization"/></figure></div></main>
-
-  <!-- 产品与解决方案：新增 demo 按钮 -->
-  <section id="products" class="section" style="padding-top: 0;"><div class="container"><span class="badge"><i class="fa-solid fa-cubes"></i><span data-i18n="products_badge">产品方案</span></span><h2 style="margin:14px 0 0; color: #202020; font-size: clamp(26px, 3.4vw, 40px);" data-i18n="products_title">产品与解决方案</h2><p class="desc" style="max-width: 900px;" data-i18n="products_desc">基于 OPEA 私有化部署平台，为企业构建安全、可控、可扩展的 AI 应用环境，帮助企业在内部网络中完成知识学习、智能出题、在线考核与自动批改。</p>
-    <div class="product-card"><div class="product-content"><div class="product-kicker" data-i18n="product_kicker">OPEN Apps / Private OPEA Deployment</div><h3 data-i18n="product_title">SkillPilot 智巡</h3><div class="product-subtitle" data-i18n="product_subtitle">面向全行业的企业私有知识学习与智能评测应用</div><div class="product-slogan" data-i18n="product_slogan">让企业知识变成可学习、可评测、可提升的能力。</div><p data-i18n="product_desc">基于 OPEA 私有化部署平台，SkillPilot 智巡帮助金融、医疗、制造、能源、政务、教育、零售、科技服务等行业企业，在安全可控的私有环境中接入内部资料、制度规范、业务文档、培训课件、产品手册、合规文件和技术知识库，由 AI 自动完成知识理解、题目生成、员工考核、智能批改与结果分析，降低培训考核成本，保护企业知识资产安全。</p><div class="industry-tags"><span data-i18n="industry_finance">金融</span><span data-i18n="industry_healthcare">医疗</span><span data-i18n="industry_manufacturing">制造</span><span data-i18n="industry_energy">能源</span><span data-i18n="industry_government">政务</span><span data-i18n="industry_education">教育</span><span data-i18n="industry_retail">零售</span><span data-i18n="industry_tech">科技服务</span></div><div class="product-features"><div class="product-feature"><div class="product-feature-icon"><i class="fa-solid fa-lock"></i></div><div><h4 data-i18n="product_feature1_title">私有化部署，资料不出域</h4><p data-i18n="product_feature1_desc">企业内部文档、制度、培训材料和知识库均在私有环境中处理，降低敏感信息外泄风险。</p></div></div><div class="product-feature"><div class="product-feature-icon"><i class="fa-solid fa-file-circle-question"></i></div><div><h4 data-i18n="product_feature2_title">AI 自动出题</h4><p data-i18n="product_feature2_desc">基于企业内部资料自动生成单选、多选、判断、问答等多种题型，减少人工命题成本。</p></div></div><div class="product-feature"><div class="product-feature-icon"><i class="fa-solid fa-clipboard-check"></i></div><div><h4 data-i18n="product_feature3_title">在线考核与智能批改</h4><p data-i18n="product_feature3_desc">支持员工在线答题、自动评分、主观题智能批改和成绩统计，提升培训考核效率。</p></div></div><div class="product-feature"><div class="product-feature-icon"><i class="fa-solid fa-chart-line"></i></div><div><h4 data-i18n="product_feature4_title">结果分析与能力评估</h4><p data-i18n="product_feature4_desc">帮助企业了解员工知识掌握情况，发现培训短板，为后续学习计划提供依据。</p></div></div></div>
-      <div class="btns">
-        <a href="#contact" class="btn btn-primary" data-i18n="product_btn_primary">预约产品介绍</a>
-        <a href="#join" class="btn btn-outline" data-i18n="product_btn_secondary">了解部署流程</a>
-        <!-- 新增 DEMO 视频按钮 -->
-        <button id="demoVideoBtn" class="btn btn-outline btn-demo"><i class="fa-regular fa-circle-play"></i> <span data-i18n="demo_btn">观看视频演示</span></button>
-      </div>
-    </div><div class="product-panel"><div class="product-panel-header"><span></span><span></span><span></span></div><div class="product-flow"><div class="flow-item"><i class="fa-solid fa-file-lines"></i><span data-i18n="flow_1">内部资料接入</span></div><div class="flow-arrow"><i class="fa-solid fa-arrow-down"></i></div><div class="flow-item"><i class="fa-solid fa-brain"></i><span data-i18n="flow_2">AI 学习与理解</span></div><div class="flow-arrow"><i class="fa-solid fa-arrow-down"></i></div><div class="flow-item"><i class="fa-solid fa-list-check"></i><span data-i18n="flow_3">自动生成试题</span></div><div class="flow-arrow"><i class="fa-solid fa-arrow-down"></i></div><div class="flow-item"><i class="fa-solid fa-users"></i><span data-i18n="flow_4">员工在线考核</span></div><div class="flow-arrow"><i class="fa-solid fa-arrow-down"></i></div><div class="flow-item"><i class="fa-solid fa-award"></i><span data-i18n="flow_5">智能批改与成绩分析</span></div></div></div></div></div></section>
-
-  <!-- 后续核心能力，伙伴，开始使用以及 footer 保留原有内容，不再赘述以保持整洁，但功能完整 -->
-  <section id="ecosystem" class="section" style="padding-top: 0;"><div class="container"><span class="badge"><i class="fa-solid fa-layer-group"></i><span data-i18n="core_badge">核心能力</span></span><h2 style="margin:14px 0 0; color: #202020; font-size: clamp(26px, 3.4vw, 40px);" data-i18n="core_title">核心业务与技术能力</h2><div class="cards-grid"><article class="card"><div class="icon"><i class="fa-solid fa-brain"></i></div><h3 data-i18n="card1_title">AI & 大模型应用</h3><p data-i18n="card1_desc">帮助企业落地生成式AI、大语言模型等技术，构建智能应用。</p></article><article class="card"><div class="icon"><i class="fa-solid fa-code-branch"></i></div><h3 data-i18n="card2_title">开源技术生态</h3><p data-i18n="card2_desc">基于开放技术生态，帮助企业构建可扩展、可集成、可持续演进的 AI 应用平台。</p></article><article class="card"><div class="icon"><i class="fa-solid fa-server"></i></div><h3 data-i18n="card3_title">私有化部署方案</h3><p data-i18n="card3_desc">支持企业在内网、私有云或专有环境中部署 OPEA 平台与 AI 应用，满足数据安全与合规需求。</p></article><article class="card"><div class="icon"><i class="fa-solid fa-compass-drafting"></i></div><h3 data-i18n="card4_title">企业技术咨询</h3><p data-i18n="card4_desc">专业技术团队为企业提供从平台规划、应用部署到运营落地的全流程支持。</p></article></div></div></section>
-
-  <section class="section" id="about"><div class="container"><div class="partners-head"><div><h2 data-i18n="partner_title">Meet Our Partners & Members</h2><p data-i18n="partner_sub">合作伙伴与成员</p></div></div><div class="carousel-wrap"><div class="carousel" id="partnerCarousel"><article class="member-card"><div class="logo-wordmark nvidia">NVIDIA</div></article><article class="member-card"><div class="logo-wordmark github"><i class="fa-brands fa-github"></i><span>GitHub</span></div></article><article class="member-card"><div class="logo-wordmark ibm">IBM</div></article><article class="member-card"><div class="logo-wordmark microsoft"><span class="microsoft-mark"><span></span><span></span><span></span><span></span></span><span>Microsoft</span></div></article><article class="member-card"><div class="logo-wordmark aws">aws</div></article><article class="member-card"><div class="logo-wordmark huggingface"><span>🤗</span><span>Hugging Face</span></div></article><article class="member-card"><div class="logo-wordmark redhat">Red Hat</div></article><article class="member-card"><div class="logo-wordmark alibaba">Alibaba Cloud</div></article><article class="member-card"><div class="logo-wordmark oracle">ORACLE</div></article><article class="member-card"><div class="logo-wordmark intel">intel</div></article><article class="member-card"><div class="logo-wordmark google"><span class="g1">G</span><span class="g2">o</span><span class="g3">o</span><span class="g4">g</span><span class="g5">l</span><span class="g6">e</span></div></article><article class="member-card"><div class="logo-wordmark meta">Meta</div></article><article class="member-card"><div class="logo-wordmark cncf">CNCF</div></article><article class="member-card"><div class="logo-wordmark apache">Apache</div></article><article class="member-card"><div class="logo-wordmark kubernetes">Kubernetes</div></article><article class="member-card"><div class="logo-wordmark docker">Docker</div></article><article class="member-card"><div class="logo-wordmark nvidia">NVIDIA</div></article><article class="member-card"><div class="logo-wordmark github"><i class="fa-brands fa-github"></i><span>GitHub</span></div></article><article class="member-card"><div class="logo-wordmark ibm">IBM</div></article><article class="member-card"><div class="logo-wordmark microsoft"><span class="microsoft-mark"><span></span><span></span><span></span><span></span></span><span>Microsoft</span></div></article><article class="member-card"><div class="logo-wordmark aws">aws</div></article><article class="member-card"><div class="logo-wordmark huggingface"><span>🤗</span><span>Hugging Face</span></div></article><article class="member-card"><div class="logo-wordmark redhat">Red Hat</div></article><article class="member-card"><div class="logo-wordmark alibaba">Alibaba Cloud</div></article><article class="member-card"><div class="logo-wordmark oracle">ORACLE</div></article><article class="member-card"><div class="logo-wordmark intel">intel</div></article><article class="member-card"><div class="logo-wordmark google"><span class="g1">G</span><span class="g2">o</span><span class="g3">o</span><span class="g4">g</span><span class="g5">l</span><span class="g6">e</span></div></article><article class="member-card"><div class="logo-wordmark meta">Meta</div></article><article class="member-card"><div class="logo-wordmark cncf">CNCF</div></article><article class="member-card"><div class="logo-wordmark apache">Apache</div></article><article class="member-card"><div class="logo-wordmark kubernetes">Kubernetes</div></article><article class="member-card"><div class="logo-wordmark docker">Docker</div></article></div></div></div></section>
-
-  <section class="section" id="join" style="padding-top: 0;"><div class="container"><div class="start-box"><div class="start-grid"><div><span class="badge"><i class="fa-solid fa-rocket"></i><span data-i18n="start_badge">轻松上手</span></span><h2 style="margin:14px 0 0; color: #202020; font-size: clamp(24px, 3.2vw, 38px);" data-i18n="start_title">轻松开启 OPEA 私有化部署与 AI 应用落地</h2><p class="desc" style="margin-top: 12px;" data-i18n="start_desc">我们帮助企业完成从需求评估、平台部署、应用接入到培训考核运营的全流程落地。</p><div class="steps"><div class="step"><span class="num">1</span><span data-i18n="step1">需求沟通与资料评估</span></div><div class="step"><span class="num">2</span><span data-i18n="step2">OPEA 平台私有化部署</span></div><div class="step"><span class="num">3</span><span data-i18n="step3">SkillPilot 智巡应用上线</span></div></div><div class="btns"><a href="#contact" class="btn btn-primary" data-i18n="start_btn">立即开始</a></div></div><figure class="start-figure"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1400&q=80" alt="Collaborative technology guidance visual"/></figure></div></div></div></section>
-
-  <footer id="contact"><div class="container footer-grid"><div><div class="brand" style="margin-bottom: 10px;"><span class="brand-mark"><svg viewBox="0 0 887 833" xmlns="http://www.w3.org/2000/svg"><rect width="887" height="833" fill="#ffffff"/><path d="M100 590C75 575 63 548 63 520V275C63 235 84 198 118 177L337 43C375 20 420 47 420 92V350C420 392 398 430 362 452L144 585C130 594 113 598 100 590Z" fill="#000000"/><path d="M475 53C492 42 514 39 533 49L743 172C778 193 799 231 799 272V515C799 558 752 585 715 563L497 435C463 415 442 378 442 339V104C442 83 454 65 475 53Z" fill="#12f21c"/><path d="M165 643L389 515C431 491 482 491 524 515L698 615C760 651 760 741 698 777L506 888C463 913 410 913 367 888L145 760C110 740 110 662 165 643Z" fill="#000000" transform="translate(0 -100)"/><ellipse cx="238" cy="296" rx="115" ry="58" transform="rotate(-63 238 296)" fill="#ffffff"/><ellipse cx="238" cy="296" rx="66" ry="32" transform="rotate(-63 238 296)" fill="#000000"/><path d="M524 137L702 240V304L634 265V482L589 456V239L524 201V137Z" fill="#ffffff"/><path d="M341 548L581 687L532 716L436 660L348 711L399 741L350 770L162 661L210 633L303 686L391 635L293 578L341 548Z" fill="#ffffff" transform="translate(0 -100)"/></svg></span><span data-i18n="brand">OPEN Technology Hub</span></div><p class="footer-text" data-i18n="footer_desc">基于开放技术生态与 OPEA 私有化部署平台，助力企业构建安全可控的 AI 应用与知识评测体系。</p></div><div><h4 class="footer-title" data-i18n="footer_links_title">快速链接</h4><div class="footer-links"><a href="#home" data-i18n="nav_home">首页</a><a href="#products" data-i18n="nav_products">产品方案</a><a href="#ecosystem" data-i18n="nav_ecosystem">技术生态</a><a href="#about" data-i18n="nav_about">关于我们</a><a href="#join" data-i18n="nav_join">加入我们</a></div></div><div><h4 class="footer-title" data-i18n="footer_contact_title">联系方式</h4><div class="footer-links"><a href="mailto:wangjun@opentechnologyhub.com">wangjun@opentechnologyhub.com</a><a href="tel:+852-46762319">+852 46762319</a></div><div class="socials"><a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a><a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a><a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a></div></div></div><div class="container copyright"><span data-i18n="copyright">Copyright © 2026 OPEN Technology Hub. All rights reserved.</span></div></footer>
-
-  <!-- 视频模态框结构 -->
-  <div id="videoModal" class="modal-overlay">
-    <div class="modal-container">
-      <div class="modal-header">
-        <h3>SkillPilot 智巡 · 产品演示</h3>
-        <button class="close-modal" id="closeModalBtn">&times;</button>
-      </div>
-      <div class="video-wrapper">
-        <video id="demoVideo" controls preload="metadata">
-          <source src="https://ht.coiacert.com/storage/upload/uniacid/2026/06/03/2116742804515795.mp4" type="video/mp4">
-          您的浏览器不支持视频播放。
-        </video>
-      </div>
+<header class="header">
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a href="#" id="logoLink" data-i18n-en="Open Technology Hub" data-i18n-zh="开放技术枢纽">Open Technology Hub</a>
+                <span class="logo-sub" data-i18n-en="Tech Investment & Ecosystem" data-i18n-zh="技术投资 · 生态赋能">Tech Investment & Ecosystem</span>
+            </div>
+            <div class="menu-icon" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" data-i18n-en="Home" data-i18n-zh="首页">Home</a></li>
+                <li><a href="#about" data-i18n-en="About" data-i18n-zh="关于我们">About</a></li>
+                <li><a href="#model" data-i18n-en="Our Model" data-i18n-zh="核心模式">Our Model</a></li>
+                <li><a href="#scenarios" data-i18n-en="Industries" data-i18n-zh="行业场景">Industries</a></li>
+                <li><a href="#vision" data-i18n-en="Vision" data-i18n-zh="愿景">Vision</a></li>
+                <li><a href="#join" data-i18n-en="Join Us" data-i18n-zh="加入我们">Join Us</a></li>
+            </ul>
+            <div class="lang-switch">
+                <button class="lang-btn" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="zh">中文</button>
+            </div>
+        </div>
     </div>
-  </div>
+</header>
 
-  <script>
-    // 原有 header / language 完整保留
-    const siteHeader = document.getElementById("siteHeader");
-    window.addEventListener("scroll", () => siteHeader.classList.toggle("scrolled", window.scrollY > 8));
-    const menuToggle = document.getElementById("menuToggle");
-    const navLinks = document.getElementById("navLinks");
-    menuToggle.addEventListener("click", () => navLinks.classList.toggle("open"));
-    navLinks.querySelectorAll("a").forEach(a => a.addEventListener("click", () => navLinks.classList.remove("open")));
+<main>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-grid">
+                <h1 id="heroTitle" data-i18n-en="Discover · Incubate · Connect" data-i18n-zh="发现 · 孵化 · 链接">Discover · Incubate · Connect</h1>
+                <p class="hero-tagline" id="heroTagline" data-i18n-en="We empower early-stage open source projects with technology equity and industry ecosystems." data-i18n-zh="我们以技术入股与产业生态，赋能早期开源项目。">We empower early-stage open source projects with technology equity and industry ecosystems.</p>
+                <div>
+                    <a href="#model" class="btn-primary" id="heroBtn" data-i18n-en="Explore Our Model" data-i18n-zh="探索合作模式">Explore Our Model</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    const i18n = {
-      en: { top_notice: "Join us to build trusted open innovation ecosystems.", top_action: "Get in Touch", brand: "OPEN Technology Hub", nav_home: "Home", nav_products: "Products", nav_about: "About", nav_ecosystem: "Ecosystem", nav_join: "Join", contact_btn: "Contact", hero_badge: "Open • Innovation • Trust", hero_title: "Open Technology Hub", hero_subtitle_en: "Empowering Enterprise Innovation with Open Source", hero_subtitle_zh: "Built on private OPEA deployments, we help enterprises create secure AI application environments for internal knowledge learning, assessment, intelligent question generation, and automated grading.", hero_tagline: "Open Innovation. Built for Trust.", hero_btn_1: "Explore SkillPilot", hero_btn_2: "Book a consultation", products_badge: "Product Solutions", products_title: "Products & Solutions", products_desc: "Built on private OPEA deployments, our solutions help enterprises create secure, controllable, and scalable AI application environments for internal knowledge learning, quiz generation, assessment, and grading.", product_kicker: "OPEN Apps / Private OPEA Deployment", product_title: "SkillPilot", product_subtitle: "An Industry-Ready Private Enterprise Knowledge Learning & Assessment App", product_slogan: "Turn enterprise knowledge into measurable capability.", product_desc: "Built on a private OPEA deployment, SkillPilot helps organizations across finance, healthcare, manufacturing, energy, government, education, retail, technology services, and other industries securely connect internal documents, policies, business materials, training content, product manuals, compliance files, and technical knowledge bases. AI then supports knowledge understanding, question generation, employee assessment, intelligent grading, and result analytics — reducing training and assessment workload while protecting enterprise knowledge assets.", industry_finance: "Finance", industry_healthcare: "Healthcare", industry_manufacturing: "Manufacturing", industry_energy: "Energy", industry_government: "Government", industry_education: "Education", industry_retail: "Retail", industry_tech: "Technology Services", product_feature1_title: "Private Deployment, Data Stays Internal", product_feature1_desc: "Internal documents, policies, training materials, and knowledge bases are processed within the enterprise's private environment to reduce sensitive information leakage risks.", product_feature2_title: "AI-powered Question Generation", product_feature2_desc: "Automatically generate single-choice, multiple-choice, true/false, and open-ended questions from enterprise documents, reducing manual question-writing workload.", product_feature3_title: "Online Assessment & Smart Grading", product_feature3_desc: "Support online exams, automatic scoring, AI-assisted grading for open-ended answers, and result statistics.", product_feature4_title: "Result Analytics & Capability Evaluation", product_feature4_desc: "Help enterprises understand employees' knowledge mastery, identify training gaps, and improve future learning plans.", product_btn_primary: "Book a consultation", product_btn_secondary: "Deployment Process", demo_btn: "Watch Video Demo", flow_1: "Internal Materials", flow_2: "AI Understanding", flow_3: "Question Generation", flow_4: "Online Assessment", flow_5: "Smart Grading & Analytics", core_badge: "Core Capabilities", core_title: "Core Business & Technical Capabilities", card1_title: "AI & Foundation Model Applications", card1_desc: "Implement GenAI and large language models to build enterprise-grade intelligent applications.", card2_title: "Open Source Ecosystem", card2_desc: "Build scalable, integrable, and sustainable AI application platforms based on open technology ecosystems.", card3_title: "Private Deployment Solutions", card3_desc: "Deploy OPEA platforms and AI applications in intranets, private clouds, or dedicated environments to meet security and compliance requirements.", card4_title: "Enterprise Technology Consulting", card4_desc: "End-to-end support from platform planning and application deployment to operational enablement.", partner_title: "Meet Our Partners & Members", partner_sub: "Partners & Members", start_badge: "Getting Started is Easy", start_title: "Launch Private OPEA Deployment and AI Applications with Ease", start_desc: "We help enterprises implement the full process from requirement assessment and platform deployment to application onboarding and assessment operations.", step1: "Requirement Discussion & Material Assessment", step2: "Private OPEA Platform Deployment", step3: "SkillPilot Application Launch", start_btn: "Start Now", footer_desc: "Built on open technology ecosystems and private OPEA deployments, we help enterprises create secure AI applications and knowledge assessment systems.", footer_links_title: "Quick Links", footer_contact_title: "Contact", copyright: "Copyright © 2026 OPEN Technology Hub. All rights reserved." },
-      zh: { top_notice: "与我们一起构建可信赖的开放创新生态。", top_action: "立即联系", brand: "OPEN Technology Hub", nav_home: "首页", nav_products: "产品方案", nav_about: "关于我们", nav_ecosystem: "技术生态", nav_join: "加入我们", contact_btn: "立即咨询", hero_badge: "开放 • 创新 • 信任", hero_title: "Open Technology Hub", hero_subtitle_en: "Empowering Enterprise Innovation with Open Source", hero_subtitle_zh: "基于 OPEA 私有化部署平台，帮助企业构建安全可控的 AI 应用环境，支持内部知识学习、智能出题、在线考核与自动批改。", hero_tagline: "Open Innovation. Built for Trust.", hero_btn_1: "了解 SkillPilot 智巡", hero_btn_2: "预约产品介绍", products_badge: "产品方案", products_title: "产品与解决方案", products_desc: "基于 OPEA 私有化部署平台，为企业构建安全、可控、可扩展的 AI 应用环境，帮助企业在内部网络中完成知识学习、智能出题、在线考核与自动批改。", product_kicker: "OPEN Apps / Private OPEA Deployment", product_title: "SkillPilot 智巡", product_subtitle: "面向全行业的企业私有知识学习与智能评测应用", product_slogan: "让企业知识变成可学习、可评测、可提升的能力。", product_desc: "基于 OPEA 私有化部署平台，SkillPilot 智巡帮助金融、医疗、制造、能源、政务、教育、零售、科技服务等行业企业，在安全可控的私有环境中接入内部资料、制度规范、业务文档、培训课件、产品手册、合规文件和技术知识库，由 AI 自动完成知识理解、题目生成、员工考核、智能批改与结果分析，降低培训考核成本，保护企业知识资产安全。", industry_finance: "金融", industry_healthcare: "医疗", industry_manufacturing: "制造", industry_energy: "能源", industry_government: "政务", industry_education: "教育", industry_retail: "零售", industry_tech: "科技服务", product_feature1_title: "私有化部署，资料不出域", product_feature1_desc: "企业内部文档、制度、培训材料和知识库均在私有环境中处理，降低敏感信息外泄风险。", product_feature2_title: "AI 自动出题", product_feature2_desc: "基于企业内部资料自动生成单选、多选、判断、问答等多种题型，减少人工命题成本。", product_feature3_title: "在线考核与智能批改", product_feature3_desc: "支持员工在线答题、自动评分、主观题智能批改和成绩统计，提升培训考核效率。", product_feature4_title: "结果分析与能力评估", product_feature4_desc: "帮助企业了解员工知识掌握情况，发现培训短板，为后续学习计划提供依据。", product_btn_primary: "预约产品介绍", product_btn_secondary: "了解部署流程", demo_btn: "观看视频演示", flow_1: "内部资料接入", flow_2: "AI 学习与理解", flow_3: "自动生成试题", flow_4: "员工在线考核", flow_5: "智能批改与成绩分析", core_badge: "核心能力", core_title: "核心业务与技术能力", card1_title: "AI & 大模型应用", card1_desc: "帮助企业落地生成式AI、大语言模型等技术，构建智能应用。", card2_title: "开源技术生态", card2_desc: "基于开放技术生态，帮助企业构建可扩展、可集成、可持续演进的 AI 应用平台。", card3_title: "私有化部署方案", card3_desc: "支持企业在内网、私有云或专有环境中部署 OPEA 平台与 AI 应用，满足数据安全与合规需求。", card4_title: "企业技术咨询", card4_desc: "专业技术团队为企业提供从平台规划、应用部署到运营落地的全流程支持。", partner_title: "Meet Our Partners & Members", partner_sub: "合作伙伴与成员", start_badge: "轻松上手", start_title: "轻松开启 OPEA 私有化部署与 AI 应用落地", start_desc: "我们帮助企业完成从需求评估、平台部署、应用接入到培训考核运营的全流程落地。", step1: "需求沟通与资料评估", step2: "OPEA 平台私有化部署", step3: "SkillPilot 智巡应用上线", start_btn: "立即开始", footer_desc: "基于开放技术生态与 OPEA 私有化部署平台，助力企业构建安全可控的 AI 应用与知识评测体系。", footer_links_title: "快速链接", footer_contact_title: "联系方式", copyright: "Copyright © 2026 OPEN Technology Hub. All rights reserved." }
-    };
-    const enBtn = document.getElementById("lang-en"), zhBtn = document.getElementById("lang-zh");
-    function applyLanguage(lang) {
-      document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
-      document.querySelectorAll("[data-i18n]").forEach(el => { const key = el.getAttribute("data-i18n"); if(i18n[lang] && i18n[lang][key]) el.textContent = i18n[lang][key]; });
-      enBtn.classList.toggle("active", lang === "en"); zhBtn.classList.toggle("active", lang === "zh");
+    <!-- About Section (Company intro) -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title" data-i18n-en="Open Technology Hub" data-i18n-zh="关于开放技术枢纽">Open Technology Hub</h2>
+            <div class="grid-2col">
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-microchip"></i></div>
+                    <h3 data-i18n-en="Who We Are" data-i18n-zh="我们是谁">Who We Are</h3>
+                    <p id="aboutDesc1" data-i18n-en="Open Technology Hub is a technology investment & ecosystem empowerment institution focused on future high-potential open source projects. We believe disruptive innovations are born from 'edge innovation' within open source communities, and we dedicate to discovering, incubating and bridging those projects from code to real industry impact." data-i18n-zh="开放技术枢纽是一家专注于未来高潜力开源项目的技术投资与生态赋能机构。我们坚信下一代改变产业格局的技术力量孕育于开源社区的'边缘创新'之中，致力于发现、孵化、链接早期但具备颠覆性影响力的开源项目，通过技术入股深度参与。">Open Technology Hub is a technology investment & ecosystem empowerment institution focused on future high-potential open source projects. We believe disruptive innovations are born from 'edge innovation' within open source communities, and we dedicate to discovering, incubating and bridging those projects from code to real industry impact.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-handshake"></i></div>
+                    <h3 data-i18n-en="Our Mission" data-i18n-zh="核心使命">Our Mission</h3>
+                    <p id="aboutDesc2" data-i18n-en="To enable every game-changing open source project to find its path to industry. We don't control communities — we provide transparent mechanisms, technical expertise and deep industrial resources to cross the gap between 'technically feasible' and 'industry-ready'." data-i18n-zh="让每一个改变世界的开源项目，都能找到通往产业的路。我们不控制社区，而是通过透明的机制、专业的技术能力和深度的产业资源，帮助开源项目跨越从'技术可行'到'产业可用'之间的鸿沟。">To enable every game-changing open source project to find its path to industry. We don't control communities — we provide transparent mechanisms, technical expertise and deep industrial resources to cross the gap between 'technically feasible' and 'industry-ready'.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Model Section (Tech+Industry Dual Drive) -->
+    <section class="section section-alt" id="model">
+        <div class="container">
+            <h2 class="section-title" data-i18n-en="Our Core Model" data-i18n-zh="核心模式 · 双轮驱动">Our Core Model</h2>
+            <p class="section-subhead" data-i18n-en="Technology equity + industry ecosystems — a unique symbiosis model beyond traditional VC and foundations." data-i18n-zh="技术入股+产业生态——超越传统风投与基金会的独特共生模式。">Technology equity + industry ecosystems — a unique symbiosis model beyond traditional VC and foundations.</p>
+            <div class="grid-3col">
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3 data-i18n-en="Technology Equity" data-i18n-zh="技术入股 · 长期共生">Technology Equity</h3>
+                    <p data-i18n-en="We invest via technical contributions, architecture consulting and ecosystem building in exchange for project equity or long-term revenue sharing. Full alignment of interests and risk sharing." data-i18n-zh="以技术贡献、架构咨询、生态运营为核心投入，换取项目股权或长期收益分成，与项目方利益一致、风险共担。">We invest via technical contributions, architecture consulting and ecosystem building in exchange for project equity or long-term revenue sharing. Full alignment of interests and risk sharing.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-globe"></i></div>
+                    <h3 data-i18n-en="Transparent Industrialization" data-i18n-zh="透明化的产业落地">Transparent Industrialization</h3>
+                    <p data-i18n-en="We co-create open, measurable, phased industry adoption roadmaps — compliance, lighthouse customers, packaged products — while keeping open source communities informed and respected." data-i18n-zh="共同制定公开、可衡量、分阶段的产业落地路线图，从合规路径到标杆客户，全程保持适度透明，确保开放精神不被商业侵蚀。">We co-create open, measurable, phased industry adoption roadmaps — compliance, lighthouse customers, packaged products — while keeping open source communities informed and respected.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-chalkboard-user"></i></div>
+                    <h3 data-i18n-en="Cross-Industry Deepening" data-i18n-zh="跨行业场景深耕">Cross-Industry Deepening</h3>
+                    <p data-i18n-en="Proven open source industrialization playbooks in high-barrier sectors. We focus on AI+Healthcare, AI+Legal, AI+Training, Industrial Intelligence, Green Computing and more." data-i18n-zh="在高壁垒行业中积累可复用的开源落地方法论，重点推进AI+医疗、AI+法律、AI+培训、工业智能、开源硬件、绿色计算等方向。">Proven open source industrialization playbooks in high-barrier sectors. We focus on AI+Healthcare, AI+Legal, AI+Training, Industrial Intelligence, Green Computing and more.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scenarios (industry deep dive cards) -->
+    <section class="section" id="scenarios">
+        <div class="container">
+            <h2 class="section-title" data-i18n-en="Industry Deep Dive" data-i18n-zh="跨行业场景深耕">Industry Deep Dive</h2>
+            <p class="section-subhead" data-i18n-en="Driving open source transformation in mission-critical industries." data-i18n-zh="在关键任务型产业中推动开源变革落地。">Driving open source transformation in mission-critical industries.</p>
+            <div class="grid-3col">
+                <div class="industry-card">
+                    <div class="industry-icon"><i class="fas fa-heartbeat"></i></div>
+                    <h3 data-i18n-en="AI+Healthcare" data-i18n-zh="AI+医疗">AI+Healthcare</h3>
+                    <p data-i18n-en="Medical imaging, clinical NLP, structured EMR, privacy-preserving computing — enabling open source models for compliant healthcare AI." data-i18n-zh="医学影像、病历结构化、临床辅助决策，推动开源模型与隐私计算技术在合规前提下落地。">Medical imaging, clinical NLP, structured EMR, privacy-preserving computing — enabling open source models for compliant healthcare AI.</p>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-icon"><i class="fas fa-gavel"></i></div>
+                    <h3 data-i18n-en="AI+Legal" data-i18n-zh="AI+法律">AI+Legal</h3>
+                    <p data-i18n-en="Open-source legal text analytics, case matching, contract review — reducing costs and barriers to legal services." data-i18n-zh="开源的法律文本分析、案例匹配、合同审查工具，降低法律服务的门槛与成本。">Open-source legal text analytics, case matching, contract review — reducing costs and barriers to legal services.</p>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-icon"><i class="fas fa-chalkboard"></i></div>
+                    <h3 data-i18n-en="AI+Training" data-i18n-zh="AI+培训">AI+Training</h3>
+                    <p data-i18n-en="Intelligent training content generation, virtual teachers, learning path recommendation systems — serving corporate L&D and online education." data-i18n-zh="开源的智能培训内容生成、虚拟教师与学习路径推荐系统，服务企业内训与在线教育。">Intelligent training content generation, virtual teachers, learning path recommendation systems — serving corporate L&D and online education.</p>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-icon"><i class="fas fa-microchip"></i></div>
+                    <h3 data-i18n-en="Industrial AI & Open Hardware" data-i18n-zh="工业智能 & 开源硬件">Industrial AI & Open Hardware</h3>
+                    <p data-i18n-en="Exploring smart manufacturing, edge computing, green computing — frontier sectors to empower industrial evolution." data-i18n-zh="工业智能、开源硬件、绿色计算等前沿领域，持续探索产业化路径。">Exploring smart manufacturing, edge computing, green computing — frontier sectors to empower industrial evolution.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision + Suitable Projects combined section -->
+    <section class="section" id="vision">
+        <div class="container">
+            <div class="vision-box">
+                <i class="fas fa-quote-left" style="font-size: 2rem; color: var(--primary); opacity: 0.5; margin-bottom: 16px; display: inline-block;"></i>
+                <div class="quote-text" data-i18n-en="“Let every game-changing open source project find its road to industry.”" data-i18n-zh="“让每一个改变世界的开源项目，都能找到通往产业的路。”">“Let every game-changing open source project find its road to industry.”</div>
+                <p style="color: #334155;" data-i18n-en="We are the critical bridge connecting code to industrial value — empowering open source without control." data-i18n-zh="我们是连接'代码'与'产业价值'的关键枢纽，赋能开源而不控制社区。">We are the critical bridge connecting code to industrial value — empowering open source without control.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Suitable projects & call to action -->
+    <section class="section section-alt" id="join">
+        <div class="container">
+            <h2 class="section-title" data-i18n-en="Partner with Us" data-i18n-zh="适合合作的项目">Partner with Us</h2>
+            <div class="grid-2col">
+                <div class="card">
+                    <h3><i class="fas fa-code-branch" style="margin-right: 12px; color: var(--primary);"></i> <span data-i18n-en="Ideal Project Profile" data-i18n-zh="理想项目特征">Ideal Project Profile</span></h3>
+                    <ul class="badge-list">
+                        <li><i class="fas fa-check-circle"></i> <span data-i18n-en="Clear long-term industrial potential (AI, Data, Privacy, Collaboration tools)" data-i18n-zh="技术方向具有明确的长期产业想象空间（AI、数据、隐私、协作工具等）">Clear long-term industrial potential (AI, Data, Privacy, Collaboration tools)</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-i18n-en="Functional demo or early community validation" data-i18n-zh="具备基础功能性演示或小规模社区验证">Functional demo or early community validation</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-i18n-en="Want to keep open source governance while exploring sustainable industry feedback loops" data-i18n-zh="希望保留开源形态与社区治理结构，同时探索可持续产业回馈机制">Want to keep open source governance while exploring sustainable industry feedback loops</span></li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-users" style="margin-right: 12px; color: var(--primary);"></i> <span data-i18n-en="Join the Action Network" data-i18n-zh="加入共建者网络">Join the Action Network</span></h3>
+                    <p data-i18n-en="Open Technology Hub is more than an institution — it's a network of developers, industry experts, and open source evangelists. The next decade: open source as infrastructure for all industries. Let's move forward together." data-i18n-zh="开放技术枢纽不仅是一个服务机构，更是一个由开发者、产业专家、开源布道师共同组成的行动网络。未来十年，开源将成为所有产业的技术基础设施，我们期望与你并肩前行。">Open Technology Hub is more than an institution — it's a network of developers, industry experts, and open source evangelists. The next decade: open source as infrastructure for all industries. Let's move forward together.</p>
+                    <a href="#" class="btn-primary" style="margin-top: 20px; display: inline-block;" id="contactBtn" data-i18n-en="Contact Us →" data-i18n-zh="联系我们 →">Contact Us →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4 data-i18n-en="Open Technology Hub" data-i18n-zh="开放技术枢纽">Open Technology Hub</h4>
+                <p data-i18n-en="Bridging open source innovation to industry reality." data-i18n-zh="连接开源创新与产业现实。">Bridging open source innovation to industry reality.</p>
+                <div class="social-links" style="margin-top: 16px;">
+                    <i class="fab fa-github"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-linkedin"></i>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n-en="Contact" data-i18n-zh="联系方式">Contact</h4>
+                <p><i class="fas fa-envelope"></i> hello@opentechhub.org</p>
+                <p><i class="fas fa-map-marker-alt"></i> <span data-i18n-en="Global · Open Source Ecosystem" data-i18n-zh="全球 · 开源生态">Global · Open Source Ecosystem</span></p>
+            </div>
+        </div>
+        <div class="copyright">
+            <span data-i18n-en="© 2025 Open Technology Hub — Empowering Open Source for Industry" data-i18n-zh="© 2025 开放技术枢纽 — 赋能开源，链接产业">© 2025 Open Technology Hub — Empowering Open Source for Industry</span>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Bilingual content mapping using data attributes
+    // This script handles language switching and mobile menu toggle.
+
+    // Set default language to English
+    let currentLang = 'en';
+
+    // All elements with data-i18n-en / data-i18n-zh attributes
+    function updateLanguage(lang) {
+        const elementsWithI18n = document.querySelectorAll('[data-i18n-en][data-i18n-zh]');
+        elementsWithI18n.forEach(el => {
+            const text = lang === 'en' ? el.getAttribute('data-i18n-en') : el.getAttribute('data-i18n-zh');
+            if (text !== null) {
+                // If element contains nested HTML? innerHTML safe
+                if (el.isContentEditable !== undefined) {
+                    el.textContent = text;
+                } else {
+                    // for headings, p, button, spans, etc.
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        // not needed
+                    } else {
+                        el.innerHTML = text;
+                    }
+                }
+            }
+        });
+        // Active button style
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            const langVal = btn.getAttribute('data-lang');
+            if (langVal === lang) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+        // document title and html lang
+        document.documentElement.lang = lang;
+        if (lang === 'en') {
+            document.title = "Open Technology Hub | Bridging Open Source to Industry";
+        } else {
+            document.title = "开放技术枢纽 | 连接开源与产业";
+        }
+        currentLang = lang;
     }
-    enBtn.addEventListener("click", () => applyLanguage("en")); zhBtn.addEventListener("click", () => applyLanguage("zh"));
-    applyLanguage("zh");
 
-    // ----- 视频弹窗逻辑 -----
-    const modal = document.getElementById("videoModal");
-    const demoBtn = document.getElementById("demoVideoBtn");
-    const closeModalBtn = document.getElementById("closeModalBtn");
-    const videoElem = document.getElementById("demoVideo");
+    // Language switcher event
+    const langBtns = document.querySelectorAll('.lang-btn');
+    langBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const lang = btn.getAttribute('data-lang');
+            if (lang === 'en' || lang === 'zh') {
+                updateLanguage(lang);
+            }
+        });
+    });
 
-    function openModal() {
-      modal.classList.add("active");
-      if(videoElem) videoElem.play().catch(e => console.log("自动播放失败:", e));
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
     }
-    function closeModal() {
-      modal.classList.remove("active");
-      if(videoElem) { videoElem.pause(); videoElem.currentTime = 0; }
+
+    // Smooth anchor scroll and close mobile menu on click
+    const navAnchors = document.querySelectorAll('.nav-links a');
+    navAnchors.forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            if (targetId && targetId !== '#') {
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                    }
+                }
+            } else if (targetId === '#') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                if (navLinks.classList.contains('active')) navLinks.classList.remove('active');
+            }
+        });
+    });
+
+    // hero button also smooth scroll
+    const heroBtn = document.getElementById('heroBtn');
+    if (heroBtn) {
+        heroBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const modelSection = document.getElementById('model');
+            if (modelSection) modelSection.scrollIntoView({ behavior: 'smooth' });
+        });
     }
-    if(demoBtn) demoBtn.addEventListener("click", openModal);
-    if(closeModalBtn) closeModalBtn.addEventListener("click", closeModal);
-    modal.addEventListener("click", (e) => { if(e.target === modal) closeModal(); });
-    document.addEventListener("keydown", (e) => { if(e.key === "Escape" && modal.classList.contains("active")) closeModal(); });
-  </script>
+    const contactAction = document.getElementById('contactBtn');
+    if (contactAction) {
+        contactAction.addEventListener('click', (e) => {
+            e.preventDefault();
+            alert(currentLang === 'en' ? '📧 Reach us: hello@opentechhub.org — Let’s build the future of open source industry together.' : '📧 联系邮箱: hello@opentechhub.org — 让我们共同构建开源产业化的未来。');
+        });
+    }
+
+    // Initialize default language (English)
+    updateLanguage('en');
+
+    // Fix for any logo link/clicks to home
+    const logoLink = document.getElementById('logoLink');
+    if (logoLink) {
+        logoLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+</script>
 </body>
 </html>
